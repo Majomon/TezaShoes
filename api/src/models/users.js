@@ -3,12 +3,10 @@ const mongoose = require("mongoose");
 const usersSchema = mongoose.Schema({
   name: {
     type: String,
-    unique: true,
     required: true,
   },
   phone: {
     type: String,
-    unique: true,
     required: true,
   },
   email: {
@@ -20,7 +18,7 @@ const usersSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  isadmin: {
+  isAdmin: {
     type: Boolean,
     default: false,
   },

@@ -1,7 +1,7 @@
+const handlerPostUser = require("../handlers/users/handlerPostUser");
+
 const routerUsers = require("express").Router();
 
-routerUsers.post("/", (req, res) => {
-  res.status(200).json("Hola");
-});
+routerUsers.post("/", handlerPostUser);
 
 module.exports = routerUsers;

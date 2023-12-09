@@ -1,6 +1,11 @@
 import Link from "next/link";
 import FormRegister from "../components/FormRegister";
 
+export const metadata = {
+  title: "TezaShoes - Registro",
+  description: "Registro de la web de TezaShoes",
+};
+
 export default function Register() {
   return (
     <section className="w-full min-h-screen">
@@ -30,7 +35,7 @@ export default function Register() {
         </li>
       </ul>
       <div className="w-6/12 min-h-screen m-auto">
-            <FormRegister/>
+        <FormRegister />
       </div>
     </section>
   );

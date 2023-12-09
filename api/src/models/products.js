@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const productsSchema = mongoose.Schema({
   name: {
     type: String,
+    unique: true,
     required: true,
   },
   category: {
@@ -28,6 +29,7 @@ const productsSchema = mongoose.Schema({
         },
       ],
     },
+
   ],
   price: {
     type: Number,

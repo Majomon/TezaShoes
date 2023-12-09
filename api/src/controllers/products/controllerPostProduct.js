@@ -1,6 +1,6 @@
 const Product = require("../../models/products");
 
-const postProductController = async ({
+const controllerPostProduct = async ({
   name,
   category,
   options,
@@ -30,4 +30,4 @@ const postProductController = async ({
   return newProduct;
 };
 
-module.exports = postProductController;
+module.exports = controllerPostProduct;

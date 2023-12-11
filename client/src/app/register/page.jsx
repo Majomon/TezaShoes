@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FormRegister from "../components/FormRegister";
+import FormRegister from "../../components/FormRegister/FormRegister";
 
 export const metadata = {
   title: "TezaShoes - Registro",

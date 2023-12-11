@@ -1,7 +1,15 @@
-"use client"
+"use client";
 import React from "react";
-import {Navbar, NavbarBrand, NavbarContent,NavbarMenuToggle, NavbarItem, Link, Button} from "@nextui-org/react";
-import {AcmeLogo} from "../AcmeLogo.jsx";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarMenuToggle,
+  NavbarItem,
+  Link,
+  Button,
+} from "@nextui-org/react";
+import { AcmeLogo } from "../app/AcmeLogo.jsx";
 
 export default function App() {
   const menuItems = [
@@ -69,7 +77,11 @@ export default function App() {
             <Link
               className="w-full"
               color={
-                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
+                index === 2
+                  ? "warning"
+                  : index === menuItems.length - 1
+                  ? "danger"
+                  : "foreground"
               }
               href="#"
               size="lg"

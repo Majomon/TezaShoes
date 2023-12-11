@@ -11,13 +11,14 @@ const usersSchema = mongoose.Schema({
   },
   email: {
     type: String,
+    unique: true,
     required: true,
   },
   password: {
     type: String,
     required: true,
   },
-  isadmin: {
+  isAdmin: {
     type: Boolean,
     default: false,
   },

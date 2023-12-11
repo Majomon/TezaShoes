@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Register() {
   return (
-    <section className="w-full min-h-screen px-20">
+    <section className="w-full min-h-screen px-20 py-4">
       <Toaster position="top-center" />
       <ul className="flex">
         <li>

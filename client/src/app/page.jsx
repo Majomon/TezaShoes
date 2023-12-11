@@ -5,6 +5,7 @@ export default function Home() {
     <>
       <h1>PRUEBA</h1>
       <CardInfoSet />
+      
     </>
     
   )

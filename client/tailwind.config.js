@@ -15,6 +15,20 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        colorGold: {
+          800: "#AE9667"
+        },
+        colorBlack:{
+          400: "#0B090A"
+        },
+        colorWhite:{
+          100: "ffffff"
+        },
+        colorGray:{
+          100: "#CECECE"
+        }
+      }
     },
   },
   darkMode: "class",

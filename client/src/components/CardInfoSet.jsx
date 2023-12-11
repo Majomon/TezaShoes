@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import { IconComunication,IconCard,IconTruck,IconDevolution } from "../../../assets/svg/InformativeIcons";
+import { IconComunication,IconCard,IconTruck,IconDevolution } from "../svg/InformativeIcons";
 import CardInfoIcons from "./CardInfoIcons";
 
 const listCardInfo = [
@@ -27,7 +29,7 @@ const listCardInfo = [
 
 export default function CardInfoSet(){
     return(
-        <div className=" flex justify-center gap-x-[150px]">
+        <div className=" flex flex-wrap justify-center gap-x-[150px] ">
             {
                 listCardInfo.map((info) => (                    
                     <CardInfoIcons

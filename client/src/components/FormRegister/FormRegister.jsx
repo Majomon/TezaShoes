@@ -35,22 +35,23 @@ export default function FormRegister() {
   const handlerSubmit = async (e) => {
     e.preventDefault();
 
-    // Realizar la solicitud a la API
-    const response = await fetch("http://localhost:8080/users", {
-      method: "POST", // Método POST para enviar datos al servidor
-      headers: {
-        "Content-Type": "application/json", // Tipo de contenido JSON
-      },
-      body: JSON.stringify(inputForm), // Convertir los datos a formato JSON
-    });
-    // Verificar el estado de la respuesta
-    if (response.ok) {
-      // La solicitud fue exitosa
-      const data = await response.json(); // Obtener la respuesta en formato JSON
-      console.log("Usuario creado:", data);
-    } else {
-      // Hubo un error en la solicitud
-      console.error("Error al crear usuario:", response.status);
+    try {
+      const response = await fetch("http://localhost:8080/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputForm),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Usuario creado:", data);
+      } else {
+        console.error("Error al crear usuario:", response.status);
+      }
+    } catch (error) {
+      console.error("Error al realizar la solicitud:", error);
     }
   };
 

@@ -27,7 +27,7 @@ const listCardInfo = [
 
 export default function CardInfoSet(){
     return(
-        <div className=" flex flex-wrap justify-center gap-x-[150px] ">
+        <div className=" flex flex-wrap justify-center gap-x-[150px] gap-y-10 ">
             {
                 listCardInfo.map((info) => (                    
                     <CardInfoIcons

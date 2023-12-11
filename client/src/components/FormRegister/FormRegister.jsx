@@ -3,11 +3,16 @@ import axios from "axios";
 import { validateField, validateForm } from "../../utils/validaciones";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import Image from "next/image";
+import RegisterOk from "../../../assets/page-register/register_ok.svg";
+import RegisterFail from "../../../assets/page-register/register_fail.svg";
+import Link from "next/link";
 
 export default function FormRegister() {
   const [error, setError] = useState({});
   const [disabled, setDisabled] = useState(true);
   const [registerOk, setRegisterOk] = useState(false);
+  const [registerFail, setRegisterfail] = useState(false);
   const [inputForm, setInputForm] = useState({
     name: "",
     phone: "",
@@ -57,7 +62,7 @@ export default function FormRegister() {
           setRegisterOk(true);
         } else {
           toast.warning("Error al crear usuario");
-          setRegisterOk(false);
+          setRegisterfail(true);
         }
       } catch (error) {
         console.error("Error al realizar la solicitud:", error);
@@ -164,8 +169,40 @@ export default function FormRegister() {
       )}
       {/* Registro exitoso */}
       {registerOk && (
-        <div>
-          <h2>Hola</h2>
+        <div className="w-full min-h-screen flex flex-col justify-center items-center">
+          <div className="w-[150px] h-[240px] flex flex-col gap-10">
+            <Image
+              src={RegisterOk}
+              alt="registro_ok"
+              width={150}
+              height={150}
+            />
+            <div className="text-center">
+              <h3 className=" text-xs">Usuario creado con exito</h3>
+              <Link href="/">
+                <h4 className="text-sm text-[#AE9667]">INICIAR SESIÓN</h4>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Registro fallido */}
+      {registerFail && (
+        <div className="w-full min-h-screen flex flex-col justify-center items-center">
+          <div className="w-[150px] h-[240px] flex flex-col gap-10">
+            <Image
+              src={RegisterFail}
+              alt="registro_fail"
+              width={150}
+              height={150}
+            />
+            <div className="text-center">
+              <h3 className=" text-xs">Usuario no creado</h3>
+              <Link href="/register">
+                <h4 className="text-sm text-[#AE9667]">REGISTRO</h4>
+              </Link>
+            </div>
+          </div>
         </div>
       )}
     </form>

@@ -33,7 +33,7 @@ export default function Register() {
           />
         </svg>
         <li>
-          <h2 className="text-sm">Contacto</h2>
+          <h2 className="text-sm">Registro</h2>
         </li>
       </ul>
       <div className="w-6/12 min-h-screen m-auto">

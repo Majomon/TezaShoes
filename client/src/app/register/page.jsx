@@ -36,7 +36,7 @@ export default function Register() {
           <h2 className="text-sm">Contacto</h2>
         </li>
       </ul>
-      <div className="w-4/12 min-h-screen m-auto">
+      <div className="w-6/12 min-h-screen m-auto">
         <FormRegister />
       </div>
     </section>

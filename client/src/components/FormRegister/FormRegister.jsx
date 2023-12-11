@@ -60,7 +60,7 @@ export default function FormRegister() {
   };
 
   return (
-    <form onSubmit={handlerSubmit}>
+    <form onSubmit={handlerSubmit} className="w-8/12 mx-auto py-4">
       <div>
         <div>
           <input
@@ -69,19 +69,19 @@ export default function FormRegister() {
             value={inputForm.name}
             onChange={handlerChange}
             placeholder="Nombre"
-            className="w-full h-8 pl-2 mb-4 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
+            className="w-full h-8 pl-2 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
           />
           {error.name && <span>{error.name}</span>}
         </div>
 
-        <div>
+        <div className="">
           <input
             type="number"
             name="phone"
             value={inputForm.phone}
             onChange={handlerChange}
-            placeholder="Telefono"
-            className="w-full h-8 pl-2 mb-4 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
+            placeholder="Teléfono"
+            className="w-full h-8 pl-2 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700 "
           />
           {error.phone && <span>{error.phone}</span>}
         </div>
@@ -92,7 +92,7 @@ export default function FormRegister() {
             value={inputForm.email}
             onChange={handlerChange}
             placeholder="Email"
-            className="w-full h-8 pl-2 mb-4 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
+            className="w-full h-8 pl-2 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
           />
           {error.email && <span>{error.email}</span>}
         </div>
@@ -103,7 +103,7 @@ export default function FormRegister() {
             value={inputForm.password}
             onChange={handlerChange}
             placeholder="Contraseña"
-            className="w-full h-8 pl-2 mb-4 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
+            className="w-full h-8 pl-2 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
           />
           {error.password && <span>{error.password}</span>}
         </div>
@@ -114,7 +114,7 @@ export default function FormRegister() {
             value={inputForm.retryPassword}
             onChange={handlerChange}
             placeholder="Confirmar contraseña"
-            className="w-full h-8 pl-2 mb-4 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
+            className="w-full h-8 pl-2 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700"
           />
           {error.retryPassword && <span>{error.retryPassword}</span>}
         </div>

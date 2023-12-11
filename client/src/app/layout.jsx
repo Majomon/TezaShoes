@@ -4,7 +4,6 @@ import { Providers } from "./providers";
 
 const martel = Martel({ weight: ["400", "700"], subsets: ["latin"] });
 
-
 export const metadata = {
   title: "TezaShoes - Inicio",
   description: "Tienda de zapatos y carteras",

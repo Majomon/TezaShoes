@@ -1,7 +1,5 @@
-"use client";
-
 import React from "react";
-import { IconComunication,IconCard,IconTruck,IconDevolution } from "../svg/InformativeIcons";
+import { IconComunication,IconCard,IconTruck,IconDevolution } from "../../assets/svg/InformativeIcons";
 import CardInfoIcons from "./CardInfoIcons";
 
 const listCardInfo = [

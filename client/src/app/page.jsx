@@ -1,4 +1,4 @@
-import CardInfoSet from './components/CardInfoSet'
+import CardInfoSet from '../components/CardInfoSet'
 
 export default function Home() {
   return (

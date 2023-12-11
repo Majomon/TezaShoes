@@ -1,7 +1,8 @@
 "use client";
-
+import axios from "axios";
 import { validateField, validateForm } from "../../utils/validaciones";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function FormRegister() {
   const [error, setError] = useState({});
@@ -36,19 +37,22 @@ export default function FormRegister() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(inputForm),
-      });
+      const response = await axios.post(
+        "http://localhost:8080/users",
+        inputForm
+      );
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Usuario creado:", data);
+      if (response.status === 200) {
+        toast.success("Usuario creado");
+        setInputForm({
+          name: "",
+          phone: "",
+          email: "",
+          password: "",
+          retryPassword: "",
+        });
       } else {
-        console.error("Error al crear usuario:", response.status);
+        toast.warning("Error al crear usuario");
       }
     } catch (error) {
       console.error("Error al realizar la solicitud:", error);
@@ -123,9 +127,6 @@ export default function FormRegister() {
               ? "bg-gray-400 cursor-not-allowed transition"
               : "bg-yellow-400 hover:bg-yellow-500 shadow-md border-none rounded-md font-bold mt-4 mb-4 cursor-pointer"
           }`}
-          style={{
-            boxShadow: disabled ? "none" : "0px 4px 8px rgba(89, 73, 30, 0.16)",
-          }}
         >
           Crear usuario
         </button>

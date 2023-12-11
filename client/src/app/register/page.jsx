@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FormRegister from "../../components/FormRegister/FormRegister";
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "TezaShoes - Registro",
@@ -8,7 +9,8 @@ export const metadata = {
 
 export default function Register() {
   return (
-    <section className="w-full min-h-screen">
+    <section className="w-full min-h-screen px-20">
+      <Toaster position="top-center" />
       <ul className="flex">
         <li>
           <Link href="/">
@@ -34,7 +36,7 @@ export default function Register() {
           <h2 className="text-sm">Contacto</h2>
         </li>
       </ul>
-      <div className="w-6/12 min-h-screen m-auto">
+      <div className="w-4/12 min-h-screen m-auto">
         <FormRegister />
       </div>
     </section>

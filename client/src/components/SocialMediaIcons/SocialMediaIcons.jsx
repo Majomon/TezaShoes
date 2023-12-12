@@ -6,19 +6,11 @@ function SocialMediaIcons({ name, action, to, icon }) {
     window.location.href = `mailto:asdasdasd@asdasdasd.com`;
   };
 
-  const handleClick = () => {
-    if (action === "email") {
-      openEmailClient();
-    } else {
-      window.open(to, "_blank");
-    }
-  };
-
   return (
-    <div className="">
+    <div className="flex items-center gap-2">
       {action === "email" ? (
         <div
-          onClick={handleClick}
+          onClick={openEmailClient}
           className="w-10 h-10 bg-gray-800 rounded-full flex justify-center items-center cursor-pointer"
         >
           {icon}

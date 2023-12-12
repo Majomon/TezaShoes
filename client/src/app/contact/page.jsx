@@ -38,8 +38,8 @@ const options = [
 
 export default function Contact() {
   return (
-    <section>
-      <div>
+    <section className="w-full h-full px-16 ">
+      <div className="w-1/3 h-full ">
         <ul className="flex">
           <li>
             <Link href="/">
@@ -66,7 +66,7 @@ export default function Contact() {
           </li>
         </ul>
         {/* Redes */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 pt-6">
           {options.map((elem, index) => (
             <SocialMediaIcons
               key={index}
@@ -78,6 +78,7 @@ export default function Contact() {
           ))}
         </div>
       </div>
+      <div></div>
     </section>
   );
 }

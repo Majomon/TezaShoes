@@ -1,3 +1,4 @@
+import FormContact from "@/components/FormContact/FormContact";
 import SocialMediaIcons from "@/components/SocialMediaIcons/SocialMediaIcons";
 import {
   iconEmail,
@@ -38,7 +39,7 @@ const options = [
 
 export default function Contact() {
   return (
-    <section className="w-full h-full px-16 ">
+    <section className="w-full h-full px-16 flex">
       <div className="w-1/3 h-full ">
         <ul className="flex">
           <li>
@@ -78,7 +79,8 @@ export default function Contact() {
           ))}
         </div>
       </div>
-      <div></div>
+
+      <FormContact />
     </section>
   );
 }

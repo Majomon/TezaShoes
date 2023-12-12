@@ -9,7 +9,7 @@ export default function Card({image,title,price,cantDues}){
             <section className="h-[300px] w-[100%]">
                 {/*no funciona la etiquete imagen. buscar otra forma*/}
                 <Image
-                    className="w-[300px] h-[300px] rounded-t-lg rounded-b-none object-cover"
+                    className="w-[300px] h-[300px] rounded-t-lg rounded-b-none object-cover cursor-pointer"
                     src={imageCard.src}
                     alt="imageCard"
                 />

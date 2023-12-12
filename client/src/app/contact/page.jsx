@@ -1,11 +1,40 @@
+import SocialMediaIcons from "@/components/SocialMediaIcons/SocialMediaIcons";
 import {
+  iconEmail,
   iconFacebook,
   iconInstagram,
-  iconWhatApp,
-  iconEmail,
   iconLocation,
+  iconWhatApp,
 } from "@/utils/iconsContact";
 import Link from "next/link";
+
+const options = [
+  {
+    name: "Facebook",
+    action: "url",
+    to: "https://www.facebook.com/",
+    icon: iconFacebook,
+  },
+  {
+    name: "Instagram",
+    action: "url",
+    to: "https://www.instagram.com/",
+    icon: iconInstagram,
+  },
+  {
+    name: "1122334455",
+    action: "url",
+    to: "https://www.whatsapp.com/?lang=es_LA",
+    icon: iconWhatApp,
+  },
+  {
+    name: "Ubicación",
+    action: "url",
+    to: "https://www.google.com/maps/@20.2746259,-98.963968,16z?hl=es-MX&entry=ttu",
+    icon: iconLocation,
+  },
+  { name: "Email", action: "email", icon: iconEmail },
+];
 
 export default function Contact() {
   return (
@@ -38,32 +67,15 @@ export default function Contact() {
         </ul>
         {/* Redes */}
         <div className="flex flex-col gap-4">
-          <div className="">
-            <Link href="/" className="w-10  h-10 bg-gray-800 rounded-full flex justify-center items-center">
-              {iconFacebook}
-            </Link>
-            <h4 className=" text-sm ">Facebook</h4>
-          </div>
-          <div>
-            <div className="w-10 h-10 bg-gray-800 rounded-full flex justify-center items-center">
-              {iconInstagram}
-            </div>
-          </div>
-          <div>
-            <div className="w-10 h-10 bg-gray-800 rounded-full flex justify-center items-center">
-              {iconWhatApp}
-            </div>
-          </div>
-          <div>
-            <div className="w-10 h-10 bg-gray-800 rounded-full flex justify-center items-center">
-              {iconLocation}
-            </div>
-          </div>
-          <div>
-            <div className="w-10 h-10 bg-gray-800 rounded-full flex justify-center items-center">
-              {iconEmail}
-            </div>
-          </div>
+          {options.map((elem, index) => (
+            <SocialMediaIcons
+              key={index}
+              name={elem.name}
+              action={elem.action}
+              to={elem.to}
+              icon={elem.icon}
+            />
+          ))}
         </div>
       </div>
     </section>

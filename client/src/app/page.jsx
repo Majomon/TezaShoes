@@ -1,11 +1,11 @@
 import Card from '@/components/Card'
-import CardInfoSet from '../components/CardInfoSet'
+import CarouselNewProd from '@/components/CarouselNewProd'
 
 export default function Home() {
   return (
     <>
       <h1>PRUEBA</h1>
-      <Card />
+      <CarouselNewProd />
     </>
     
   )

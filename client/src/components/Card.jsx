@@ -17,11 +17,11 @@ export default function Card({image,title,price,cantDues}){
             </section>
             <section className="h-[80px] flex flex-col justify-between">
                 <div className="flex flex-col justify-center p-[5px] bg-colorWhite-100">
-                    <h2 className=" font-semibold uppercase">titulo</h2>
-                    <p className=" font-normal ">$precio</p>
+                    <h2 className=" font-semibold uppercase">{title}</h2>
+                    <p className=" font-normal ">${price}</p>
                 </div>
                 <p className=" rounded-b-lg bg-red-300 text-center">
-                    3 cuotas sin interes
+                    {cantDues} cuotas sin interes
                 </p>
             </section>
         </div>

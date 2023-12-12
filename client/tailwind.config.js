@@ -24,7 +24,7 @@ module.exports = {
           400: "#0B090A"
         },
         colorWhite:{
-          100: "ffffff"
+          100: "#ffffff"
         },
         colorGray:{
           100: "#CECECE"

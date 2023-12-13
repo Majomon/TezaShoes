@@ -1,7 +1,7 @@
 import { Martel } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import Footer from '@/app/components/Footer/Footer';
+import Footer from '@/components/Footer/Footer';
 
 const martel = Martel({ weight: ["400", "700"], subsets: ["latin"] });
 
@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={martel.className}>
         <Providers>
           {children}
           <Footer/>

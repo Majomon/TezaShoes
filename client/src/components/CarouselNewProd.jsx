@@ -85,27 +85,18 @@ const listCarousel = [
 
 ];
 
-/* const itemsCards = (id,image,title,price,cantDues,cont) => {
-    let max = 4;
-    cont <= max ? <Card 
-        key ={id}
-        title={title}
-        price={price}
-        cantDues={cantDues}
-    /> : "1"
-} */
-
 export default function CarouselNewProd(){
     const max = 4;
 
     return(
-        <div className="h-[500px]">
+        <div className="h-[500px] ">
             <Carousel
+                theme={false}
+                indicators= {true}
                 leftControl 
                 rightControl
                 slideInterval={5000}
                 className=" rounded-none "
-                /* onSlideChange={(index) => console.log('onSlideChange()', index)} */
             >
                 <div className="rounded-none cursor-auto flex h-full items-center justify-center gap-x-[23px] bg-green-400 ">
                     {

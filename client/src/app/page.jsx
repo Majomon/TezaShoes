@@ -1,5 +1,10 @@
 export default function Home() {
   return (
-  <h1>PRUEBA</h1>
+    <div>
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
   )
 }

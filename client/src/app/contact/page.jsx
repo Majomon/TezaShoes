@@ -8,6 +8,7 @@ import {
   iconWhatApp,
 } from "@/utils/iconsContact";
 import Link from "next/link";
+import { Toaster } from "sonner";
 
 const options = [
   {
@@ -39,7 +40,9 @@ const options = [
 
 export default function Contact() {
   return (
-    <section className="w-full h-full px-16 flex">
+    <section className="w-full min-h-screen px-16 flex mt-10">
+      <Toaster position="top-center" />
+
       <div className="w-1/3 h-full ">
         <ul className="flex">
           <li>

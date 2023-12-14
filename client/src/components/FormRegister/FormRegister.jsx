@@ -42,7 +42,7 @@ export default function FormRegister() {
   const handlerSubmit = async (e) => {
     e.preventDefault();
     if (disabled) {
-      toast.success("Completa el formulario");
+      toast.warning("Completa el formulario");
     } else {
       try {
         const response = await axios.post(

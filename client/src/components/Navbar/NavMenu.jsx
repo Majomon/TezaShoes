@@ -1,7 +1,8 @@
 'use client'
 import React from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button, Avatar, AvatarIcon} from "@nextui-org/react";
-import {AcmeLogo} from "../AcmeLogo";
+import LogoTeza from '../../app/LogoTeza.png'
+import Image from "next/image";
 
 
 export default function App() {
@@ -32,8 +33,7 @@ export default function App() {
 
       <NavbarContent justify="center">
         <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit font-serif text-4xl">TEZA</p>
+          <Image width={90} src={LogoTeza} alt="Logo Teza Shoes" />
         </NavbarBrand>
       </NavbarContent>
 

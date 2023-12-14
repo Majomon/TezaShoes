@@ -43,8 +43,8 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
 
           <ul>
             {menuItems.map((item) => (
-              <li className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">
-                <Link key={item.name} className="w-full" href={item.href}>
+              <li key={item.name} className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">
+                <Link className="w-full" href={item.href}>
                   {item.name}
                 </Link>
               </li>

@@ -1,6 +1,8 @@
 import { Martel } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import Footer from '@/components/Footer/Footer';
+import NavMenu from '@/components/Navbar/NavMenu'
 
 const martel = Martel({ weight: ["400", "700"], subsets: ["latin"] });
 
@@ -13,7 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={martel.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <NavMenu/>
+          {children}
+          <Footer/>
+        </Providers>
       </body>
     </html>
   );

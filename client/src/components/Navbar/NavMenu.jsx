@@ -1,70 +1,42 @@
-'use client'
-import React from "react";
-import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button, Avatar, AvatarIcon} from "@nextui-org/react";
-import {AcmeLogo} from "../AcmeLogo";
+"use client"
+import React, { useState } from "react"
+import Sidebar from "./Sidebar"
+import { CiMenuFries, CiSearch, CiUser, CiShoppingCart } from "react-icons/ci"
+import LogoTeza from "../../app/LogoTeza.png"
+import Image from "next/image"
 
-
-export default function App() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const menuItems = [
-    "Bandoleras",
-    "Borcegos",
-    "Botas",
-    "Camperas de jean",
-    "Carteras",
-    "Sandalias",
-    "Texanas",
-    "Zapatillas",
-    "Oferta",
-    "Log Out",
-  ];
+export default function NavMenu() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <Navbar
-      isBordered
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-    >
-      <NavbarContent className="">
-        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
-      </NavbarContent>
+    <nav className="bg-white w-full shadow-md flex h-16 items-center ">
 
-      <NavbarContent justify="center">
-        <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit font-serif text-4xl">TEZA</p>
-        </NavbarBrand>
-      </NavbarContent>
+      {/* LEFT */}
+      <div className="flex flex-1 items-center mx-10">
+        {/* BURGER MENU */}
+        <button className="m-4" onClick={() => setIsMenuOpen(true)}>
+          <CiMenuFries size={25} />
+        </button>
+        <Sidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
-      <NavbarContent justify="end">
-        <NavbarItem>
-            <Avatar
-            icon={<AvatarIcon />}
-            classNames={{
-              base: "bg-white",
-              icon: "text-black/80",
-            }}
-          />
-        </NavbarItem>
-      </NavbarContent>
+        {/* LOGO */}
+        <Image src={LogoTeza} alt="Logo Teza Shoes" />
+      </div>
 
-      <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color={
-                index === 8 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
-              }
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
-    </Navbar>
-  );
+      {/* CENTER */}
+      <div className="flex flex-1 justify-center">
+        <ul className="flex">
+          <li className="uppercase text-xs mx-2">Preguntas Frecuentes</li>
+          <li className="uppercase text-xs mx-2">Contactanos</li>
+        </ul>
+      </div>
+
+      {/* RIGHT */}
+      <div className="flex flex-1 justify-end mx-10">
+        <CiSearch size={25} />
+        <CiUser size={25}/>
+        <CiShoppingCart size={25} />
+      </div>
+    </nav>
+  )
 }

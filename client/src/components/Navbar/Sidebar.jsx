@@ -1,5 +1,4 @@
 import Link from "next/link"
-import React, { useState } from "react"
 import { CgClose } from "react-icons/cg"
 import LogoTeza from "../../app/LogoTeza.png"
 import Image from "next/image"
@@ -36,15 +35,15 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
       >
         <div className={`${!isMenuOpen && "hidden"} pt-3`}>
           <div className="flex flex-row items-center justify-center">
-          <button className="mx-2" onClick={() => setIsMenuOpen(false)}>
-            <CgClose size={25} color="black" />
-          </button>
-          <Image className="mx-2" src={LogoTeza} alt="Logo Teza Shoes" />
+            <button className="mx-2" onClick={() => setIsMenuOpen(false)}>
+              <CgClose size={25} color="black" />
+            </button>
+            <Image className="mx-2" src={LogoTeza} alt="Logo Teza Shoes" />
           </div>
 
           <ul>
-            {menuItems.map((item, index) => (
-              <li className="cursor-pointer px-6 my-2 hover:font-bold">
+            {menuItems.map((item) => (
+              <li className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">
                 <Link key={item.name} className="w-full" href={item.href}>
                   {item.name}
                 </Link>
@@ -53,7 +52,6 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
           </ul>
         </div>
       </div>
-
     </div>
   )
 }

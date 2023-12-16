@@ -10,9 +10,9 @@ import { toast } from "sonner";
 import InputForm from "../InputForm/InputForm";
 
 function FormContact() {
-  const { users, fetchUsers } = useStoreUsers((state) => ({
+  const { users, fetchAllUsers } = useStoreUsers((state) => ({
     users: state.users,
-    fetchUsers: state.fetchUsers,
+    fetchAllUsers: state.fetchAllUsers,
   }));
   const [disabled, setDisabled] = useState(true);
   const options = {
@@ -38,13 +38,8 @@ function FormContact() {
   }, [inputForm]);
 
   useEffect(() => {
-    const success = fetchUsers();
-    if (success) {
-      toast.success("Lista de usuarios recibida");
-    } else {
-      toast.warning("Error al obtener la lista de usuarios");
-    }
-  }, [fetchUsers]);
+    fetchAllUsers();
+  }, []);
 
   const handlerChange = (e) => {
     const { name, value } = e.target;

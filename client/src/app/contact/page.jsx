@@ -59,8 +59,6 @@ export default function Contact() {
             <path
               fill="none"
               stroke="#333333"
-              strokeLinecap="round"
-              strokeLinejoin="round"
               strokeWidth="2"
               d="M5 12h14m-4 4l4-4m-4-4l4 4"
             />

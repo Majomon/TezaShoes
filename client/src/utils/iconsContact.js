@@ -5,12 +5,7 @@ export const iconFacebook = (
     height="28"
     viewBox="0 0 24 24"
   >
-    <g
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-    >
+    <g fill="none">
       <path d="M0 0h24v24H0z" />
       <path
         fill="#ffffff"
@@ -27,13 +22,7 @@ export const iconInstagram = (
     height="28"
     viewBox="0 0 24 24"
   >
-    <g
-      fill="none"
-      stroke="#ffffff"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-    >
+    <g fill="none" stroke="#ffffff">
       <path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z" />
       <path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m7.5-4.5v.01" />
     </g>
@@ -47,13 +36,7 @@ export const iconWhatApp = (
     height="28"
     viewBox="0 0 24 24"
   >
-    <g
-      fill="none"
-      stroke="#ffffff"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-    >
+    <g fill="none" stroke="#ffffff">
       <path d="m3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
       <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
     </g>
@@ -67,13 +50,7 @@ export const iconEmail = (
     height="28"
     viewBox="0 0 24 24"
   >
-    <g
-      fill="none"
-      stroke="#ffffff"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-    >
+    <g fill="none" stroke="#ffffff">
       <path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
       <path d="m3 7l9 6l9-6" />
     </g>
@@ -87,13 +64,7 @@ export const iconLocation = (
     height="28"
     viewBox="0 0 24 24"
   >
-    <g
-      fill="none"
-      stroke="#ffffff"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-    >
+    <g fill="none" stroke="#ffffff">
       <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0" />
       <path d="m12 17l-1-4l-4-1l9-4z" />
     </g>

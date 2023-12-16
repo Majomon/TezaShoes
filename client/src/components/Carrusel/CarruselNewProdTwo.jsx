@@ -107,15 +107,20 @@ export default function CarruselNewProdTwo(){
             slidesPerView={1}
             className='h-[600px] w-[100%]'
             breakpoints={{
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
+                slidesPerGroup:1,
+                slidesPerView:1,
+                620: {
+                    slidesPerView: 2,
+                    spaceBetween: 0,
+                    slidesPerGroup:2
                 },
-                768: {
+                920: {
                     slidesPerView: 3,
-                    spaceBetween: 20,
+                    spaceBetween: 0,
+                    slidesPerGroup:3
                 },
-                1024: {
+                
+                1250: {
                     slidesPerView: 4,
                     spaceBetween: 0,
                     slidesPerGroup:4
@@ -126,7 +131,7 @@ export default function CarruselNewProdTwo(){
             {
                 listCarousel.map((item,index) => {
                     const {id,image,title,price,cantDues} = item;
-                    return <SwiperSlide>
+                    return <SwiperSlide className="">
                             <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">
                                 <Card
                                     key ={id}

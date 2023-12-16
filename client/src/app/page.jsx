@@ -1,8 +1,8 @@
+import CarruselNewProdTwo from "@/components/Carrusel/CarruselNewProdTwo";
 
-import CarruselNewProdTwo from '../components/Carrusel/CarruselNewProdTwo'
 
 export default function Home() {
   return (
-    <CarruselNewProdTwo></CarruselNewProdTwo>
+    <CarruselNewProdTwo />
   )
 }

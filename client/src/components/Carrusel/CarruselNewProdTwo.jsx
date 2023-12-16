@@ -131,7 +131,7 @@ export default function CarruselNewProdTwo(){
             {
                 listCarousel.map((item,index) => {
                     const {id,image,title,price,cantDues} = item;
-                    return <SwiperSlide className="">
+                    return <SwiperSlide key={id} className="">
                             <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">
                                 <Card
                                     key ={id}

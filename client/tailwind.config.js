@@ -36,5 +36,5 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [nextui(),require('flowbite/plugin')],
+  plugins: [nextui()],
 }

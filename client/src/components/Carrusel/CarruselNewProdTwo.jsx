@@ -143,55 +143,6 @@ export default function CarruselNewProdTwo(){
                         </SwiperSlide> 
                      })
             }
-            {/* <SwiperSlide className='w-[100%] h-[100%] bg-colorWhite-100' >
-                 <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
-                    {
-                        listCarousel.map((item,index) => {
-                            const {id,image,title,price,cantDues} = item;
-                            return index < max ? 
-                                <Card
-                                    key ={id}
-                                    title={title}
-                                    price={price}
-                                    cantDues={cantDues}
-                                /> : "" 
-                        })
-                    }
-                </div>
-                
-            </SwiperSlide> */}
-            {/* <SwiperSlide className='w-[100%] h-[100%] bg-slate-500 border-3'>
-                <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
-                    {
-                        listCarousel.map((item,index) => {
-                            const {id,image,title,price,cantDues} = item;
-                            return index >= max && index < max*2 ? 
-                                <Card
-                                    key ={id}
-                                    title={title}
-                                    price={price}
-                                    cantDues={cantDues}
-                                /> : "" 
-                        })
-                    }
-                </div>
-            </SwiperSlide>
-            <SwiperSlide className='w-[100%] h-[100%] bg-slate-500 border-3'>
-                <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
-                    {
-                        listCarousel.map((item,index) => {
-                            const {id,image,title,price,cantDues} = item;
-                            return index >= max*2 && index < max*3 ? 
-                                <Card
-                                    key ={id}
-                                    title={title}
-                                    price={price}
-                                    cantDues={cantDues}
-                                /> : "" 
-                        })
-                    }
-                </div>
-            </SwiperSlide> */}
         </Swiper>
        
     )

@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import LogoTeza from "../../LogoTeza.png";
-import { CiInstagram } from "react-icons/ci";
-import { CiFacebook } from "react-icons/ci";
-import { CiPhone } from "react-icons/ci";
-import { CiMail } from "react-icons/ci";
-import { CiLocationOn } from "react-icons/ci";
+import LogoTeza from "../../app/LogoTeza.png";
+import { CiInstagram, CiFacebook, CiPhone, CiMail, CiLocationOn } from "react-icons/ci";
 
 function Footer() {
   return (

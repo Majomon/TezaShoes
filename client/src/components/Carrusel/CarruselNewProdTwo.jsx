@@ -99,7 +99,6 @@ export default function CarruselNewProdTwo(){
     return(
         
         <Swiper
-
             modules={[Autoplay,Navigation,Pagination,EffectCube]}
             effect={{shadow:true}}
             pagination={{ clickable: true }}
@@ -113,18 +112,34 @@ export default function CarruselNewProdTwo(){
                     spaceBetween: 10,
                 },
                 768: {
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                     spaceBetween: 20,
                 },
                 1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
+                    slidesPerView: 4,
+                    spaceBetween: 0,
+                    slidesPerGroup:4
                 },
 
             }}
         >
-            <SwiperSlide className='w-[100%] h-[100%] bg-colorWhite-100' >
-                {/* <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
+            {
+                listCarousel.map((item,index) => {
+                    const {id,image,title,price,cantDues} = item;
+                    return <SwiperSlide>
+                            <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">
+                                <Card
+                                    key ={id}
+                                    title={title}
+                                    price={price}
+                                    cantDues={cantDues}
+                                />
+                            </div> 
+                        </SwiperSlide> 
+                     })
+            }
+            {/* <SwiperSlide className='w-[100%] h-[100%] bg-colorWhite-100' >
+                 <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
                     {
                         listCarousel.map((item,index) => {
                             const {id,image,title,price,cantDues} = item;
@@ -137,20 +152,9 @@ export default function CarruselNewProdTwo(){
                                 /> : "" 
                         })
                     }
-                </div> */}
-                {
-                    listCarousel.map((item,index) => {
-                        const {id,image,title,price,cantDues} = item;
-                        return index < max ? 
-                            <Card
-                                key ={id}
-                                title={title}
-                                price={price}
-                                cantDues={cantDues}
-                            /> : "" 
-                        })
-                    }
-            </SwiperSlide>
+                </div>
+                
+            </SwiperSlide> */}
             {/* <SwiperSlide className='w-[100%] h-[100%] bg-slate-500 border-3'>
                 <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
                     {

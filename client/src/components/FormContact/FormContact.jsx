@@ -52,7 +52,7 @@ function FormContact() {
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:8080/users",
+          "http://localhost:8080/resendEmail",
           inputForm
         );
 
@@ -64,10 +64,8 @@ function FormContact() {
             email: "",
             message: "",
           });
-          setRegisterOk(true);
         } else {
           toast.warning("Error al enviar el mail. Contactate por Whatapp");
-          setRegisterfail(true);
         }
       } catch (error) {
         toast.warning("Error al enviar el mail. Contactate por Whatapp");

@@ -7,7 +7,8 @@
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.2",
     "morgan": "^1.10.0",
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "resend": "^2.0.0"
   },
   "scripts": {
     "start": "nodemon src/index.js"

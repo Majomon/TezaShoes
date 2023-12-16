@@ -1,7 +1,6 @@
 const { Resend } = require("resend");
 const { EmailTemplate } = require("../../template/templateResendEmail");
 
-
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const postResendEmailController = async ({ name, email, phone, message }) => {
@@ -15,5 +14,4 @@ const postResendEmailController = async ({ name, email, phone, message }) => {
   return data;
 };
 
-// Exporta la función postResendEmailController
 module.exports = postResendEmailController;

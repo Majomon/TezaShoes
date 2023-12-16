@@ -1,8 +1,16 @@
-'use client';
+'use client'
+/*switer*/
+import { Swiper, SwiperSlide} from 'swiper/react';
+import { Autoplay,Navigation,Pagination,EffectCube} from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-cube';
+/*importes de componentes*/
+import Card from '../Card';
 
-import React, { useState } from "react";
-import Card from "./Card";
-import { Carousel } from "flowbite-react";
+/*listas*/
 
 const listCarousel = [
     {
@@ -85,69 +93,97 @@ const listCarousel = [
 
 ];
 
-export default function CarouselNewProd(){
+export default function CarruselNewProdTwo(){
     const max = 4;
 
     return(
-        <div className="h-[500px] ">
-            <Carousel
-                theme={false}
-                indicators= {true}
-                leftControl 
-                rightControl
-                slideInterval={5000}
-                className=" rounded-none "
-            >
-                <div className="rounded-none cursor-auto flex h-full items-center justify-center gap-x-[23px] bg-green-400 ">
+        
+        <Swiper
+
+            modules={[Autoplay,Navigation,Pagination,EffectCube]}
+            effect={{shadow:true}}
+            pagination={{ clickable: true }}
+            autoplay={{delay: 8000}}
+            spaceBetween={0}
+            slidesPerView={1}
+            className='h-[600px] w-[100%]'
+            breakpoints={{
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+
+            }}
+        >
+            <SwiperSlide className='w-[100%] h-[100%] bg-colorWhite-100' >
+                {/* <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
                     {
                         listCarousel.map((item,index) => {
                             const {id,image,title,price,cantDues} = item;
-                            
-                            return index < max ?
+                            return index < max ? 
                                 <Card
                                     key ={id}
                                     title={title}
                                     price={price}
                                     cantDues={cantDues}
-                                /> : ""
-                            
+                                /> : "" 
                         })
-                        
                     }
-                </div>
-                <div className="rounded-none cursor-auto flex h-full items-center justify-center gap-x-[23px] bg-gray-400 dark:bg-gray-700 dark:text-white">
+                </div> */}
+                {
+                    listCarousel.map((item,index) => {
+                        const {id,image,title,price,cantDues} = item;
+                        return index < max ? 
+                            <Card
+                                key ={id}
+                                title={title}
+                                price={price}
+                                cantDues={cantDues}
+                            /> : "" 
+                        })
+                    }
+            </SwiperSlide>
+            {/* <SwiperSlide className='w-[100%] h-[100%] bg-slate-500 border-3'>
+                <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
                     {
                         listCarousel.map((item,index) => {
                             const {id,image,title,price,cantDues} = item;
-                            
                             return index >= max && index < max*2 ? 
                                 <Card
                                     key ={id}
                                     title={title}
                                     price={price}
                                     cantDues={cantDues}
-                                />    
-                            : ""
+                                /> : "" 
                         })
                     }
                 </div>
-                <div className="rounded-none cursor-auto flex h-full items-center gap-x-[23px] justify-center bg-blue-400">
-                {
+            </SwiperSlide>
+            <SwiperSlide className='w-[100%] h-[100%] bg-slate-500 border-3'>
+                <div className='w-[100%] h-[100%] flex items-center justify-center gap-x-[23px]'>        
+                    {
                         listCarousel.map((item,index) => {
                             const {id,image,title,price,cantDues} = item;
-                            
-                            return index >= max*2 ? 
+                            return index >= max*2 && index < max*3 ? 
                                 <Card
                                     key ={id}
                                     title={title}
                                     price={price}
                                     cantDues={cantDues}
-                                />    
-                            : ""
+                                /> : "" 
                         })
                     }
                 </div>
-            </Carousel>
-        </div>
+            </SwiperSlide> */}
+        </Swiper>
+       
     )
 }

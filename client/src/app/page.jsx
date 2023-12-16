@@ -1,7 +1,7 @@
 import Card from '@/components/Card'
-import CarouselNewProd from '@/components/CarouselNewProd'
+import CarouselNewProd from '@/components/Carrusel/CarouselNewProd'
 import Footer from './components/Footer/Footer'
-import CarruselNewProdTwo from '@/components/CarruselNewProdTwo'
+import CarruselNewProdTwo from '@/components/Carrusel/CarruselNewProdTwo'
 
 export default function Home() {
   return (

@@ -29,12 +29,12 @@ const productsSchema = mongoose.Schema({
         },
       ],
     },
-
   ],
   price: {
     type: Number,
     required: true,
   },
+
   description: {
     type: String,
     required: true,
@@ -45,14 +45,19 @@ const productsSchema = mongoose.Schema({
       required: true,
     },
   ],
-  //Liquidación
-  settlement: {
-    type: Boolean,
-    required: false,
+  offer: {
+    offerActive: {
+      type: Boolean,
+      default: false,
+    },
+    offerPrice: {
+      type: Number,
+      default: 0,
+    },
   },
-  promotion: {
+  isActive: {
     type: Boolean,
-    required: false,
+    default: true,
   },
 });
 

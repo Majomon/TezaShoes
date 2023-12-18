@@ -1,4 +1,10 @@
-export default function ContainerColorsAndSizes({ product }) {
+export default function ContainerColorsAndSizes({
+  product,
+  setProductSelect,
+  productSelect,
+  handlerSelectProduct,
+}) {
+  console.log(product);
   return (
     <div className="py-2">
       <h5 className="text-sm text-gray-500 ">Colores</h5>
@@ -8,6 +14,7 @@ export default function ContainerColorsAndSizes({ product }) {
             key={index}
             className={`w-8 h-8 rounded-full`}
             style={{ backgroundColor: option.color }}
+            onClick={()=>handlerSelectProduct(option)}
           ></button>
         ))}
       </div>
@@ -19,11 +26,18 @@ export default function ContainerColorsAndSizes({ product }) {
             <div className="flex gap-4 py-2">
               {option.sizes.map((size, idx) =>
                 size.stock > 0 ? (
-                  <button key={idx} className="w-8 h-8 border-2 border-gray-950">
+                  <button
+                    key={idx}
+                    className="w-8 h-8 border-2 border-gray-950"
+                  >
                     {size.size}
                   </button>
                 ) : (
-                  <button key={idx} className="w-8 h-8 border-2 bg-gray-400 border-gray-400" disabled>
+                  <button
+                    key={idx}
+                    className="w-8 h-8 border-2 bg-gray-400 border-gray-400"
+                    disabled
+                  >
                     {size.size}
                   </button>
                 )

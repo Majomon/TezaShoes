@@ -7,7 +7,7 @@ const menuItems = [
   { name: "Bandoleras", href: "/" },
   { name: "Borcegos", href: "/" },
   { name: "Botas", href: "/" },
-  { name: "Camperas de jean", href: "/" },
+  { name: "Camperas", href: "/" },
   { name: "Carteras", href: "/" },
   { name: "Sandalias", href: "/" },
   { name: "Texanas", href: "/" },

@@ -71,11 +71,13 @@ export default function DetailArticle({ product }) {
     if (existingItemIndex !== -1) {
       const existingItem = cartItems[existingItemIndex];
       if (existingItem.count + count > selectedSizeInColor.stock) {
+        toast.dismiss(); // Limpiar la alerta existente si hay alguna
         toast.warning(
           `No hay suficiente stock disponible, solo quedan ${
             selectedSizeInColor.stock - existingItem.count
           } unidades. Revisa tu carrito :D`
         );
+        return;
       }
       existingItem.count += count;
       existingItem.totalPrice = existingItem.count * existingItem.price;
@@ -97,7 +99,7 @@ export default function DetailArticle({ product }) {
   };
 
   return (
-    <div className="w-4/12 pt-4 px-14">
+    <div className="w-full">
       <InfoTopDetailArticle product={product} />
 
       <div className="py-2">

@@ -1,7 +1,7 @@
 "use client";
-import axios from "axios";
 import { useState } from "react";
 import InfoTopDetailArticle from "./InfoTopDetailArticle";
+import { toast } from "sonner";
 
 export default function DetailArticle({ product }) {
   const [selectedColor, setSelectedColor] = useState(product.options[0]);
@@ -9,29 +9,29 @@ export default function DetailArticle({ product }) {
   const [count, setCount] = useState(0);
   const [maxCount, setMaxCount] = useState(0);
 
-  useEffect(() => {
-    // Al cargar el componente, verifica si el producto ya está en el carrito y ajusta el estado según corresponda
-    const existingCartData = localStorage.getItem("cart");
-    if (existingCartData) {
-      const cartData = JSON.parse(existingCartData);
-      const existingItem = cartData.items.find((item) => item._id === product._id);
-      if (existingItem) {
-        setCount(existingItem.count);
-        setMaxCount(existingItem.selectedSize.stock);
-      }
-    }
-  }, [product._id]);
   const handleColorChange = (selectedOption) => {
     setSelectedColor(selectedOption);
-    setSelectedSize(null); // Reiniciar el tamaño seleccionado al cambiar de color
-    setMaxCount(0); // Reiniciar el contador al cambiar de color
+    setSelectedSize(null);
+    setMaxCount(0);
     setCount(0);
+
+    // Obtener la opción de color seleccionada con sus tamaños
+    const colorOption = product.options.find(
+      (option) => option.color === selectedOption.color
+    );
+    if (colorOption) {
+      const initialSize = colorOption.sizes.find((size) => size.stock > 0);
+      if (initialSize) {
+        setSelectedSize(initialSize);
+        setMaxCount(initialSize.stock);
+      }
+    }
   };
 
   const handleSizeChange = (selectedSize) => {
     setSelectedSize(selectedSize);
-    setMaxCount(selectedSize.stock); // Establecer el límite máximo del contador según el stock disponible
-    setCount(0); // Reiniciar el contador al cambiar de tamaño
+    setMaxCount(selectedSize.stock);
+    setCount(0);
   };
 
   const decrementCount = () => {
@@ -45,47 +45,55 @@ export default function DetailArticle({ product }) {
       setCount(count + 1);
     }
   };
+
   const addToCart = () => {
     if (!selectedSize) {
       alert("Selecciona un tamaño antes de agregar al carrito");
       return;
     }
+
     const selectedColorOption = product.options.find(
       (option) => option.color === selectedColor.color
     );
 
-    // Obtener el tamaño seleccionado dentro de la opción de color seleccionada
     const selectedSizeInColor = selectedColorOption.sizes.find(
       (size) => size.size === selectedSize.size
     );
 
-    // Crear una nueva variante con solo la opción de color y el tamaño seleccionado
-    const selectedVariant = {
-      _id: product._id,
-      images: product.images[0],
-      options: [
-        {
-          color: selectedColorOption.color,
-          sizes: [selectedSizeInColor],
-        },
-      ],
-      count,
-      price: product.price,
-      totalPrice: product.price*count,
-      selectedSize: selectedSizeInColor,
-    };
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingItemIndex = cartItems.findIndex(
+      (item) =>
+        item.product_id === product._id &&
+        item.colorId === selectedColorOption._id &&
+        item.size === selectedSizeInColor._id
+    );
 
-    // Obtener los datos actuales del carrito del localStorage
-    const existingCartData = localStorage.getItem("cart");
-    let cartData = existingCartData
-      ? JSON.parse(existingCartData)
-      : { items: [] };
+    if (existingItemIndex !== -1) {
+      const existingItem = cartItems[existingItemIndex];
+      if (existingItem.count + count > selectedSizeInColor.stock) {
+        toast.warning(
+          `No hay suficiente stock disponible, solo quedan ${
+            selectedSizeInColor.stock - existingItem.count
+          } unidades. Revisa tu carrito :D`
+        );
+      }
+      existingItem.count += count;
+      existingItem.totalPrice = existingItem.count * existingItem.price;
+    } else {
+      const selectedVariant = {
+        product_id: product._id,
+        name: product.name,
+        colorId: selectedColorOption._id,
+        size: selectedSizeInColor._id,
+        count,
+        price: product.price,
+        totalPrice: count * product.price,
+      };
+      // Agregar el nuevo elemento al carrito
+      cartItems.push(selectedVariant);
+    }
 
-    // Agregar el nuevo producto al array existente
-    cartData.items.push(selectedVariant);
-
-    // Guardar la información actualizada en el localStorage
-    localStorage.setItem("cart", JSON.stringify(cartData));
+    localStorage.setItem("cart", JSON.stringify(cartItems));
   };
 
   return (

@@ -1,4 +1,5 @@
 import Main from "@/components/Detail/Main";
+import { Toaster } from "sonner";
 
 async function getProductId(id) {
   const response = await fetch(`${process.env.URL_BASE_DEV}/products/${id}`);
@@ -9,7 +10,12 @@ async function getProductId(id) {
 async function DetailPage({ params }) {
   const product = await getProductId(params.id);
 
-  return <Main product={product} />;
+  return (
+    <div>
+      <Toaster position="top-center" />
+      <Main product={product} />
+    </div>
+  );
 }
 
 export default DetailPage;

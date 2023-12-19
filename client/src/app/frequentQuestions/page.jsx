@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { IconArrowRight } from "../../../assets/svg/frequentQuestions";
 import Questions from "@/components/Questions/Questions";
+import PageRouting from "@/components/PageRouting/PageRouting";
 
 const listFreqPreg = [
     {
@@ -42,11 +41,9 @@ const listFreqPreg = [
 export default function FrequentQuestions(){
     return(
         <div className="w-full min-h-screen px-16 flex flex-col gap-y-[40px] mt-10">
-            <section className="flex flex-row gap-x-[5px]">
-                <Link href="/">Inicio</Link>
-                <IconArrowRight />
-                <p>Preguntas Frecuentes</p>
-            </section>
+            <PageRouting 
+                currentRuat={"Preguntas Frecuentes"}
+            />
             {
                 listFreqPreg.map((item) => {
                     const {id,title,text} = item;

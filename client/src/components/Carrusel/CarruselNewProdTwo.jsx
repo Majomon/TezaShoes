@@ -136,6 +136,7 @@ export default function CarruselNewProdTwo(){
                                     title={title}
                                     price={price}
                                     cantDues={cantDues}
+                                    isNew={true}
                                 />
                             </div> 
                         </SwiperSlide> 

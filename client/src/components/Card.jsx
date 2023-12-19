@@ -4,11 +4,13 @@ import { Image } from "@nextui-org/react";
 import imageCard from "../../assets/image/IMG_3700.JPG";
 import Newlabel from "./Newlabel/Newlabel";
 
-export default function Card({image,title,price,cantDues,Isnew}){
+export default function Card({image,title,price,cantDues,isNew}){
     return(
         <div className=" w-[300px] h-[380px] rounded-t-lg rounded-b-lg shadow-3xl">
             <section className="h-[300px] w-[100%] relative">
-                <Newlabel />
+                <Newlabel 
+                    isNew={isNew}
+                />
                 <Image
                     className="w-[300px] h-[300px] rounded-t-lg rounded-b-none object-cover cursor-pointer"
                     src={imageCard.src}

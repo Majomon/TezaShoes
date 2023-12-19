@@ -5,16 +5,16 @@ import mainImagePhone from "../../../assets/image/mainImagePhone.webp"
 import { useEffect, useState } from "react"
 
 export default function MainImage() {
-    const [activeWidth,setWidthActive]= useState(window.innerWidth);
+    const [activeWidth,setActiveWidth] = useState(window.innerWidth);
 
     useEffect(() => {
         window.addEventListener("resize", ()=>{
-            setWidthActive(window.innerWidth)
+            setActiveWidth(window.innerWidth)
         })
     },[activeWidth])
     
     return(
-        <div className=" w-[100%]">
+        <div className=" w-[100%] flex justify-center items-center">
             {
                 activeWidth > 750 ? <Image
                     src={mainImageHomeMaxSize}

@@ -94,10 +94,7 @@ const listCarousel = [
 ];
 
 export default function CarruselNewProdTwo(){
-    const max = 4;
-
     return(
-        
         <Swiper
             modules={[Autoplay,Navigation,Pagination,EffectCube]}
             effect={{shadow:true}}
@@ -106,6 +103,7 @@ export default function CarruselNewProdTwo(){
             spaceBetween={0}
             slidesPerView={1}
             className='h-[600px] w-[100%]'
+            /* style={{zIndex:"-1"}} */
             breakpoints={{
                 slidesPerGroup:1,
                 slidesPerView:1,
@@ -129,7 +127,7 @@ export default function CarruselNewProdTwo(){
             }}
         >
             {
-                listCarousel.map((item,index) => {
+                listCarousel.map((item) => {
                     const {id,image,title,price,cantDues} = item;
                     return <SwiperSlide key={id} className="">
                             <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { IconArrowRight } from "../../../assets/svg/frequentQuestions";
+import Questions from "@/components/Questions/Questions";
 
 const listFreqPreg = [
     {
@@ -50,10 +51,11 @@ export default function FrequentQuestions(){
                 listFreqPreg.map((item) => {
                     const {id,title,text} = item;
                     return (
-                        <section className="flex flex-col gap-y-[20px]" key={id}>
-                            <h1 className=" font-bold uppercase">{title}</h1>
-                            {text}
-                        </section>
+                        <Questions 
+                            id={id}
+                            title={title}
+                            text={text}
+                        />
                     )
                 })
             }

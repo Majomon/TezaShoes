@@ -10,6 +10,6 @@ export default function Home() {
     users: state.users,
   }));
   return (
-    <CarruselNewProdTwo />
+
   )
 }

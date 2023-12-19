@@ -1,9 +1,9 @@
 'use client'
 
-import Card from "@/components/Card";
+import CardInfoSet from "@/components/CardInfoSet";
 import CarruselNewProdTwo from "@/components/Carrusel/CarruselNewProdTwo";
 import MainImage from "@/components/MainImage/MainImage";
-import Newlabel from "@/components/Newlabel/Newlabel";
+import VideoPlay from "@/components/VideoPlay/VideoPlay";
 import { useStoreUsers } from "@/zustand/store";
 
 export default function Home() {
@@ -14,6 +14,8 @@ export default function Home() {
     <div>
       <MainImage />
       <CarruselNewProdTwo />
+      <CardInfoSet/>
+      <VideoPlay />
     </div>
   )
 }

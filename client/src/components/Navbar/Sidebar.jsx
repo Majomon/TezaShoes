@@ -40,7 +40,6 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
             </button>
             <Image className="mx-2" src={LogoTeza} alt="Logo Teza Shoes" />
           </div>
-
           <ul>
             {menuItems.map((item) => (
               <li key={item.name} className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">

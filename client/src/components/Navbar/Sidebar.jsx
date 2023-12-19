@@ -23,7 +23,7 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
       <div
         className={`${
           !isMenuOpen && "hidden"
-        } bg-gray-400/25 min-h-screen w-full fixed top-0 left-0 right-0 backdrop-blur-sm`}
+        } bg-gray-400/25 min-h-screen w-full fixed top-0 left-0 right-0 backdrop-blur-sm z-10`}
         onClick={() => setIsMenuOpen(false)}
       />
 
@@ -31,7 +31,7 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
       <div
         className={`${
           isMenuOpen ? "w-60" : "w-0"
-        } bg-white min-h-screen fixed top-0 left-0 transition-all duration-300`}
+        } bg-white min-h-screen fixed top-0 left-0 transition-all duration-300 z-30`}
       >
         <div className={`${!isMenuOpen && "hidden"} pt-3`}>
           <div className="flex flex-row items-center justify-center">

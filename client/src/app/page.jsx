@@ -1,5 +1,8 @@
-"use client";
+'use client'
 
+import Card from "@/components/Card";
+import CarruselNewProdTwo from "@/components/Carrusel/CarruselNewProdTwo";
+import Newlabel from "@/components/Newlabel/Newlabel";
 import { useStoreUsers } from "@/zustand/store";
 
 export default function Home() {
@@ -7,12 +10,6 @@ export default function Home() {
     users: state.users,
   }));
   return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <h2>{users[5].name}</h2>
-      <br />
-    </div>
-  );
+
+  )
 }

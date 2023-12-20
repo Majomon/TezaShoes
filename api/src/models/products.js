@@ -59,6 +59,10 @@ const productsSchema = mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  newProduct: {
+    type: Boolean,
+    defaul: false,
+  },
 });
 
 module.exports = mongoose.model("Products", productsSchema);

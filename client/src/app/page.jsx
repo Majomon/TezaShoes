@@ -5,11 +5,15 @@ async function getAllProducts() {
   const data = await response.json();
   return data;
 }
+
+
+
 async function Home() {
-  const product = await getAllProducts();
+  const products = await getAllProducts();
+
   return (
     <>
-      <MainHome product={product}/>
+      <MainHome products={products}/>
     </>
   );
 

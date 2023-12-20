@@ -1,15 +1,18 @@
-'use client'
+import MainHome from "@/components/Home/MainHome";
 
-import Card from "@/components/Card";
-import CarruselNewProdTwo from "@/components/Carrusel/CarruselNewProdTwo";
-import Newlabel from "@/components/Newlabel/Newlabel";
-import { useStoreUsers } from "@/zustand/store";
-
-export default function Home() {
-  const { users } = useStoreUsers((state) => ({
-    users: state.users,
-  }));
-  return (
-    <h1>Holi</h1>
-  )
+async function getAllProducts() {
+  const response = await fetch(`${process.env.URL_BASE_DEV}/products`);
+  const data = await response.json();
+  return data;
 }
+async function Home() {
+  const product = await getAllProducts();
+  return (
+    <>
+      <MainHome />
+    </>
+  );
+
+}
+
+export default Home;

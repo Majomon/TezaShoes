@@ -1,18 +1,21 @@
+import Main from "@/components/Detail/Main";
+import { Toaster } from "sonner";
+
 async function getProductId(id) {
   const response = await fetch(`${process.env.URL_BASE_DEV}/products/${id}`);
   const data = await response.json();
   return data;
 }
 
-async function UserPage({ params }) {
+async function DetailPage({ params }) {
   const product = await getProductId(params.id);
+
   return (
-    <div className="row">
-      <div className="col-md-6 offset-md-3">
-        <h2>{product.name}</h2>
-      </div>
+    <div>
+      <Toaster position="top-center" />
+      <Main product={product} />
     </div>
   );
 }
 
-export default UserPage;
+export default DetailPage;

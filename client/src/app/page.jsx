@@ -1,5 +1,9 @@
-"use client";
+'use client'
 
+import CardInfoSet from "@/components/CardInfoSet";
+import CarruselNewProdTwo from "@/components/Carrusel/CarruselNewProdTwo";
+import MainImage from "@/components/MainImage/MainImage";
+import VideoPlay from "@/components/VideoPlay/VideoPlay";
 import { useStoreUsers } from "@/zustand/store";
 
 export default function Home() {
@@ -8,11 +12,10 @@ export default function Home() {
   }));
   return (
     <div>
-      <br />
-      <br />
-      <br />
-      <h2>{users[5].name}</h2>
-      <br />
+      <MainImage />
+      <CarruselNewProdTwo />
+      <CardInfoSet/>
+      <VideoPlay />
     </div>
-  );
+  )
 }

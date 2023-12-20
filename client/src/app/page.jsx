@@ -9,9 +9,10 @@ async function Home() {
   const product = await getAllProducts();
   return (
     <>
-      <MainHome />
+      <MainHome product={product}/>
     </>
   );
+
 }
 
 export default Home;

@@ -8,6 +8,7 @@ import Categorias from "@/components/Categorias/Categorias";
 import { useEffect } from "react";
 
 export default function MainHome({ product }) {
+
   const { setProducts } = useStoreProducts();
   useEffect(() => {
     setProducts(product);

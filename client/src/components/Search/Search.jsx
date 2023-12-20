@@ -5,20 +5,21 @@ import { useStoreProducts } from "@/zustand/store";
 import { useEffect } from "react";
 import Card from "../Card/Card";
 
-export default function Search({products}){
-    const { setProducts } = useStoreProducts();
+export default function Search({product}){
+    const { setProducts,allProducts } = useStoreProducts();
 
     useEffect(()=>{
-        setProducts(products)
-    },[products])
+        setProducts(product)
+    },[product]);
+
 
     return(
         <div className="flex flex-col gap-y-[20px]">
             <PageRouting currentRuat={"Texanas"}/>
             <Order />
-            <section className="w-[100%] grid gap-4 grid-cols-1  grid-rows-3 gap-y-[50px] py-16">
+            <section className="flex flex-row md:justify-between justify-center flex-wrap w-[100%] gap-y-[50px] gap-x-[20px] py-16 ">
                 {
-                    products.map((item)=>{
+                    allProducts.map((item)=>{
                         const {_id,images,name,price,cantDues,newProduc} = item
                         
                         return <Card

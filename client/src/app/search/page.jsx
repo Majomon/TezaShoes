@@ -7,10 +7,10 @@ async function getAllProducts() {
 }
 
 export default async function (){
-    const products = await getAllProducts()
+    const product = await getAllProducts()
     return(
         <div className="w-full min-h-screen px-16 flex flex-col gap-y-[40px] mt-10"> 
-            <Search products={products}/>
+            <Search product={product}/>
         </div>
     )
 }

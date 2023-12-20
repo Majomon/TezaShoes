@@ -137,7 +137,7 @@ export default function CarruselNewProdTwo() {
                 title={name}
                 price={price}
                 cantDues={cantDues}
-                isNew={false}
+                isNew={true}
                 images={images}
               />
             </div>

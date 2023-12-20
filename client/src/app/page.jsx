@@ -9,11 +9,11 @@ async function getAllProducts() {
 
 
 async function Home() {
-  const products = await getAllProducts();
+  const product = await getAllProducts();
 
   return (
     <>
-      <MainHome products={products}/>
+      <MainHome product={product}/>
     </>
   );
 

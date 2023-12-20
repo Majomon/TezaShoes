@@ -25,6 +25,7 @@ const useStoreUsers = create(
 
 const useStoreProducts = create(
   zukeeper((setState) => ({
+    allProducts: [],
     detail: {},
     fetchDetailProduct: async (id) => {
       try {
@@ -42,6 +43,30 @@ const useStoreProducts = create(
         console.error(`No existe el producto de ID: ${id}`, error);
         return false; // Indica falla en la solicitud
       }
+    },
+    fetchAllProducts: async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/products");
+        if (response.status === 200) {
+          setState((prevState) => ({
+            ...prevState,
+            allProducts: response.data,
+          })); // Actualiza el estado allProducts con la información de todos los productos
+        } else {
+          throw new Error(
+            `Error al obtener todos los productos: ${response.status}`
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Error al realizar la solicitud de todos los productos:",
+          error
+        );
+        return false; // Indica falla en la solicitud
+      }
+    },
+    setProducts: (products) => {
+      setState({ allProducts: products });
     },
   }))
 );

@@ -16,7 +16,7 @@ export default function Search({products}){
         <div className="flex flex-col gap-y-[20px]">
             <PageRouting currentRuat={"Texanas"}/>
             <Order />
-            <section className="w-[100%] flex flex-wrap justify-center gap-x-[20px] gap-y-[60px] py-16">
+            <section className="w-[100%] grid gap-4 grid-cols-1  grid-rows-3 gap-y-[50px] py-16">
                 {
                     products.map((item)=>{
                         const {_id,images,name,price,cantDues,newProduc} = item

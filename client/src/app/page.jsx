@@ -12,6 +12,7 @@ async function Home() {
       <MainHome product={product}/>
     </>
   );
+
 }
 
 export default Home;

@@ -4,7 +4,7 @@ import React from "react";
 
 export default function CardInfoIcons({imageSvg,TextInfor}){
     return(
-        <div className="h-[100%] w-[200px] flex flex-col items-center justify-between flex-wrap">
+        <div className=" w-[120px] h-[180px] flex flex-col items-center">
             <section className="">
                 {imageSvg}
             </section>

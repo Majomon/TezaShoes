@@ -1,21 +1,17 @@
-'use client'
+import MainHome from "@/components/Home/MainHome";
 
-import CardInfoSet from "@/components/CardInfoSet";
-import CarruselNewProdTwo from "@/components/Carrusel/CarruselNewProdTwo";
-import MainImage from "@/components/MainImage/MainImage";
-import VideoPlay from "@/components/VideoPlay/VideoPlay";
-import { useStoreUsers } from "@/zustand/store";
-
-export default function Home() {
-  const { users } = useStoreUsers((state) => ({
-    users: state.users,
-  }));
-  return (
-    <div>
-      <MainImage />
-      <CarruselNewProdTwo />
-      <CardInfoSet/>
-      <VideoPlay />
-    </div>
-  )
+async function getAllProducts() {
+  const response = await fetch(`${process.env.URL_BASE_DEV}/products`);
+  const data = await response.json();
+  return data;
 }
+async function Home() {
+  const product = await getAllProducts();
+  return (
+    <>
+      <MainHome />
+    </>
+  );
+}
+
+export default Home;

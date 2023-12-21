@@ -37,7 +37,7 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
           <ul>
             {menuItems.map((item) => (
               <li key={item.name} className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">
-                <Link className="w-full" href={item.href}>
+                <Link className="w-full" href={item.href} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                   {item.name}
                 </Link>
               </li>

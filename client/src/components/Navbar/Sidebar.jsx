@@ -7,13 +7,10 @@ const menuItems = [
   { name: "Bandoleras", href: "/" },
   { name: "Borcegos", href: "/" },
   { name: "Botas", href: "/" },
-  { name: "Camperas", href: "/" },
   { name: "Carteras", href: "/" },
   { name: "Sandalias", href: "/" },
-  { name: "Texanas", href: "/" },
   { name: "Zapatillas", href: "/" },
   { name: "Oferta", href: "/" },
-  { name: "Log Out", href: "/" }
 ]
 
 const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {

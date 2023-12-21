@@ -3,17 +3,16 @@ import {
   validateFieldContact,
   validateFormContact,
 } from "@/utils/validaciones";
-import { useStoreUsers } from "@/zustand/store";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import InputForm from "../InputForm/InputForm";
 
 function FormContact() {
-  const { users, fetchAllUsers } = useStoreUsers((state) => ({
+  /*   const { users, fetchAllUsers } = useStoreUsers((state) => ({
     users: state.users,
     fetchAllUsers: state.fetchAllUsers,
-  }));
+  })); */
   const [disabled, setDisabled] = useState(true);
   const options = {
     name: "Nombre",
@@ -37,9 +36,9 @@ function FormContact() {
     }
   }, [inputForm]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     fetchAllUsers();
-  }, []);
+  }, []); */
 
   const handlerChange = (e) => {
     const { name, value } = e.target;
@@ -99,14 +98,6 @@ function FormContact() {
       </div>
       <div className="flex justify-center">
         <button className="py-2 px-6 text-gray-100 bg-gray-950">Enviar</button>
-      </div>
-      <div>
-        <h2>Lista de usuarios:</h2>
-        <ul>
-          {Object.values(users).map((user, index) => (
-            <li key={index}>{user.name}</li>
-          ))}
-        </ul>
       </div>
     </form>
   );

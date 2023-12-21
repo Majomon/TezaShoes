@@ -6,8 +6,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const postResendEmailController = async ({ name, email, phone, message }) => {
   const data = await resend.emails.send({
     from: "Acme <onboarding@resend.dev>",
-    to: ["mauri.monzon91@gmail.com"],
-    subject: "Hello Perro",
+    to: ["infotezashoes@gmail.com"],
+    subject: "Hello ;D",
     html: await EmailTemplate({ name, email, phone, message }),
   });
 

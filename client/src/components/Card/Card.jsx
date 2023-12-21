@@ -10,7 +10,7 @@ export default function Card({ images, title, price, cantDues, newProduct,id }) 
         <Newlabel newProduct={newProduct} />
         <Link href={`/detail/${id}`}>
           <Image
-            className="w-[300px] h-[300px] rounded-t-md rounded-b-none object-cover cursor-pointer"
+            className="w-[300px] h-[300px] rounded-t-md rounded-b-none object-cover cursor-pointer z-0"
             src={images[0]}
             alt="imageCard"
           />

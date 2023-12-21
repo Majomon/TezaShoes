@@ -27,7 +27,7 @@ const listCarousel = [
 
 export default function Categorias() {
   const { categories } = useStoreProducts();
-console.log(categories);
+  console.log(categories);
 /*     const uniqueCategories = [...new Set(allProducts.map(item => item.category))];
   
 
@@ -64,14 +64,14 @@ console.log(categories);
       }}
     >
       {categories.map((item) => {
-        const { _id, image, category } = item;
+        const { _id, image, name } = item;
         
         return (
           <SwiperSlide key={_id} className="">
             <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">
               <CardCategoria
                 key={_id}
-                category={category}
+                category={name}
                 image={image}
                 isNew={true}
               />

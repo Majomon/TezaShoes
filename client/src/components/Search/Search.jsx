@@ -3,32 +3,40 @@ import PageRouting from "../PageRouting/PageRouting";
 import { useStoreProducts } from "@/zustand/store";
 import { use, useEffect,useState } from "react";
 import Card from "../Card/Card";
+import { useSearchParams } from "next/navigation";
 /* import Order from "./Order"; */
 
 export default function Search({product}){
-    /* const [valueSelect,setValueSelect] = useState("mayor"); */
     const { setProducts,allProducts } = useStoreProducts();
+    const searchParams = useSearchParams().get("query");
+
+    /* console.log(searchParams.get("query")) */
 
     useEffect(()=>{
-        setProducts(product)
+       /*  product = product.filter(item => item.category === searchParams.get("query").toString()) */
+       if(searchParams){
+
+       }
+        setProducts(product.filter(item => item.category === searchParams))
     },[product]);
     
     const handleOnchangeHightPrice = (e) => {
         const { value } = e.target;
-        console.log(value)
+        /* console.log(value) */
         if(value === "mayor"){
-            product.sort((a,b) => b.price - a.price);
-            console.log(product);
-            setProducts(product)
+            allProducts.sort((a,b) => b.price - a.price);
+            /* console.log(product); */
+            setProducts(allProducts)
         }else if(value === "menor"){
-            product.sort((a, b)=> a.price - b.price);
-            console.log(product);
-            setProducts(product)
+            allProducts.sort((a, b)=> a.price - b.price);
+            /* console.log(product); */
+            setProducts(allProducts)
         }
     }
 
    /*  useEffect(()=>{
     },[valueSelect]) */
+    console.log(allProducts)
 
     return(
         <div className="flex flex-col gap-y-[20px]">
@@ -43,8 +51,8 @@ export default function Search({product}){
                     </select>
                 </section>
             </div>
-            <h1 className="text-center text-xl">Texanas</h1>
-            <section className="flex flex-row md:justify-between justify-center flex-wrap w-[100%] gap-y-[50px] gap-x-[20px] py-16 ">
+            <h1 className="text-center text-xl">{searchParams}</h1>
+            <section className="flex flex-row md:bg-red-300 md:justify-between justify-center flex-wrap w-[100%] gap-y-[50px] gap-x-[20px] py-16 ">
 
                 {
                     allProducts.map((item)=>{

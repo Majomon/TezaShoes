@@ -5,6 +5,7 @@ import CarruselNewProdTwo from "../Carrusel/CarruselNewProdTwo";
 import MainImage from "../MainImage/MainImage";
 import VideoPlay from "../VideoPlay/VideoPlay";
 import { useEffect } from "react";
+import Categorias from "../Categorias/Categorias";
 
 export default function MainHome({ product }) {
   const { setProducts } = useStoreProducts();
@@ -18,6 +19,7 @@ export default function MainHome({ product }) {
       <CarruselNewProdTwo />
       <CardInfoSet />
       <VideoPlay />
+      <Categorias/>
     </div>
   );
 }

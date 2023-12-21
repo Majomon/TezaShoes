@@ -1,13 +1,21 @@
 "use client";
-import { useState } from "react";
-import InfoTopDetailArticle from "./InfoTopDetailArticle";
+import { useStoreProducts } from "@/zustand/store";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import InfoTopDetailArticle from "./InfoTopDetailArticle";
 
-export default function DetailArticle({ product }) {
-  const [selectedColor, setSelectedColor] = useState(product.options[0]);
+export default function DetailArticle() {
+  const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [count, setCount] = useState(0);
   const [maxCount, setMaxCount] = useState(0);
+  const { detail } = useStoreProducts();
+
+  useEffect(() => {
+    if (detail && detail.options && detail.options.length > 0) {
+      setSelectedColor(detail.options[0]);
+    }
+  }, [detail]);
 
   const handleColorChange = (selectedOption) => {
     setSelectedColor(selectedOption);
@@ -16,7 +24,7 @@ export default function DetailArticle({ product }) {
     setCount(0);
 
     // Obtener la opción de color seleccionada con sus tamaños
-    const colorOption = product.options.find(
+    const colorOption = detail.options.find(
       (option) => option.color === selectedOption.color
     );
     if (colorOption) {
@@ -52,7 +60,7 @@ export default function DetailArticle({ product }) {
       return;
     }
 
-    const selectedColorOption = product.options.find(
+    const selectedColorOption = detail.options.find(
       (option) => option.color === selectedColor.color
     );
 
@@ -63,7 +71,7 @@ export default function DetailArticle({ product }) {
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     const existingItemIndex = cartItems.findIndex(
       (item) =>
-        item.product_id === product._id &&
+        item.product_id === detail._id &&
         item.colorId === selectedColorOption._id &&
         item.size === selectedSizeInColor._id
     );
@@ -83,13 +91,13 @@ export default function DetailArticle({ product }) {
       existingItem.totalPrice = existingItem.count * existingItem.price;
     } else {
       const selectedVariant = {
-        product_id: product._id,
-        name: product.name,
+        product_id: detail._id,
+        name: detail.name,
         colorId: selectedColorOption._id,
         size: selectedSizeInColor._id,
         count,
-        price: product.price,
-        totalPrice: count * product.price,
+        price: detail.price,
+        totalPrice: count * detail.price,
       };
       // Agregar el nuevo elemento al carrito
       cartItems.push(selectedVariant);
@@ -100,48 +108,54 @@ export default function DetailArticle({ product }) {
 
   return (
     <div className="w-full">
-      <InfoTopDetailArticle product={product} />
+      <InfoTopDetailArticle />
 
       <div className="py-2">
         <h5 className="text-sm text-gray-500">Colores</h5>
         <div className="flex gap-4 py-2">
-          {product.options.map((option, index) => (
-            <button
-              key={index}
-              className={`w-8 h-8 rounded-full ${
-                selectedColor.color === option.color ? "border-black" : ""
-              }`}
-              style={{ backgroundColor: option.color }}
-              onClick={() => handleColorChange(option)}
-            ></button>
-          ))}
+          {detail &&
+            detail.options &&
+            detail.options.map((option, index) => (
+              <button
+                key={index}
+                className={`w-8 h-8 rounded-full ${
+                  selectedColor && selectedColor.color === option.color
+                    ? "border-black"
+                    : ""
+                }`}
+                style={{ backgroundColor: option.color }}
+                onClick={() => handleColorChange(option)}
+              ></button>
+            ))}
         </div>
         <button className="py-2">Guía de talles</button>
         <div className="py-2">
           <h5 className="text-sm text-gray-500">Talles</h5>
-          {selectedColor.sizes.map((size, idx) =>
-            size.stock > 0 ? (
-              <button
-                key={idx}
-                className={`w-8 h-8 border-2 border-gray-950 ${
-                  selectedSize && selectedSize._id === size._id
-                    ? "border-black"
-                    : ""
-                }`}
-                onClick={() => handleSizeChange(size)}
-              >
-                {size.size}
-              </button>
-            ) : (
-              <button
-                key={idx}
-                className="w-8 h-8 border-2 bg-gray-400 border-gray-400"
-                disabled
-              >
-                {size.size}
-              </button>
-            )
-          )}
+          {selectedColor &&
+            selectedColor.sizes &&
+            selectedColor.sizes.map((size, idx) =>
+              size.stock > 0 ? (
+                <button
+                  key={idx}
+                  className={`w-8 h-8 border-2 border-gray-950 ${
+                    selectedSize && selectedSize._id === size._id
+                      ? "border-black"
+                      : ""
+                  }`}
+                  onClick={() => handleSizeChange(size)}
+                >
+                  {size.size}
+                </button>
+              ) : (
+                <button
+                  key={idx}
+                  className="w-8 h-8 border-2 bg-gray-400 border-gray-400"
+                  disabled
+                >
+                  {size.size}
+                </button>
+              )
+            )}
         </div>
         <div className="w-full flex justify-between items-center">
           <div className="w-3/12 flex gap-2">

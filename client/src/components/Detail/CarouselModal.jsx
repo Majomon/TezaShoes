@@ -19,7 +19,7 @@ export default function CarouselModal({ images, closeModal, newArrayImg }) {
                 key={index}
                 src={image}
                 alt={image}
-                className="w-6/12 rounded-md shadow-lg shadow-yellow-400"
+                className="w-5/12 h-4/5 rounded-md shadow-lg shadow-yellow-400"
               />
             ))
           : images.map((image, index) => (

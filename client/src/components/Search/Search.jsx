@@ -1,35 +1,26 @@
 'use client'
-import PageRouting from "../PageRouting/PageRouting";
 import { useStoreProducts } from "@/zustand/store";
-import { use, useEffect,useState } from "react";
-import Card from "../Card/Card";
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import Card from "../Card/Card";
+import PageRouting from "../PageRouting/PageRouting";
 /* import Order from "./Order"; */
 
 export default function Search({product}){
     const { setProducts,allProducts } = useStoreProducts();
-    const searchParams = useSearchParams().get("query");
-
-    /* console.log(searchParams.get("query")) */
+    const searchParams = useSearchParams().get("category");
 
     useEffect(()=>{
-       /*  product = product.filter(item => item.category === searchParams.get("query").toString()) */
-       if(searchParams){
-
-       }
         setProducts(product.filter(item => item.category === searchParams))
     },[product]);
     
     const handleOnchangeHightPrice = (e) => {
         const { value } = e.target;
-        /* console.log(value) */
         if(value === "mayor"){
             allProducts.sort((a,b) => b.price - a.price);
-            /* console.log(product); */
             setProducts(allProducts)
         }else if(value === "menor"){
             allProducts.sort((a, b)=> a.price - b.price);
-            /* console.log(product); */
             setProducts(allProducts)
         }
     }
@@ -52,7 +43,7 @@ export default function Search({product}){
                 </section>
             </div>
             <h1 className="text-center text-xl">{searchParams}</h1>
-            <section className="flex flex-row md:bg-red-300 md:justify-between justify-center flex-wrap w-[100%] gap-y-[50px] gap-x-[20px] py-16 ">
+            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  w-[100%] gap-y-[50px] gap-x-[20px] ">
 
                 {
                     allProducts.map((item)=>{

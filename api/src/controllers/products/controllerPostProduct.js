@@ -7,27 +7,38 @@ const controllerPostProduct = async ({
   price,
   description,
   images,
-  settlement,
-  promotion,
+  offer,
+  newProduct,
+  isActive,
 }) => {
-
   if (!name || !category || !price || !description || !images) {
-    const missingField = !name ? 'name' : !category ? 'category' : !price ? 'price' : !description ? 'description' : 'images';
+    const missingField = !name
+      ? "name"
+      : !category
+      ? "category"
+      : !options
+      ? "options"
+      : !price
+      ? "price"
+      : !description
+      ? "description"
+      : "images";
     throw new Error(`Falta ${missingField}`);
   }
-  
-  const newProduct = await Product.create({
+
+  const newProd = await Product.create({
     name,
     category,
     options,
     price,
     description,
     images,
-    settlement,
-    promotion,
+    offer,
+    newProduct,
+    isActive,
   });
 
-  return newProduct;
+  return newProd;
 };
 
 module.exports = controllerPostProduct;

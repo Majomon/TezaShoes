@@ -68,6 +68,9 @@ const useStoreProducts = create(
     setProducts: (products) => {
       setState({ allProducts: products });
     },
+    setDetail: (product) => {
+      setState({ detail: product });
+    },
   }))
 );
 

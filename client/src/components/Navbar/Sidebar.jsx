@@ -4,13 +4,10 @@ import LogoTeza from "../../app/LogoTeza.png"
 import Image from "next/image"
 
 const menuItems = [
-  { name: "Bandoleras", href: "/" },
-  { name: "Borcegos", href: "/" },
-  { name: "Botas", href: "/" },
-  { name: "Carteras", href: "/" },
-  { name: "Sandalias", href: "/" },
-  { name: "Zapatillas", href: "/" },
-  { name: "Oferta", href: "/" },
+  { name: "Borcegos", href: "/search?category=Borcegos" },
+  { name: "Botas", href: "/search?category=Botas" },
+  { name: "Sandalias", href: "/search?category=Sandalias" },
+  { name: "Texanas", href: "/search?category=Texanas" },
 ]
 
 const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {

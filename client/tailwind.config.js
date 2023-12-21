@@ -32,6 +32,9 @@ module.exports = {
       },
       boxShadow:{
         "3xl" : "5px 4px 10px 0 rgba(0, 0, 0, 0.25);",
+      },
+      gridTemplateColumns:{
+        "13Cards": "repeat(auto-fill,minmax(300px,1fr))"
       }
     },
   },

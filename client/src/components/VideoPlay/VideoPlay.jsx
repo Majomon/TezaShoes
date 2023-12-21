@@ -9,6 +9,8 @@ export default function VideoPlay(){
                 url={"https://youtu.be/Et7TTfwvBFo?si=1R5xj_eS-u-QiVWH"}
                 height={500}
                 width={1920}
+                controls={false}
+                loop
             />
         </div>
     )

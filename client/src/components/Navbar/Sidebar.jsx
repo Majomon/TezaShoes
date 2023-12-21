@@ -1,16 +1,20 @@
+"use client"
 import Link from "next/link"
 import { CgClose } from "react-icons/cg"
 import LogoTeza from "../../app/LogoTeza.png"
 import Image from "next/image"
+import { useStoreProducts } from "@/zustand/store"
 
-const menuItems = [
+/* const menuItems = [
   { name: "Borcegos", href: "/search?category=Borcegos" },
   { name: "Botas", href: "/search?category=Botas" },
   { name: "Sandalias", href: "/search?category=Sandalias" },
   { name: "Texanas", href: "/search?category=Texanas" },
-]
+] */
 
 const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
+  const { categories } = useStoreProducts();
+  
   return (
     <div>
       {/* BLUR */}
@@ -35,9 +39,9 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
             <Image className="mx-2" src={LogoTeza} alt="Logo Teza Shoes" />
           </div>
           <ul>
-            {menuItems.map((item) => (
+            {categories.map((item) => (
               <li key={item.name} className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">
-                <Link className="w-full" href={item.href}>
+                <Link className="w-full" href={`/search?category=${item.name}`}>
                   {item.name}
                 </Link>
               </li>

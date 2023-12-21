@@ -4,7 +4,6 @@ import { Image } from "@nextui-org/react";
 import imageCard from "../../../assets/image/fotoCategoria.jpeg";
 
 export default function Card({ image,category }) {
-  console.log(category);
   return (
     <div className=" w-[300px] h-[300px] rounded-t-lg rounded-b-lg shadow-3xl">
       <section className="h-[300px] w-[100%] relative">

@@ -26,11 +26,12 @@ const listCarousel = [
 ];
 
 export default function Categorias() {
-    const { allProducts } = useStoreProducts();
-    const uniqueCategories = [...new Set(allProducts.map(item => item.category))];
+  const { categories } = useStoreProducts();
+console.log(categories);
+/*     const uniqueCategories = [...new Set(allProducts.map(item => item.category))];
   
 
-  console.log(uniqueCategories);
+  console.log(uniqueCategories); */
   return (
     <Swiper
       modules={[Autoplay, Navigation, Pagination, EffectCube]}
@@ -62,13 +63,14 @@ export default function Categorias() {
         },
       }}
     >
-      {allProducts.map((item) => {
-        const { id, image, category } = item;
+      {categories.map((item) => {
+        const { _id, image, category } = item;
+        
         return (
-          <SwiperSlide key={id} className="">
+          <SwiperSlide key={_id} className="">
             <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">
               <CardCategoria
-                key={id}
+                key={_id}
                 category={category}
                 image={image}
                 isNew={true}

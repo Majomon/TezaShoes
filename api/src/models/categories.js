@@ -6,6 +6,10 @@ const categoriesSchema = mongoose.Schema({
     unique: true,
     required: true,
   },
+  image: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Categories", categoriesSchema);

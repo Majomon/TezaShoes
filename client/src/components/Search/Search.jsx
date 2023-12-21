@@ -43,8 +43,7 @@ export default function Search({product}){
                 </section>
             </div>
             <h1 className="text-center text-xl">{searchParams}</h1>
-            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  w-[100%] gap-y-[50px] gap-x-[20px] ">
-
+            <section className="grid grid-cols-13Cards w-[100%] gap-y-[50px] gap-x-[20px] place-items-center">
                 {
                     allProducts.map((item)=>{
                         const {_id,images,name,price,cantDues,newProduc} = item

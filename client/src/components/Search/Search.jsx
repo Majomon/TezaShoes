@@ -3,7 +3,7 @@ import PageRouting from "../PageRouting/PageRouting";
 import { useStoreProducts } from "@/zustand/store";
 import { use, useEffect,useState } from "react";
 import Card from "../Card/Card";
-import Order from "./Order";
+/* import Order from "./Order"; */
 
 export default function Search({product}){
     /* const [valueSelect,setValueSelect] = useState("mayor"); */
@@ -17,11 +17,11 @@ export default function Search({product}){
         const { value } = e.target;
         console.log(value)
         if(value === "mayor"){
-            product.sort((a,b) => b.name - a.name);
+            product.sort((a,b) => b.price - a.price);
             console.log(product);
             setProducts(product)
         }else if(value === "menor"){
-            product.sort((a, b)=> a.name - b.name);
+            product.sort((a, b)=> a.price - b.price);
             console.log(product);
             setProducts(product)
         }

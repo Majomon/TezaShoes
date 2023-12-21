@@ -4,12 +4,10 @@ import CardInfoSet from "../CardInfoSet/CardInfoSet";
 import CarruselNewProdTwo from "../Carrusel/CarruselNewProdTwo";
 import MainImage from "../MainImage/MainImage";
 import VideoPlay from "../VideoPlay/VideoPlay";
-import Categorias from "@/components/Categorias/Categorias";
 import { useEffect } from "react";
 import Categorias from "../Categorias/Categorias";
 
 export default function MainHome({ product }) {
-
   const { setProducts } = useStoreProducts();
   useEffect(() => {
     setProducts(product);
@@ -21,6 +19,7 @@ export default function MainHome({ product }) {
       <CarruselNewProdTwo />
       <CardInfoSet />
       <VideoPlay />
+      <Categorias />
     </div>
   );
 }

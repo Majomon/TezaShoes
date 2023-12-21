@@ -42,14 +42,14 @@ export default function Carousel() {
   };
 
   return (
-    <div className="w-2-full h-fit  flex  rounded-md">
+    <div className="w-full h-fit flex px-20">
       <div className="w-2/12 h-full flex flex-col gap-2 ">
         {detail.images?.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Image ${index + 1}`}
-            className="w-[70px] h-[70px] rounded-sm  cursor-pointer hover:shadow-md hover:shadow-gray-600"
+            className="w-[50px] h-[50px] rounded-sm  cursor-pointer hover:shadow-md hover:shadow-gray-600 border-1 border-gray-400"
             onClick={() => handlerSelectImg(image)}
           />
         ))}
@@ -60,14 +60,14 @@ export default function Carousel() {
           <img
             src={imgSelected}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[450px] rounded-sm  cursor-pointer"
+            className="w-full mx-auto h-[400px] rounded-sm  cursor-pointer border-1 border-gray-300"
             onClick={handlerImgModal}
           />
         ) : (
           <img
             src={firstImage}
             alt="Descripción de la imagen"
-            className="w-full mx-auto h-[450px] rounded-sm cursor-pointer"
+            className="w-full mx-auto h-[400px] rounded-sm cursor-pointer border-1 border-gray-300"
             onClick={handlerImgModal}
           />
         )}

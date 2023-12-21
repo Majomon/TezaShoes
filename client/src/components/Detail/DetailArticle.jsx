@@ -109,9 +109,8 @@ export default function DetailArticle() {
   return (
     <div className="w-full">
       <InfoTopDetailArticle />
-
       <div className="py-2">
-        <h5 className="text-sm text-gray-500">Colores</h5>
+        <h5 className="text-sm text-gray-500 py-2">Colores</h5>
         <div className="flex gap-4 py-2">
           {detail &&
             detail.options &&
@@ -120,7 +119,7 @@ export default function DetailArticle() {
                 key={index}
                 className={`w-8 h-8 rounded-full ${
                   selectedColor && selectedColor.color === option.color
-                    ? "border-black"
+                    ? "border-black border-2"
                     : ""
                 }`}
                 style={{ backgroundColor: option.color }}

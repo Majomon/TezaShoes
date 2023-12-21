@@ -3,11 +3,11 @@ import { Image } from "@nextui-org/react";
 import Newlabel from "../Newlabel/Newlabel";
 import Link from "next/link";
 
-export default function Card({ images, title, price, cantDues, isNew,id }) {
+export default function Card({ images, title, price, cantDues, newProduct,id }) {
   return (
     <div className=" w-[300px] h-[410px] rounded-md  shadow-3xl">
       <section className="w-[100%]  h-[300px] relative">
-        <Newlabel isNew={isNew} />
+        <Newlabel newProduct={newProduct} />
         <Link href={`/detail/${id}`}>
           <Image
             className="w-[300px] h-[300px] rounded-t-md rounded-b-none object-cover cursor-pointer"

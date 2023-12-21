@@ -1,7 +1,6 @@
 
-export default function Newlabel(isNew){
-
-    let New = isNew ? "block" : "hidden";
+export default function Newlabel({newProduct}){
+    let New = newProduct==true ? "block" : "hidden";
 
 
     return(

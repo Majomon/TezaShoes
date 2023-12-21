@@ -95,7 +95,6 @@ const listCarousel = [
 
 export default function CarruselNewProdTwo() {
   const { allProducts } = useStoreProducts();
-
   return (
     <Swiper
       modules={[Autoplay, Navigation, Pagination, EffectCube]}
@@ -127,7 +126,7 @@ export default function CarruselNewProdTwo() {
       }}
     >
       {allProducts.map((item) => {
-        const { _id, images, name, price, cantDues } = item;
+        const { _id, images, name, price, cantDues,newProduct } = item;
         return (
           <SwiperSlide key={_id} className="">
             <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">
@@ -137,7 +136,7 @@ export default function CarruselNewProdTwo() {
                 title={name}
                 price={price}
                 cantDues={cantDues}
-                isNew={false}
+                newProduct={newProduct}
                 images={images}
               />
             </div>

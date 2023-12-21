@@ -1,7 +1,7 @@
 import MainHome from "@/components/Home/MainHome";
 
 async function getAllProducts() {
-  const response = await fetch(`${process.env.URL_BASE_DEV}/products`);
+  const response = await fetch(`http://localhost:8080/products`);
   const data = await response.json();
   return data;
 }

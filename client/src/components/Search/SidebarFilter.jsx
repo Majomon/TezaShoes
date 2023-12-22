@@ -1,5 +1,6 @@
 import { Button } from "@nextui-org/react"
 import { CgClose } from "react-icons/cg"
+import AccorditionFilter from "./AccorditionFilter"
 
 export default function SidebarFilter({isFilterOpen, setIsFilterOpen}){
     return(
@@ -19,7 +20,7 @@ export default function SidebarFilter({isFilterOpen, setIsFilterOpen}){
                 } bg-white min-h-screen fixed top-0 right-0 transition-all duration-300 z-30 `}
             >
                 <div className={`${!isFilterOpen && "hidden"} pt-3`}>
-                    <div className="flex flex-row items-center justify-start px-5 ">
+                    <div className="flex flex-row items-center justify-end px-5 ">
                         <button className="" onClick={() => setIsFilterOpen(false)}>
                             <CgClose size={25} color="black" />
                         </button>
@@ -31,7 +32,9 @@ export default function SidebarFilter({isFilterOpen, setIsFilterOpen}){
                                 Aplicar
                             </Button>
                         </li>
-                        <li>hola2</li>
+                        <li>
+                            <AccorditionFilter />
+                        </li>
                         
                     </ul>
                 </div>

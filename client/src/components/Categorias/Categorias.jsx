@@ -66,7 +66,7 @@ export default function Categorias() {
         
         return (
           <SwiperSlide key={_id} className="">
-            <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">
+            <div className="h-[100%] w-[100%] flex flex-col justify-center items-center ">
               <CardCategoria
                 key={_id}
                 category={name}

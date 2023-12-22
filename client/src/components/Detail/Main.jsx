@@ -17,11 +17,11 @@ export default function Main({ product }) {
     <div className="w-full min-h-screen px-10">
       <div className=" flex">
         <div className="w-8/12 pt-4 px-6">
-          <Carousel  />
-          <Description  />
+          <Carousel />
+          <Description />
         </div>
         <div className="w-4/12 pt-4 px-6">
-          <DetailArticle product={product} />
+          <DetailArticle />
           <ShippingCalculator />
         </div>
       </div>

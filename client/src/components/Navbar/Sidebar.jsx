@@ -1,9 +1,9 @@
-"use client"
-import Link from "next/link"
-import { CgClose } from "react-icons/cg"
-import LogoTeza from "../../app/LogoTeza.png"
-import Image from "next/image"
-import { useStoreProducts } from "@/zustand/store"
+"use client";
+import Link from "next/link";
+import { CgClose } from "react-icons/cg";
+import LogoTeza from "../../app/LogoTeza.png";
+import Image from "next/image";
+import { useStoreProducts } from "@/zustand/store";
 
 /* const menuItems = [
   { name: "Borcegos", href: "/search?category=Borcegos" },
@@ -14,7 +14,7 @@ import { useStoreProducts } from "@/zustand/store"
 
 const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
   const { categories } = useStoreProducts();
-  
+
   return (
     <div>
       {/* BLUR */}
@@ -40,8 +40,11 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
           </div>
           <ul>
             {categories.map((item) => (
-              <li key={item.name} className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">
-                <Link className="w-full" href={`/search?category=${item.name}`}>
+              <li
+                key={item.name}
+                className="cursor-pointer px-6 my-2 hover:font-bold hover:underline"
+              >
+                <Link className="w-full" href={`/search?category=${item.name}`} onClick={()=>setIsMenuOpen(!isMenuOpen)}>
                   {item.name}
                 </Link>
               </li>
@@ -50,7 +53,7 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;

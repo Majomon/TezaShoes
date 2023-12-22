@@ -1,3 +1,4 @@
+import { Button } from "@nextui-org/react"
 import { CgClose } from "react-icons/cg"
 
 export default function SidebarFilter({isFilterOpen, setIsFilterOpen}){
@@ -24,16 +25,14 @@ export default function SidebarFilter({isFilterOpen, setIsFilterOpen}){
                         </button>
                         {/* <Image className="mx-auto" src={LogoTeza} alt="Logo Teza Shoes" /> */}
                     </div>
-                    <ul>
-                        <li>hola</li>
-                        <li>hola2</li>
-                        {/* menuItems.map((item) => (
-                        <li key={item.name} className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">
-                            <Link className="w-full" href={item.href} onClick={() => setIsFilterOpen(!isFilterOpen)} >
-                            {item.name}
-                            </Link>
+                    <ul className="px-6">
+                        <li>
+                            <Button className=" bg-colorBlack-400 text-colorWhite-100 w-[100%]" radius="none">
+                                Aplicar
+                            </Button>
                         </li>
-                        )) */}
+                        <li>hola2</li>
+                        
                     </ul>
                 </div>
             </div>

@@ -11,7 +11,6 @@ const controllerPutProductId = async ({
   settlement,
   promotion,
 }) => {
-  console.log(options);
   const updateProduct = await Products.findByIdAndUpdate(id, {
     name,
     category,

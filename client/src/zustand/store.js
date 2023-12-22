@@ -27,6 +27,7 @@ const useStoreProducts = create(
   zukeeper((setState) => ({
     allProducts: [],
     detail: {},
+    categories:[],
     fetchDetailProduct: async (id) => {
       try {
         const response = await axios.get(
@@ -70,6 +71,9 @@ const useStoreProducts = create(
     },
     setDetail: (product) => {
       setState({ detail: product });
+    },
+    setCategories: (category) => {
+      setState({ categories: category });
     },
   }))
 );

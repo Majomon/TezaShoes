@@ -93,7 +93,7 @@ export default function Carousel() {
           ))}
         </div>
       )}
-      {!detail.images ? (
+      {!firstImage ? (
         <div className="w-10/12 h-full">
           <Card className="w-full h-full p-2" radius="lg">
             <Skeleton className="rounded-lg">

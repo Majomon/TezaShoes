@@ -6,17 +6,14 @@ async function getAllProducts() {
   return data;
 }
 
-
-
 async function Home() {
   const product = await getAllProducts();
 
   return (
     <>
-      <MainHome product={product}/>
+      <MainHome product={product} />
     </>
   );
-
 }
 
 export default Home;

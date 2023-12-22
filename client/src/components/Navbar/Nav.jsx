@@ -1,12 +1,19 @@
-import NavIcons from "./NavIcons"
-import NavLinks from "./NavLinks"
-import NavBurger from "./NavBurger"
+import NavIcons from "./NavIcons";
+import NavLinks from "./NavLinks";
+import NavBurger from "./NavBurger";
 
-export default function Nav() {
+async function getAllCategories() {
+  const response = await fetch(`http://localhost:8080/categories`);
+  const data = await response.json();
+  return data;
+}
+async function Nav() {
+  const categories = await getAllCategories();
+
   return (
     <nav className="bg-white w-full shadow-md flex h-16 items-center ">
       {/* LEFT */}
-      <NavBurger />
+      <NavBurger categories={categories} />
 
       {/* CENTER */}
       <NavLinks />
@@ -14,5 +21,7 @@ export default function Nav() {
       {/* RIGHT */}
       <NavIcons />
     </nav>
-  )
+  );
 }
+
+export default Nav;

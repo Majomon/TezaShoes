@@ -5,7 +5,8 @@ const cors = require("cors");
 //Rutas
 const routerProducts = require("./routes/products.routes");
 const routerUsers = require("./routes/users.routes");
-const routerResendEmail= require("./routes/resendEmail.routes")
+const routerResendEmail= require("./routes/resendEmail.routes");
+const routerCategories = require("./routes/categories.routes");
 
 const app = express();
 
@@ -18,5 +19,7 @@ app.use(morgan("dev"));
 app.use("/products", routerProducts);
 app.use("/users", routerUsers);
 app.use("/resendEmail", routerResendEmail);
+app.use("/categories", routerCategories);
+
 
 module.exports = app;

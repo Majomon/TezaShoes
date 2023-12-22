@@ -5,10 +5,10 @@ import Link from "next/link";
 
 export default function Card({ image,category }) {
   return (
-    <div className=" w-[300px] h-[300px] rounded-t-lg rounded-b-lg shadow-3xl">
+    <div className=" w-[310px] h-[400px] rounded-t-lg rounded-b-lg shadow-3xl">
       <Link href={`/search?category=${category}`} className="h-[300px] w-[100%] relative">
         <Image
-          className="w-[300px] h-[300px] rounded-t-lg rounded-b-lg object-cover cursor-pointer z-0"
+          className="w-[310px] h-[400px] rounded-t-lg rounded-b-lg object-cover cursor-pointer z-0"
           src={image}
           alt="imageCard"
         />

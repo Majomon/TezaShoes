@@ -103,13 +103,14 @@ export default function DetailArticle() {
         product_id: detail._id,
         name: detail.name,
         image: detail.images[0],
+        color:selectedColorOption.color,
         colorId: selectedColorOption._id,
-        size: selectedSizeInColor._id,
+        size: selectedSizeInColor.size,
+        sizeId: selectedSizeInColor._id,
         count,
         price: detail.price,
         totalPrice: count * detail.price,
       };
-
       setProductAdd(selectedVariant.name);
       cartItems.push(selectedVariant);
     }
@@ -201,6 +202,7 @@ export default function DetailArticle() {
           </button>
         </div>
       </div>
+      {/* Modal */}
       {modalBuy && (
         <div className="w-full min-h-screen absolute top-16 left-0 flex justify-center bg-gray-100/50 z-10">
           <div className="w-6/12 h-20 flex justify-around items-center bg-white border-2 border-gray-500 shadow-gray-950 shadow-lg ">

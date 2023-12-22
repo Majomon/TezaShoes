@@ -13,6 +13,8 @@ import { useStoreProducts } from "@/zustand/store"
 ] */
 
 const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
+  const { categories } = useStoreProducts();
+  
   return (
     <div>
       {/* BLUR */}
@@ -39,7 +41,7 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
           <ul>
             {categories.map((item) => (
               <li key={item.name} className="cursor-pointer px-6 my-2 hover:font-bold hover:underline">
-                <Link className="w-full" href={item.href}>
+                <Link className="w-full" href={`/search?category=${item.name}`}>
                   {item.name}
                 </Link>
               </li>

@@ -1,11 +1,10 @@
 "use client";
 import { useStoreProducts } from "@/zustand/store";
-import Categorias from "../Categorias/Categorias";
+import { useEffect } from "react";
 import Carousel from "./Carousel";
 import Description from "./Description";
 import DetailArticle from "./DetailArticle";
 import ShippingCalculator from "./ShippingCalculator";
-import { useEffect } from "react";
 
 export default function Main({ product }) {
   const { setDetail } = useStoreProducts();
@@ -26,7 +25,6 @@ export default function Main({ product }) {
           <ShippingCalculator />
         </div>
       </div>
-      <Categorias />
     </div>
   );
 }

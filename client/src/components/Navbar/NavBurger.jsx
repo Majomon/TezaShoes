@@ -6,7 +6,7 @@ import LogoTeza from "../../app/LogoTeza.png"
 import Image from "next/image"
 
 export default function NavBurger() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="flex flex-1 items-center mx-10">
@@ -15,7 +15,6 @@ export default function NavBurger() {
         <CiMenuFries size={25} />
       </button>
       <Sidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-
       {/* LOGO */}
       <Image src={LogoTeza} alt="Logo Teza Shoes" />
     </div>

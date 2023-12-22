@@ -10,7 +10,7 @@ import SidebarFilter from "./SidebarFilter";
 
 export default function Search({product}){
     const { setProducts,allProducts } = useStoreProducts();
-    const [isFilterOpen,setIsFilterOpen] = useState("true"); 
+    const [isFilterOpen,setIsFilterOpen] = useState(false); 
     const searchParams = useSearchParams().get("category");
 
     useEffect(()=>{
@@ -46,7 +46,7 @@ export default function Search({product}){
                         <option value="menor">Menor Precio</option>
                     </select>
                 </section>
-                <section className="flex flex-row gap-x-1 items-center justify-center" onClick={()=>setIsFilterOpen(!isFilterOpen)}> 
+                <section className="flex flex-row gap-x-1 items-center justify-center cursor-pointer" onClick={()=>setIsFilterOpen(!isFilterOpen)}> 
                     <IconFilter />
                     <p>Filter</p>
                 </section>

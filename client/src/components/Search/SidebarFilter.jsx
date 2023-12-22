@@ -15,7 +15,7 @@ export default function SidebarFilter({isFilterOpen, setIsFilterOpen}){
             <div
                 className={`${
                 isFilterOpen ? "w-[300px]" : "w-0"
-                } bg-white min-h-screen fixed top-0 right-0 transition-all duration-300 z-30 shadow-[1px_1px_5px_2px_rgb(11,9,10)]`}
+                } bg-white min-h-screen fixed top-0 right-0 transition-all duration-300 z-30 `}
             >
                 <div className={`${!isFilterOpen && "hidden"} pt-3`}>
                     <div className="flex flex-row items-center justify-start px-5 ">

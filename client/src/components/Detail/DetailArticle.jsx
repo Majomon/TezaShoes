@@ -3,6 +3,7 @@ import { useStoreProducts } from "@/zustand/store";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import InfoTopDetailArticle from "./InfoTopDetailArticle";
+import { Card, Skeleton } from "@nextui-org/react";
 
 export default function DetailArticle() {
   const [selectedColor, setSelectedColor] = useState(null);
@@ -111,32 +112,46 @@ export default function DetailArticle() {
       <InfoTopDetailArticle />
       <div className="py-2">
         <h5 className="text-sm text-gray-500 py-2">Colores</h5>
-        <div className="flex gap-4 py-2">
-          {detail &&
-            detail.options &&
-            detail.options.map((option, index) => (
-              <button
-                key={index}
-                className={`w-8 h-8 rounded-full ${
-                  selectedColor && selectedColor.color === option.color
-                    ? "border-black border-2"
-                    : ""
-                }`}
-                style={{ backgroundColor: option.color }}
-                onClick={() => handleColorChange(option)}
-              ></button>
-            ))}
-        </div>
+        {!detail.options ? (
+          <div>
+            <Skeleton className="flex rounded-full w-8 h-8 p-4" />
+          </div>
+        ) : (
+          <div className="flex gap-4 py-2">
+            {detail &&
+              detail.options &&
+              detail.options.map((option, index) => (
+                <button
+                  key={index}
+                  className={`w-8 h-8 rounded-full ${
+                    selectedColor && selectedColor.color === option.color
+                      ? "border-black border-2"
+                      : ""
+                  }`}
+                  style={{ backgroundColor: option.color }}
+                  onClick={() => handleColorChange(option)}
+                ></button>
+              ))}
+          </div>
+        )}
+
         <button className="py-2">Guía de talles</button>
         <div className="py-2">
           <h5 className="text-sm text-gray-500">Talles</h5>
-          {selectedColor &&
+          {!detail.options ? (
+            <Card className="w-[140px] h-full p-2 my-2" radius="lg">
+              <Skeleton className="w-full rounded-lg">
+                <div className="h-5  w-3/5 rounded-lg bg-default-200"></div>
+              </Skeleton>
+            </Card>
+          ) : (
+            selectedColor &&
             selectedColor.sizes &&
             selectedColor.sizes.map((size, idx) =>
               size.stock > 0 ? (
                 <button
                   key={idx}
-                  className={`w-8 h-8 border-2 border-gray-950 ${
+                  className={`w-8 h-8 border-2 border-gray-950 mr-2 my-2 ${
                     selectedSize && selectedSize._id === size._id
                       ? "border-black"
                       : ""
@@ -154,7 +169,8 @@ export default function DetailArticle() {
                   {size.size}
                 </button>
               )
-            )}
+            )
+          )}
         </div>
         <div className="w-full flex justify-between items-center">
           <div className="w-3/12 flex gap-2">

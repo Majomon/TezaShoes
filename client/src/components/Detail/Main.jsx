@@ -5,12 +5,14 @@ import Carousel from "./Carousel";
 import Description from "./Description";
 import DetailArticle from "./DetailArticle";
 import ShippingCalculator from "./ShippingCalculator";
+import InterestProduct from "./InterestProduct";
 
-export default function Main({ product }) {
-  const { setDetail } = useStoreProducts();
+export default function Main({ product, allproduct }) {
+  const { setDetail, setProducts } = useStoreProducts();
 
   useEffect(() => {
     setDetail(product);
+    setProducts(allproduct);
   }, [product]);
 
   return (
@@ -25,6 +27,7 @@ export default function Main({ product }) {
           <ShippingCalculator />
         </div>
       </div>
+      <InterestProduct />
     </div>
   );
 }

@@ -1,8 +1,10 @@
-import { CiShoppingCart } from "react-icons/ci";
 import { CgClose } from "react-icons/cg";
+import { CiShoppingCart } from "react-icons/ci";
 import ItemsCart from "./ItemsCart";
 
 function ModalShoppingCard({ isOpenCart, setIsOpenCart }) {
+
+
   return (
     <div className="mx-1">
       <button>

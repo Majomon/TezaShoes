@@ -1,3 +1,4 @@
+"use client"
 function ItemsCart() {
   const listCart = localStorage.getItem("cart");
   const listCartArray = JSON.parse(listCart);

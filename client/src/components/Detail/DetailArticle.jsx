@@ -208,7 +208,7 @@ export default function DetailArticle() {
           <div className="w-6/12 h-20 flex justify-around items-center bg-white border-2 border-gray-500 shadow-gray-950 shadow-lg ">
             <h2>¡Producto {productAdd} agregado al carrito</h2>
             <button
-              className="py-2 px-4 bg-gray-400 text-white rounded-sm "
+              className="py-2 px-4 bg-gray-400 text-white rounded-sm hover:bg-gray-700"
               onClick={closeModal}
             >
               Continuar comprando

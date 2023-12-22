@@ -1,10 +1,10 @@
 "use client"
+import { useStoreProducts } from "@/zustand/store"
+import Image from "next/image"
 import { useEffect, useState } from "react"
-import Sidebar from "./Sidebar"
 import { CiMenuFries } from "react-icons/ci"
 import LogoTeza from "../../app/LogoTeza.png"
-import Image from "next/image"
-import { useStoreProducts } from "@/zustand/store"
+import Sidebar from "./Sidebar"
 
 export default function NavBurger({categories}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

@@ -13,7 +13,7 @@ import { useStoreProducts } from "@/zustand/store";
 
 /*listas*/
 
-const listCarousel = [
+/* const listCarousel = [
   {
     id: 1,
     image: "none",
@@ -91,7 +91,7 @@ const listCarousel = [
     price: "39000",
     cantDues: 2,
   },
-];
+]; */
 
 export default function CarruselNewProdTwo() {
   const { allProducts } = useStoreProducts();

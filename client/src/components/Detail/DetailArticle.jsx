@@ -59,6 +59,8 @@ export default function DetailArticle() {
 
   const closeModal = () => {
     setModalBuy(false);
+    // Habilitar el scroll del cuerpo cuando se cierra el modal
+    document.body.style.overflow = "visible";
   };
 
   const addToCart = () => {
@@ -107,13 +109,17 @@ export default function DetailArticle() {
         price: detail.price,
         totalPrice: count * detail.price,
       };
-      // Agregar el nuevo elemento al carrito
+
       setProductAdd(selectedVariant.name);
       cartItems.push(selectedVariant);
     }
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
     setModalBuy(true);
+    // Mover al inicio de la página
+    window.scrollTo(0, 0);
+    // Deshabilitar el scroll del cuerpo cuando se muestra el modal
+    document.body.style.overflow = "hidden";
   };
 
   return (
@@ -199,7 +205,12 @@ export default function DetailArticle() {
         <div className="w-full min-h-screen absolute top-16 left-0 flex justify-center bg-gray-100/50 z-10">
           <div className="w-6/12 h-20 flex justify-around items-center bg-white border-2 border-gray-500 shadow-gray-950 shadow-lg ">
             <h2>¡Producto {productAdd} agregado al carrito</h2>
-            <button className="py-2 px-4 bg-gray-400 text-white rounded-sm " onClick={closeModal}>Continuar comprando</button>
+            <button
+              className="py-2 px-4 bg-gray-400 text-white rounded-sm "
+              onClick={closeModal}
+            >
+              Continuar comprando
+            </button>
           </div>
         </div>
       )}

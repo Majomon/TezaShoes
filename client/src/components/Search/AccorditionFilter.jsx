@@ -48,7 +48,7 @@ export default function AccorditionFilter() {
         <div>
             <Accordion>
                 <AccordionItem key="colors" title="Colores">
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-y-[8px]">
                         {
                             listColors.map(item => {
                                 const {id,name} = item;
@@ -63,7 +63,7 @@ export default function AccorditionFilter() {
             </Accordion>
         <Accordion>
             <AccordionItem key="Size" title="Talles">
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-y-[8px]">
                     {/* <label htmlFor="" id="35" className="flex items-center gap-x-2">
                     <input className=" w-[20px] h-[20px]  border-1 border-colorBlack-400 checked:before:content-['✔'] text-colorGold-800 text-xl flex items-center justify-center" type="checkbox" style={{appearance: "none"}}/> 35
                     </label>

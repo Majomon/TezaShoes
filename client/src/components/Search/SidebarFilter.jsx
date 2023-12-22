@@ -19,16 +19,16 @@ export default function SidebarFilter({isFilterOpen, setIsFilterOpen}){
                 isFilterOpen ? "w-[300px]" : "w-0"
                 } bg-white min-h-screen fixed top-0 right-0 transition-all duration-300 z-30 `}
             >
-                <div className={`${!isFilterOpen && "hidden"} pt-3`}>
+                <div className={`${!isFilterOpen && "hidden"} pt-3 flex flex-col gap-y-[20px]`}>
                     <div className="flex flex-row items-center justify-end px-5 ">
                         <button className="" onClick={() => setIsFilterOpen(false)}>
                             <CgClose size={25} color="black" />
                         </button>
                         {/* <Image className="mx-auto" src={LogoTeza} alt="Logo Teza Shoes" /> */}
                     </div>
-                    <ul className="px-6">
+                    <ul className="px-6 flex flex-col gap-y-[20px]">
                         <li>
-                            <Button className=" bg-colorBlack-400 text-colorWhite-100 w-[100%]" radius="none">
+                            <Button className=" bg-colorBlack-400 text-colorWhite-100 w-[100%] uppercase" radius="none">
                                 Aplicar
                             </Button>
                         </li>

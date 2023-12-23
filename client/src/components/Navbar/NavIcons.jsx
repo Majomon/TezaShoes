@@ -9,7 +9,7 @@ export default function NavIcons() {
   const [isOpenUser, setIsOpenUser] = useState(false);
 
   return (
-    <div className="flex flex-1 justify-end items-center mx-10">
+    <div className="w-full flex flex-1 justify-end items-center mx-10">
       <div
         className={`${
           !isOpenCart && "hidden"

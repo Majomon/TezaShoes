@@ -3,7 +3,7 @@ import { Toaster } from "sonner";
 
 function Login() {
   return (
-    <div className="w-11/12 h-[90vh] mx-auto p-10">
+    <div className="w-10/12 h-[90vh] mx-auto p-10">
       <Toaster position="top-center" />
       <div className="w-full h-full border rounded-xl flex">
         <img

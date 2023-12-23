@@ -13,7 +13,7 @@ export default function Card({ image, category }) {
           src={image}
           alt="imageCard"
         />
-        <div className="w-full h-12 flex justify-center items-center absolute bottom-0 left-0 right-0 z-1 rounded-b-lg bg-gray-950/50">
+        <div className="w-full h-12 flex justify-center items-center absolute bottom-0 left-0 right-0 z-1 rounded-b-lg bg-[#ae9667]/60">
           <h2 className="text-xl text-white text-center font-semibold uppercase ">
             {category}
           </h2>

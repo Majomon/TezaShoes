@@ -9,10 +9,9 @@ function Login() {
         <img
           src="/login/Login1.jpg"
           alt="Login"
-          className="w-6/12 h-full rounded-tl-xl rounded-bl-xl "
+          className="w-5/12 h-full rounded-tl-xl rounded-bl-xl "
         />
-        <div className="w-6/12 h-full ">
-          <h1 className="py-4 text-lg font-bold">Iniciar sesión</h1>
+        <div className="w-7/12 h-full ">
           <FormLogin />
         </div>
       </div>

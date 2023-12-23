@@ -1,6 +1,7 @@
 "use client";
 
 import { validateFieldLogin, validateFormLogin } from "@/utils/validaciones";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -62,30 +63,58 @@ function FormLogin() {
     }
   };
   return (
-    <form onSubmit={handlerSubmit} className="w-1/3 mt-10">
-      <div className="">
-        {Object.keys(inputForm).map((fieldName, index) => (
-          <div className="h-14" key={index}>
+    <div className="w-6/12 h-full mx-auto flex flex-col justify-center gap-6 mb-4">
+      <h1 className="py-4 text-lg font-bold">Iniciar sesión</h1>
+      <form onSubmit={handlerSubmit} className="">
+        {/* Inputs */}
+        <div className="flex flex-col gap-6">
+          <div>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
-              name={fieldName}
-              value={inputForm[fieldName]}
+              name="email"
+              value={inputForm.email}
               onChange={handlerChange}
-              placeholder={fieldName}
+              placeholder="Ingresa tu email"
               className={`w-full h-8 pl-2 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700 shadow-md shadow-gray-400 ${
-                error[fieldName] ? "focus:outline-none" : ""
+                error.email ? "focus:outline-none" : ""
               }`}
             />
-            {error[fieldName] && (
-              <span className="text-xs text-red-400">{error[fieldName]}</span>
+            {error.email && (
+              <span className="text-xs text-red-400">{error.email}</span>
             )}
           </div>
-        ))}
+          <div>
+            <label htmlFor="password">Contraseña</label>
+            <input
+              type="password"
+              name="password"
+              value={inputForm.password}
+              onChange={handlerChange}
+              placeholder="Ingresa tu contraseña"
+              className={`w-full h-8 pl-2 text-sm border-1 border-gray-400 border-b-2 border-b-gray-700 shadow-md shadow-gray-400 ${
+                error.password ? "focus:outline-none" : ""
+              }`}
+            />
+            {error.password && (
+              <span className="text-xs text-red-400">{error.password}</span>
+            )}
+          </div>
+        </div>
+        <div className="py-4">
+          <button className="w-full py-2 text-gray-100 bg-gray-950">
+            Ingresar
+          </button>
+        </div>
+      </form>
+      <h2 className="text-center">O</h2>
+      <div className="flex gap-x-4">
+        <h2>No tenes cuenta?</h2>
+        <Link href={"/register"}>
+          <strong>Registrate</strong>
+        </Link>
       </div>
-      <div className="flex justify-center">
-        <button className="py-2 px-6 text-gray-100 bg-gray-950">Enviar</button>
-      </div>
-    </form>
+    </div>
   );
 }
 

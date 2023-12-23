@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { CiSearch, CiUser } from "react-icons/ci";
 import ModalShoppingCard from "./ModalShoppingCard";
+import ModalUser from "./ModalUser";
 
 export default function NavIcons() {
   const [isOpenCart, setIsOpenCart] = useState(false);
+  const [isOpenUser, setIsOpenUser] = useState(false);
 
   return (
     <div className="flex flex-1 justify-end items-center mx-10">
@@ -17,9 +19,7 @@ export default function NavIcons() {
       <button className="mx-1">
         <CiSearch size={25} />
       </button>
-      <button className="mx-1">
-        <CiUser size={25} />
-      </button>
+      <ModalUser isOpenUser={isOpenUser} setIsOpenUser={setIsOpenUser} />
       <ModalShoppingCard
         isOpenCart={isOpenCart}
         setIsOpenCart={setIsOpenCart}

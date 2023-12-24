@@ -1,11 +1,14 @@
-"use client";
-import { validateFieldLogin, validateFormLogin } from "@/utils/validaciones";
+
 import axios from "axios";
+import { validateFieldLogin, validateFormLogin } from "@/utils/validaciones";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 function FormLogin({ url }) {
+  const router = useRouter();
+
   const [error, setError] = useState({});
   const [disabled, setDisabled] = useState(true);
   const [inputForm, setInputForm] = useState({
@@ -59,6 +62,7 @@ function FormLogin({ url }) {
             email: "",
             password: "",
           });
+          router.push("/");
         } else {
           toast.warning("Error al intentar logearse");
         }

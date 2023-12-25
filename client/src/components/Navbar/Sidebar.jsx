@@ -42,9 +42,9 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
             {categories.map((item) => (
               <li
                 key={item.name}
-                className="cursor-pointer px-6 my-2 hover:font-bold hover:underline"
+                className="cursor-pointer px-6 my-4 hover:font-bold hover:underline"
               >
-                <Link className="w-full" href={`/search?category=${item.name}`} onClick={()=>setIsMenuOpen(!isMenuOpen)}>
+                <Link className="w-full text-xl " href={`/search?category=${item.name}`} onClick={()=>setIsMenuOpen(!isMenuOpen)} >
                   {item.name}
                 </Link>
               </li>

@@ -1,6 +1,6 @@
 "use client";
-
 import { validateFieldLogin, validateFormLogin } from "@/utils/validaciones";
+import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -41,12 +41,12 @@ function FormLogin() {
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:8080/resendEmail",
+          "http://localhost:8080/login",
           inputForm
         );
 
         if (response.status === 200) {
-          toast.success("Email enviado");
+          toast.success("Logeado");
           setInputForm({
             name: "",
             phone: "",
@@ -54,11 +54,11 @@ function FormLogin() {
             message: "",
           });
         } else {
-          toast.warning("Error al enviar el mail. Contactate por Whatapp");
+          toast.warning("Error al intentar logearse");
         }
       } catch (error) {
-        toast.warning("Error al enviar el mail. Contactate por Whatapp");
-        console.error("Error al realizar la solicitud:", error);
+        toast.warning("Error al intentar logearse");
+        console.error(error);
       }
     }
   };

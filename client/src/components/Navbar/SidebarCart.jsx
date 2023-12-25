@@ -11,10 +11,10 @@ export default function SidebarCart({ isOpenCart, setIsOpenCart }) {
     >
       <div className={`${!isOpenCart && "hidden"} pt-3`}>
         <div className="flex flex-col">
-          <div className="flex items-center justify-between px-5 border-b-1 border-colorBlack-400 h-[50px]">
+          <div className="flex flex-row items-center justify-between px-5 border-b-1 border-colorBlack-400 h-[50px]">
             <h2 className=" text-xl font-bold">Carrito</h2>
             <button className="" onClick={() => setIsOpenCart(false)}>
-              <CgClose size={30} color="black" />
+              <CgClose size={25} color="black" />
             </button>
           </div>
           <ItemsCart />

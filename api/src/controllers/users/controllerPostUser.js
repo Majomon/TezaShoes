@@ -1,4 +1,7 @@
 const User = require("../../models/users");
+const bcrypt = require("bcrypt");
+//Rondas de hashing 
+const saltRounds = 10; 
 
 const controllerPostUser = async ({
   name,
@@ -22,7 +25,7 @@ const controllerPostUser = async ({
     name,
     phone,
     email,
-    password,
+    password: await bcrypt.hash(password, saltRounds),
     isAdmin,
   });
 

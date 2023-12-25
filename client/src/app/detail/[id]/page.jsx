@@ -6,14 +6,20 @@ async function getProductId(id) {
   const data = await response.json();
   return data;
 }
-
+async function getAllProducts() {
+  const response = await fetch(`${process.env.URL_BASE_DEV}/products`);
+  const data = await response.json();
+  return data;
+}
 async function DetailPage({ params }) {
   const product = await getProductId(params.id);
+  const allproduct = await getAllProducts();
+
 
   return (
     <div>
       <Toaster position="top-center" />
-      <Main product={product} />
+      <Main product={product} allproduct={allproduct} />
     </div>
   );
 }

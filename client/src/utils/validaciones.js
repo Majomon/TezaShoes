@@ -107,3 +107,31 @@ export const validateFieldContact = (name, value, inputForm) => {
 
   return "";
 };
+
+export const validateFormLogin = (error, inputForm) => {
+  return !error.email && inputForm.email.length;
+};
+
+export const validateFieldLogin = (name, value) => {
+  switch (name) {
+    case "email":
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!value) {
+        return "Correo electrónico requerido";
+      } else if (!emailRegex.test(value)) {
+        return "El correo electrónico no es válido";
+      }
+      break;
+
+    case "password":
+      if (!value) {
+        return "El password es requerido";
+      }
+      break;
+
+    default:
+      break;
+  }
+
+  return "";
+};

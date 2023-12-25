@@ -13,7 +13,7 @@ import { useStoreProducts } from "@/zustand/store";
 
 /*listas*/
 
-const listCarousel = [
+/* const listCarousel = [
   {
     id: 1,
     image: "none",
@@ -91,7 +91,7 @@ const listCarousel = [
     price: "39000",
     cantDues: 2,
   },
-];
+]; */
 
 export default function CarruselNewProdTwo() {
   const { allProducts } = useStoreProducts();
@@ -103,7 +103,7 @@ export default function CarruselNewProdTwo() {
       autoplay={{ delay: 8000 }}
       spaceBetween={0}
       slidesPerView={1}
-      className="h-[600px] w-[100%]"
+      className=" w-[100%] h-[600px]"
       /* style={{zIndex:"-1"}} */
       breakpoints={{
         slidesPerGroup: 1,
@@ -129,7 +129,7 @@ export default function CarruselNewProdTwo() {
         const { _id, images, name, price, cantDues,newProduct } = item;
         return (
           <SwiperSlide key={_id} className="">
-            <div className="h-[100%] w-[100%] flex flex-col justify-center items-center">
+            <div className="w-[100%] h-[100%] flex flex-col justify-center items-center">
               <Card
                 key={_id}
                 id={_id}

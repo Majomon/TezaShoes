@@ -7,6 +7,7 @@ const routerProducts = require("./routes/products.routes");
 const routerUsers = require("./routes/users.routes");
 const routerResendEmail= require("./routes/resendEmail.routes");
 const routerCategories = require("./routes/categories.routes");
+const routerLogin = require("./routes/login.routes");
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.use("/products", routerProducts);
 app.use("/users", routerUsers);
 app.use("/resendEmail", routerResendEmail);
 app.use("/categories", routerCategories);
+app.use("/login", routerLogin);
+
 
 
 module.exports = app;

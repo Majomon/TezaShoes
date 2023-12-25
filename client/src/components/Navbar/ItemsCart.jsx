@@ -7,7 +7,7 @@ function ItemsCart() {
   const listCartArray = JSON.parse(listCart);
 
   return (
-    <div className="w-full h-full py-6 px-2 overflow-y-auto">
+    <div className="w-full max-h-[750px] py-6 px-2 overflow-auto">
       {/* <h2 className="text-lg  font-bold">Mi carrito</h2> */}
       {!listCartArray ? (
         <div>Carrito vacio :C</div>

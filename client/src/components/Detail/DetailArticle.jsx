@@ -78,6 +78,7 @@ export default function DetailArticle() {
     );
 
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
     const existingItemIndex = cartItems.findIndex(
       (item) =>
         item.product_id === detail._id &&
@@ -108,6 +109,7 @@ export default function DetailArticle() {
         size: selectedSizeInColor.size,
         sizeId: selectedSizeInColor._id,
         count,
+        stock: selectedSizeInColor.stock,
         price: detail.price,
         totalPrice: count * detail.price,
       };
@@ -122,6 +124,10 @@ export default function DetailArticle() {
     // Deshabilitar el scroll del cuerpo cuando se muestra el modal
     document.body.style.overflow = "hidden";
   };
+  
+  /* console.log(JSON.parse(localStorage.getItem("cart"))) */
+  console.log(selectedSize)
+  //console.log(selectedColor?.sizes[0].stock)
 
   return (
     <div className="w-full">

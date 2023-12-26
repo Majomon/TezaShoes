@@ -14,7 +14,7 @@ export default function Main({ product, allproduct }) {
     setDetail(product);
     setProducts(allproduct);
   }, [product]);
-
+  
   return (
     <div className="w-full min-h-screen px-10">
       <div className=" flex">

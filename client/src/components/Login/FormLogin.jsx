@@ -1,11 +1,14 @@
-"use client";
-import { validateFieldLogin, validateFormLogin } from "@/utils/validaciones";
+
 import axios from "axios";
+import { validateFieldLogin, validateFormLogin } from "@/utils/validaciones";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
-function FormLogin() {
+function FormLogin({ url }) {
+  const router = useRouter();
+
   const [error, setError] = useState({});
   const [disabled, setDisabled] = useState(true);
   const [inputForm, setInputForm] = useState({
@@ -20,6 +23,8 @@ function FormLogin() {
       setDisabled(true);
     }
   }, [inputForm]);
+
+
 
   const handlerChange = (e) => {
     const { name, value } = e.target;
@@ -40,19 +45,24 @@ function FormLogin() {
       toast.warning("Completa el formulario");
     } else {
       try {
-        const response = await axios.post(
-          "http://localhost:8080/login",
-          inputForm
-        );
+        const response = await axios.post(`${url}/login`, inputForm);
 
         if (response.status === 200) {
+          localStorage.setItem(
+            "userData",
+            JSON.stringify({
+              success: response.data.success,
+              name: response.data.user.name,
+              phone: response.data.user.phone,
+              email: response.data.user.email,
+            })
+          );
           toast.success("Logeado");
           setInputForm({
-            name: "",
-            phone: "",
             email: "",
-            message: "",
+            password: "",
           });
+          router.push("/");
         } else {
           toast.warning("Error al intentar logearse");
         }

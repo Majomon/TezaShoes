@@ -5,6 +5,7 @@ import zukeeper from "zukeeper";
 const useStoreUsers = create(
   zukeeper((setState) => ({
     users: {},
+    userData: {},
     fetchAllUsers: async () => {
       try {
         const response = await axios.get("http://localhost:8080/users");
@@ -27,7 +28,7 @@ const useStoreProducts = create(
   zukeeper((setState) => ({
     allProducts: [],
     detail: {},
-    categories:[],
+    categories: [],
     fetchDetailProduct: async (id) => {
       try {
         const response = await axios.get(

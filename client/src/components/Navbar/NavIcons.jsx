@@ -1,14 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiSearch, CiUser } from "react-icons/ci";
-import ModalShoppingCard from "./ModalShoppingCard";
-import ModalUser from "./ModalUser";
-import ModalSearch from "./ModalSearch";
+import ModalShoppingCard from "./Modal/ModalShoppingCard";
+import ModalUser from "./Modal/ModalUser";
+import ModalSearch from "./Modal/ModalSearch";
+import { useStoreProducts } from "@/zustand/store";
 
-export default function NavIcons() {
+export default function NavIcons({ products }) {
   const [isOpenCart, setIsOpenCart] = useState(false);
   const [isOpenUser, setIsOpenUser] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
+  const { setProducts, allProducts } = useStoreProducts();
+
+  useEffect(() => {
+    if (allProducts.lenght === 0) {
+      setProducts(products);
+    }
+  }, [products]);
 
   return (
     <div className="w-full flex flex-1 justify-end items-center mx-10">

@@ -27,10 +27,7 @@ const listCarousel = [
 
 export default function Categorias() {
   const { categories } = useStoreProducts();
-/*     const uniqueCategories = [...new Set(allProducts.map(item => item.category))];
-  
 
-  console.log(uniqueCategories); */
   return (
     <Swiper
       modules={[Autoplay, Navigation, Pagination, EffectCube]}
@@ -55,9 +52,9 @@ export default function Categorias() {
         },
 
         1250: {
-          slidesPerView: 4,
+          slidesPerView: 3,
           spaceBetween: 0,
-          slidesPerGroup: 4,
+          slidesPerGroup: 3,
         },
       }}
     >

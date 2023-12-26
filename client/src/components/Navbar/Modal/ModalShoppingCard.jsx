@@ -1,5 +1,5 @@
 import { CiShoppingCart } from "react-icons/ci";
-import SidebarCart from "./SidebarCart";
+import SidebarCart from "../SidebarCart";
 
 function ModalShoppingCard({ isOpenCart, setIsOpenCart }) {
   return (

@@ -6,23 +6,19 @@ import CartCards from "./CartCards";
 function ItemsCart() {
   const listCart = localStorage.getItem("cart");
   const [listCartArray,setListCartArray] = useState(JSON.parse(listCart));
-  /* const [listCartItems,setListaCardItems] = useState(listCartArray); */
-
+  
   useEffect(() => {
     setListCartArray(JSON.parse(listCart))
   },[listCart])
 
   const handleClickAllDelete = () => {
     setListCartArray([]);
-    listCartArray
-    localStorage.setItem("cart", JSON.stringify(listCartArray));
+    localStorage.removeItem("cart");
   }
-  
-
   
   return (
     <div className="w-full max-h-[750px] py-6 px-2 overflow-auto">
-      {!listCartArray/* .length === 0 */ ? (
+      {!listCartArray? (
         <div>Carrito vacio :C</div>
       ) : (
         <div>
@@ -31,8 +27,8 @@ function ItemsCart() {
           </button>
           <ul className="w-full">
             {listCartArray?.map((item, index) => {
-              const { image, name, color, price, count, totalPrice, size } = item;
-
+              const { image, name, color, price, count, totalPrice, size, stock } = item;
+              
               return (
                 <CartCards
                   key={index}
@@ -43,6 +39,7 @@ function ItemsCart() {
                   count={count}
                   totalPrice={totalPrice}
                   size={size}
+                  stock={stock}
                 />
               );
             })}

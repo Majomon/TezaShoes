@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import InfoTopDetailArticle from "./InfoTopDetailArticle";
 import { Card, Skeleton } from "@nextui-org/react";
+import Counter from "./Counter";
 
 export default function DetailArticle() {
   const [selectedColor, setSelectedColor] = useState(null);
@@ -104,7 +105,7 @@ export default function DetailArticle() {
         product_id: detail._id,
         name: detail.name,
         image: detail.images[0],
-        color:selectedColorOption.color,
+        color: selectedColorOption.color,
         colorId: selectedColorOption._id,
         size: selectedSizeInColor.size,
         sizeId: selectedSizeInColor._id,
@@ -124,9 +125,9 @@ export default function DetailArticle() {
     // Deshabilitar el scroll del cuerpo cuando se muestra el modal
     document.body.style.overflow = "hidden";
   };
-  
-  /* console.log(JSON.parse(localStorage.getItem("cart"))) */
-  console.log(selectedSize)
+
+  /*  console.log(JSON.parse(localStorage.getItem("cart"))) */
+
   //console.log(selectedColor?.sizes[0].stock)
 
   return (
@@ -195,11 +196,11 @@ export default function DetailArticle() {
           )}
         </div>
         <div className="w-full flex justify-between items-center">
-          <div className="w-3/12 flex gap-2">
-            <button onClick={decrementCount}>-</button>
-            <div>{count}</div>
-            <button onClick={incrementCount}>+</button>
-          </div>
+          <Counter
+            count={count}
+            decrementCount={decrementCount}
+            incrementCount={incrementCount}
+          />
           <button
             className="w-9/12 text-white text-sm py-4 px-6 bg-gray-900"
             onClick={addToCart}

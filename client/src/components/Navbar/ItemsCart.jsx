@@ -5,7 +5,7 @@ import CartCards from "./CartCards";
 function ItemsCart() {
   const listCart = localStorage.getItem("cart");
   const listCartArray = JSON.parse(listCart);
-  /* console.log(listCartArray); */
+  console.log(listCartArray);
   return (
     <div className="w-full max-h-[750px] py-6 px-2 overflow-auto">
       {/* <h2 className="text-lg  font-bold">Mi carrito</h2> */}

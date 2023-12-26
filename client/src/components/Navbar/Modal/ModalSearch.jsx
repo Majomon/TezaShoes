@@ -28,6 +28,10 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
     } else {
       setSearchResults([]);
     }
+    if (!isOpenSearch) {
+      setSearch("");
+      setSearchResults([]);
+    }
   }, [search, allProducts]);
 
   useEffect(() => {
@@ -58,7 +62,7 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
 
       {isOpenSearch && (
         <div className="w-full min-h-screen absolute left-0 top-16 z-10">
-          <div className="w-full h-full right-0 px-6 flex flex-col justify-center border-b-4 bg-white border-gray-500 z-10">
+          <div className="w-full h-full right-0 px-6 flex flex-col justify-center border-b-4 bg-white border-gray-500 z-10" >
             <div className="w-6/12 h-full mx-auto flex flex-col py-6">
               <div className="w-full flex border-b-2 py-4">
                 <input
@@ -103,7 +107,7 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
                 <p>No se encontraron coincidencias</p>
               )}
               {/* Mostrar el botón 'Mostrar más' si hay más de 6 resultados */}
-              {searchResults.length > 6 && (
+              {searchResults.length > 0 && searchResults.length<7 && (
                 <Link
                   onClick={handleVerTodoClick}
                   href={`/search?name=${search}`}

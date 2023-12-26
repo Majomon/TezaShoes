@@ -107,7 +107,7 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
                 <p>No se encontraron coincidencias</p>
               )}
               {/* Mostrar el botón 'Mostrar más' si hay más de 6 resultados */}
-              {searchResults.length > 0 && searchResults.length <= 6 && (
+              {searchResults.length > 0 && (
                 <Link
                   onClick={handleVerTodoClick}
                   href={`/search?name=${search}`}

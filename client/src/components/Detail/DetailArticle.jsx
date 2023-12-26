@@ -90,6 +90,11 @@ export default function DetailArticle() {
 
     if (existingItemIndex !== -1) {
       const existingItem = cartItems[existingItemIndex];
+      if (count == 0) {
+        toast.dismiss();
+        toast.warning("Poner la cantidad");
+        return;
+      }
       if (existingItem.count + count > selectedSizeInColor.stock) {
         toast.dismiss(); // Limpiar la alerta existente si hay alguna
         toast.warning(

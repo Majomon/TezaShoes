@@ -1,26 +1,34 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import CartCards from "./CartCards";
 
 function ItemsCart() {
   const listCart = localStorage.getItem("cart");
-  const listCartArray = JSON.parse(listCart);
- /*  console.log(listCartArray); */
+  const [listCartArray,setListCartArray] = useState(JSON.parse(listCart));
+  /* const [listCartItems,setListaCardItems] = useState(listCartArray); */
+
+  useEffect(() => {
+    setListCartArray(JSON.parse(listCart))
+  },[listCart])
+
+  const handleClickAllDelete = () => {
+    setListCartArray([]);
+    listCartArray
+    localStorage.setItem("cart", JSON.stringify(listCartArray));
+  }
+  
+
+  
   return (
     <div className="w-full max-h-[750px] py-6 px-2 overflow-auto">
-      {/* <h2 className="text-lg  font-bold">Mi carrito</h2> */}
-      {!listCartArray ? (
+      {!listCartArray/* .length === 0 */ ? (
         <div>Carrito vacio :C</div>
       ) : (
         <div>
-          <div className="flex gap-2">
-            {/* <h2>Imagen</h2>
-            <h2>Nombre</h2>
-            <h2>Color</h2>
-            <h2>Precio</h2>
-            <h2>Cantidad</h2>
-            <h2>SubTotal</h2> */}
-          </div>
+          <button className="flex items-center justify-center  bg-red-600 text-colorWhite-100 text-sm w-fit px-2 h-[35px] rounded-md" onClick={handleClickAllDelete}>
+            Borrar Todo
+          </button>
           <ul className="w-full">
             {listCartArray?.map((item, index) => {
               const { image, name, color, price, count, totalPrice, size } = item;

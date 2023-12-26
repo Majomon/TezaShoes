@@ -1,3 +1,5 @@
+import DeleteIcon from "../../../assets/svg/deleteIcon";
+
 export default function CartCards({
   image,
   name,
@@ -21,8 +23,11 @@ export default function CartCards({
           <p>{count}</p>
         </section>
       </div>
-      <section className="flex flex-col justify-between h-full">
-        <p>${price}</p>
+      <section className="flex flex-col items-end justify-between h-full">
+        {/* <p>${price}</p> */}
+        <button className=" cursor-pointer w-[20px]">
+            <DeleteIcon />
+        </button>
         <p>{totalPrice}</p>
       </section>
     </li>

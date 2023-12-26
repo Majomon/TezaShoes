@@ -3,7 +3,7 @@ import { useStoreProducts } from "@/zustand/store";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import InfoTopDetailArticle from "./InfoTopDetailArticle";
-import { Card, Skeleton } from "@nextui-org/react";
+import { Button, Card, Skeleton } from "@nextui-org/react";
 import Counter from "./Counter";
 
 export default function DetailArticle() {
@@ -156,7 +156,7 @@ export default function DetailArticle() {
                   key={index}
                   className={`w-8 h-8 rounded-full ${
                     selectedColor && selectedColor.color === option.color
-                      ? "border-black border-2"
+                      ? " border-colorGold-800 border-3"
                       : ""
                   }`}
                   style={{ backgroundColor: option.color }}
@@ -182,9 +182,9 @@ export default function DetailArticle() {
               size.stock > 0 ? (
                 <button
                   key={idx}
-                  className={`w-8 h-8 border-2 border-gray-950 mr-2 my-2 ${
+                  className={`w-8 h-8 border-2 border-colorGray-100 mr-2 my-2 ${
                     selectedSize && selectedSize._id === size._id
-                      ? "border-black"
+                      ? " border-colorGold-800 bg-colorGold-800 text-colorWhite-100"
                       : ""
                   }`}
                   onClick={() => handleSizeChange(size)}
@@ -209,12 +209,12 @@ export default function DetailArticle() {
             decrementCount={decrementCount}
             incrementCount={incrementCount}
           />
-          <button
-            className="w-9/12 text-white text-sm py-4 px-6 bg-gray-900"
+          <Button 
+            className="w-9/12 text-white text-sm py-4 px-6 bg-colorBlack-400 rounded-none"
             onClick={addToCart}
           >
             Agregar al carrito
-          </button>
+          </Button>
         </div>
       </div>
       {/* Modal */}

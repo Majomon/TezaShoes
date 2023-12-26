@@ -17,6 +17,13 @@ export default function CartCards({
   const decrementCount = () => {
     if (countCant > 0) {
       setCountCant(countCant - 1);
+      const listCardsCart = JSON.parse(localStorage.getItem("cart"))
+      /* console.log(listCardsCart) */
+      
+      const indexCardsCart = listCardsCart.filter(item => item.name === name);
+
+      console.log(indexCardsCart);  
+
     }
   };
 

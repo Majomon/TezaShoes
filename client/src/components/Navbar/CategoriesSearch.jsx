@@ -52,7 +52,6 @@ export default function CategoriesSearch({ isOpenSearch, setIsOpenSearch }) {
                 key={_id}
                 category={name}
                 image={image}
-                isNew={true}
                 isOpenSearch={isOpenSearch}
                 setIsOpenSearch={setIsOpenSearch}
               />

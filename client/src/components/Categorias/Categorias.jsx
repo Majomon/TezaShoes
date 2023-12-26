@@ -52,15 +52,15 @@ export default function Categorias() {
         },
 
         1250: {
-          slidesPerView: 3,
+          slidesPerView: 4,
           spaceBetween: 0,
-          slidesPerGroup: 3,
+          slidesPerGroup: 4,
         },
       }}
     >
       {categories.map((item) => {
         const { _id, image, name } = item;
-        
+
         return (
           <SwiperSlide key={_id} className="">
             <div className="h-[100%] w-[100%] flex flex-col justify-center items-center ">

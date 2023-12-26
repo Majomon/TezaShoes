@@ -204,7 +204,7 @@ export default function DetailArticle() {
         </div>
       </div>
       {/* Modal */}
-      {modalBuy && <ModalContinue productAdd={productAdd} />}
+      {modalBuy && <ModalContinue productAdd={productAdd} closeModal={closeModal}/>}
     </div>
   );
 }

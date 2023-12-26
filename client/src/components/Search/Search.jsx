@@ -12,6 +12,9 @@ export default function Search({product}){
     const { setProducts,allProducts } = useStoreProducts();
     const [isFilterOpen,setIsFilterOpen] = useState(false); 
     const searchParams = useSearchParams().get("category");
+    
+
+
 
     useEffect(()=>{
         setProducts(product.filter(item => item.category === searchParams))

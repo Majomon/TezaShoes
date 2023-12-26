@@ -1,13 +1,13 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination, EffectCube } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import "swiper/css/effect-cube";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Autoplay, EffectCube, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 /*importes de componentes*/
-import CardCategoria from "@/components/Categorias/CardCategoria";
 import { useStoreProducts } from "@/zustand/store";
+import CardCategoriesSearch from "./CardCategoriesSearch";
 
 export default function CategoriesSearch({ isOpenSearch, setIsOpenSearch }) {
   const { categories } = useStoreProducts();
@@ -48,7 +48,7 @@ export default function CategoriesSearch({ isOpenSearch, setIsOpenSearch }) {
         return (
           <SwiperSlide key={_id} className="">
             <div className="h-[100%] w-[100%] flex items-center gap-x-2">
-              <CardCategoria
+              <CardCategoriesSearch
                 key={_id}
                 category={name}
                 image={image}

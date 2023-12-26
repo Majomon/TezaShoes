@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import CardSearchResult from "../CardSearchResult";
 import CategoriesSearch from "../CategoriesSearch";
+import Link from "next/link";
 
 function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
   const { allProducts } = useStoreProducts();
@@ -27,7 +28,7 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
     } else {
       setSearchResults([]);
     }
-  }, [search]);
+  }, [search, allProducts]);
 
   useEffect(() => {
     if (isOpenSearch) {
@@ -40,6 +41,15 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
     };
   }, [isOpenSearch]);
 
+  const handleVerTodoClick = () => {
+    setIsOpenSearch(!isOpenSearch);
+  };
+
+  let displayedResults = searchResults
+    .slice()
+    .sort((a, b) => b.price - a.price)
+    .slice(0, 6);
+
   return (
     <div>
       <button className="mx-1">
@@ -48,12 +58,12 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
 
       {isOpenSearch && (
         <div className="w-full min-h-screen absolute left-0 top-16 z-10">
-          <div className="w-full min-h-[50vh] right-0 px-6 flex flex-col justify-center border-b-4 bg-white border-gray-500 z-10">
+          <div className="w-full h-full right-0 px-6 flex flex-col justify-center border-b-4 bg-white border-gray-500 z-10">
             <div className="w-6/12 h-full mx-auto flex flex-col py-6">
               <div className="w-full flex border-b-2 py-4">
                 <input
                   placeholder="¿Qué estás buscando?"
-                  className="w-full"
+                  className="w-full pl-6 focus:outline-none"
                   onChange={handlerChange}
                 />
                 <svg
@@ -70,17 +80,19 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
                   />
                 </svg>
               </div>
-              {/* Aquí puedes renderizar los resultados */}
-              {searchResults.length !== 0 && (
-                <div className="w-full h-full flex gap-4">
-                  {searchResults.map((product) => (
-                    <div key={product._id} className="py-4" onClick={()=>setIsOpenSearch(!isOpenSearch)}>
+              {/* Renderizar los resultados */}
+              {displayedResults.length !== 0 && (
+                <div className="w-full h-full grid grid-cols-3 gap-x-2 my-4">
+                  {displayedResults.map((product) => (
+                    <div
+                      key={product._id}
+                      className="py-1"
+                      onClick={() => setIsOpenSearch(!isOpenSearch)}
+                    >
                       <CardSearchResult
                         images={product.images}
                         title={product.name}
                         price={product.price}
-                        cantDues={product.cantDues}
-                        newProduct={product.newProduct}
                         id={product._id}
                       />
                     </div>
@@ -90,10 +102,23 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
               {search !== "" && searchResults.length === 0 && (
                 <p>No se encontraron coincidencias</p>
               )}
+              {/* Mostrar el botón 'Mostrar más' si hay más de 6 resultados */}
+              {searchResults.length > 6 && (
+                <Link
+                  onClick={handleVerTodoClick}
+                  href={`/search?name=${search}`}
+                  className="mt-4 bg-blue-500 text-white py-2 px-4 rounded text-center"
+                >
+                  Ver todo
+                </Link>
+              )}
               <CategoriesSearch />
             </div>
           </div>
-          <div className="w-full  bg-gray-950/80"></div>
+          <div
+            className="w-full h-[50vh] bg-gray-950/80"
+            onClick={() => setIsOpenSearch(!isOpenSearch)}
+          ></div>
         </div>
       )}
     </div>

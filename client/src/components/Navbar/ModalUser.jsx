@@ -9,7 +9,7 @@ function ModalUser({ isOpenUser, setIsOpenUser }) {
   const logOut = () => {
     window.localStorage.removeItem("userData");
     toast.success("Cerraste sesión");
-    setIsOpenUser(!isOpenUser)
+    setIsOpenUser(!isOpenUser);
   };
 
   return (

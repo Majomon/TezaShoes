@@ -84,7 +84,7 @@ export default function DetailArticle() {
       (item) =>
         item.product_id === detail._id &&
         item.colorId === selectedColorOption._id &&
-        item.size === selectedSizeInColor._id
+        item.sizeId === selectedSizeInColor._id , 
     );
 
     if (existingItemIndex !== -1) {
@@ -125,10 +125,6 @@ export default function DetailArticle() {
     // Deshabilitar el scroll del cuerpo cuando se muestra el modal
     document.body.style.overflow = "hidden";
   };
-
-  /*  console.log(JSON.parse(localStorage.getItem("cart"))) */
-
-  //console.log(selectedColor?.sizes[0].stock)
 
   return (
     <div className="w-full">

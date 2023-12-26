@@ -66,7 +66,8 @@ export default function DetailArticle() {
 
   const addToCart = () => {
     if (!selectedSize) {
-      alert("Selecciona un tamaño antes de agregar al carrito");
+      toast.dismiss();
+      toast.warning("Selecciona un tamaño antes de agregar al carrito");
       return;
     }
 
@@ -84,7 +85,7 @@ export default function DetailArticle() {
       (item) =>
         item.product_id === detail._id &&
         item.colorId === selectedColorOption._id &&
-        item.sizeId === selectedSizeInColor._id , 
+        item.sizeId === selectedSizeInColor._id
     );
 
     if (existingItemIndex !== -1) {
@@ -101,6 +102,12 @@ export default function DetailArticle() {
       existingItem.count += count;
       existingItem.totalPrice = existingItem.count * existingItem.price;
     } else {
+      if (count == 0) {
+        /* alert("poner cantidad"); */
+        toast.dismiss();
+        toast.warning("Poner la cantidad");
+        return;
+      }
       const selectedVariant = {
         product_id: detail._id,
         name: detail.name,

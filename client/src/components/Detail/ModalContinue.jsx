@@ -1,4 +1,4 @@
-function ModalContinue() {
+function ModalContinue({productAdd,closeModal}) {
   return (
     <div className="w-full min-h-screen absolute top-16 left-0 flex justify-center bg-gray-100/50 z-10">
       <div className="w-6/12 h-20 flex justify-around items-center bg-white border-2 border-gray-500 shadow-gray-950 shadow-lg ">

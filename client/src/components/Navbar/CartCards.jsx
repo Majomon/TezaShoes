@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteIcon from "../../../assets/svg/deleteIcon";
 import Counter from "../Detail/Counter";
 
@@ -14,6 +14,13 @@ export default function CartCards({
 }) {
 
   const [countCant, setCountCant] = useState(count);
+
+  useEffect(() => {
+    setCountCant(count)
+  },[count])
+
+  console.log(countCant)
+
   const decrementCount = () => {
     if (countCant > 1) {
       setCountCant(countCant - 1);

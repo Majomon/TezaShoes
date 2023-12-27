@@ -1,15 +1,16 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import CartCards from "./CartCards";
 
 function ItemsCart() {
   const listCart = localStorage.getItem("cart");
-  const [listCartArray,setListCartArray] = useState(JSON.parse(listCart));
+  const [listCartArray,setListCartArray] = useState([]);
   
   useEffect(() => {
     setListCartArray(JSON.parse(listCart))
   },[listCart])
+
+  /* console.log(listCartArray) */
 
   const handleClickAllDelete = () => {
     setListCartArray([]);

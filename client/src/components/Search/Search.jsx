@@ -91,7 +91,7 @@ export default function Search({ product }) {
       )}
 
       <Suspense fallback={<p>Loading...</p>}>
-        <section className={`grid grid-cols-13Cards w-[100%] transition-all ${isActiveShow ? "h-fit": `max-h-[780px]`} overflow-${isActiveShow ? "visible" : "hidden"} gap-y-12  gap-x-5  place-items-center `}>
+        <section className={`grid grid-cols-13Cards w-[100%] transition-all ease-in ${isActiveShow ? "h-fit" : `h-[400px] py-8`} overflow-${isActiveShow ? "visible" : "hidden"} gap-y-12  gap-x-5  place-items-center `}>
           {productsFilter.map((item) => {
             return (
               isHeightCount += 1,

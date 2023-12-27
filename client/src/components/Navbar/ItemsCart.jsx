@@ -41,6 +41,8 @@ function ItemsCart() {
                   totalPrice={totalPrice}
                   size={size}
                   stock={stock}
+                  setListCartArray={setListCartArray}
+                  listCartArray={listCartArray}
                 />
               );
             })}

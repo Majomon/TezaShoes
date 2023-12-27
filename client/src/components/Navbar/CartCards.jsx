@@ -11,6 +11,7 @@ export default function CartCards({
   color,
   size,
   stock,
+  setListCartArray,
 }) {
 
   const [countCant, setCountCant] = useState(count);
@@ -18,8 +19,6 @@ export default function CartCards({
   useEffect(() => {
     setCountCant(count)
   },[count])
-
-  console.log(countCant)
 
   const decrementCount = () => {
     if (countCant > 1) {
@@ -34,6 +33,8 @@ export default function CartCards({
       itemCardsCart[0].totalPrice = itemCardsCart[0].count * price;
 
       const currentListCardsCart = [...listCardsCart,...itemCardsCart];
+
+      /* setListCartArray(listCardsCart); */
       
       localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
     }
@@ -51,10 +52,24 @@ export default function CartCards({
       itemCardsCart[0].count = countCant + 1;
 
       const currentListCardsCart = [...listCardsCart,...itemCardsCart];
+
+      /* setListCartArray(listCardsCart); */
       
       localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
     }
   };
+
+  const hancleClickDelete = () => {
+    const listCard = JSON.parse(localStorage.getItem("cart"));
+
+    const indexListCard = listCard.findIndex(item => item.name === name && item.color === color && item.size === size);
+    listCard.splice(indexListCard,1);
+    localStorage.setItem('cart',JSON.stringify(listCard));
+    if(listCard.length === 0){
+        localStorage.removeItem("cart");
+    }
+    setListCartArray(listCard);
+  }
 
   return (
     <li className="w-full h-[110px] border-b-1 flex flex-col gap-y-[5px] items-center justify-between p-[10px] relative">
@@ -79,7 +94,7 @@ export default function CartCards({
         <p className=" text-colorGray-100">${price}</p>
         <p>${totalPrice}</p>
       </section>
-      <button className=" cursor-pointer w-[20px] absolute top-0 right-0">
+      <button className=" cursor-pointer w-[20px] absolute top-0 right-0" onClick={hancleClickDelete}>
         <DeleteIcon />
       </button>
     </li>

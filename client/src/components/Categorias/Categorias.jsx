@@ -27,7 +27,7 @@ const listCarousel = [
 
 export default function Categorias() {
   const { categories } = useStoreProducts();
-
+  
   return (
     <Swiper
       modules={[Autoplay, Navigation, Pagination, EffectCube]}
@@ -60,7 +60,7 @@ export default function Categorias() {
     >
       {categories.map((item) => {
         const { _id, image, name } = item;
-
+        
         return (
           <SwiperSlide key={_id} className="">
             <div className="h-[100%] w-[100%] flex flex-col justify-center items-center ">

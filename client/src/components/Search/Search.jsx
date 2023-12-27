@@ -47,14 +47,14 @@ export default function Search({ product }) {
   const isInvalidData = !searchParamsCategory && !searchParamsName;
 
   return (
-    <div className="flex flex-col gap-y-5 h-full">
+    <div className="w-full h-full flex flex-col gap-y-5">
       {searchParamsName ? (
         <PageRouting currentRuat={"Resultado de busqueda"} />
       ) : (
         <PageRouting currentRuat={searchParamsCategory} />
       )}
 
-      <div className="flex sm:flex-row flex-col gap-y-[15px] flex-wrap items-center w-[100%] sm:justify-between">
+      <div className="w-full flex sm:flex-row flex-col gap-y-4  flex-wrap items-center  sm:justify-between">
         {/* Orden */}
         <section className="flex flex-row items-center gap-x-[10px]">
           <p>Ordenar por</p>
@@ -88,7 +88,7 @@ export default function Search({ product }) {
       )}
 
       <Suspense fallback={<p>Loading...</p>}>
-        <section className="grid grid-cols-13Cards w-[100%] gap-y-[50px] gap-x-[20px] place-items-center">
+        <section className="grid grid-cols-13Cards w-[100%] h-full gap-y-12  gap-x-5  place-items-center">
           {productsFilter.map((item) => {
             return (
               <Card

@@ -7,11 +7,13 @@ import PageRouting from "../PageRouting/PageRouting";
 import { IconFilter } from "../../../assets/svg/IconsPageSearch";
 import SidebarFilter from "./SidebarFilter";
 import { capitalize } from "@/utils/capitalize";
+import ButtonShow from "./ButtonShow";
 
 export default function Search({ product }) {
   const { setProductsFilter, productsFilter, allProducts, setProducts } =
     useStoreProducts();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isActiveShow,setIsActiveShow] = useState(false);
   const searchParamsCategory = useSearchParams().get("category");
   const searchParamsName = useSearchParams().get("name");
 
@@ -88,7 +90,7 @@ export default function Search({ product }) {
       )}
 
       <Suspense fallback={<p>Loading...</p>}>
-        <section className="grid grid-cols-13Cards w-[100%] h-full gap-y-12  gap-x-5  place-items-center">
+        <section className={`grid grid-cols-13Cards w-[100%] h-fit max-h-[780px] overflow-${isActiveShow ? "visible" : "hidden"} border-1 gap-y-12  gap-x-5  place-items-center`}>
           {productsFilter.map((item) => {
             return (
               <Card
@@ -104,6 +106,10 @@ export default function Search({ product }) {
           })}
         </section>
       </Suspense>
+      <ButtonShow
+        isActiveShow={isActiveShow} 
+        setIsActiveShows={setIsActiveShow}
+      />
       {isInvalidData && (
         <div className="w-full h-full flex justify-center items-center">
           <h2>Producto no encontrado</h2>

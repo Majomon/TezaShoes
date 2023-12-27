@@ -3,27 +3,37 @@ import YouTube from "react-youtube";
 import style from "./VideoPlay.module.css";
 
 const VideoComponent = () => {
-  // Aquí puedes definir las opciones del video, como el tamaño, los parámetros de la URL, etc.
   const opts = {
     height: "315",
-    width: "560",
+    width: "100%",
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1, // Esto hace que el video se reproduzca automáticamente
-      controls: 0, // Esto hace que los controles de YouTube no se muestren
-      loop: 1, // Esto hace que el video se repita indefinidamente
-      playlist: "qtVOAtCAkPU", // Esto es necesario para que el loop funcione correctamente
+      autoplay: 1,
+      controls: 0,
+      loop: 1,
+      modestbranding: 1, 
+      playlist: "qtVOAtCAkPU",
     },
   };
 
+  const handleReady = (event) => {
+    event.target.mute();
+  };
+
   return (
-    <div>
-      <YouTube videoId="qtVOAtCAkPU" opts={opts} className={style.iframe} />
+    <div className={style.iframeContainer}>
+      <YouTube
+        videoId="qtVOAtCAkPU"
+        opts={opts}
+        containerClassName={style.iframeVideo}
+        onReady={handleReady}
+      />
     </div>
   );
 };
 
 export default VideoComponent;
+
+
 
 /* import React, { useEffect, useRef } from 'react';
 

@@ -27,6 +27,7 @@ const useStoreUsers = create(
 const useStoreProducts = create(
   zukeeper((setState) => ({
     allProducts: [],
+    productsFilter:[],
     detail: {},
     categories: [],
     fetchDetailProduct: async (id) => {
@@ -75,6 +76,9 @@ const useStoreProducts = create(
     },
     setCategories: (category) => {
       setState({ categories: category });
+    },
+    setProductsFilter: (productsFilter) => {
+      setState({ productsFilter: productsFilter });
     },
   }))
 );

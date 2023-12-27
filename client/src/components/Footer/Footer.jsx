@@ -40,7 +40,7 @@ const optionsContact = [
     to: "https://www.google.com/maps/place/Belgrano+170,+San+Isidro",
     icon: iconLocation,
   },
-  { name: "Email", action: "email", icon: iconEmail },
+  { name: "infotezashoes@gmail.com", action: "email", icon: iconEmail },
 ];
 function Footer() {
   return (

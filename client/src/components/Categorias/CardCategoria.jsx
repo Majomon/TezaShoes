@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Card({ image, category }) {
   return (
-    <div className=" w-[280px] h-[320px] rounded-t-lg rounded-b-lg shadow-3xl">
+    <div className=" w-[240px] h-[350px] rounded-t-lg rounded-b-lg shadow-3xl">
       <Link
         href={`/search?category=${category}`}
         className="h-[300px] w-[100%] relative"

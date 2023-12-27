@@ -14,24 +14,39 @@ export default function CartCards({
 }) {
 
   const [countCant, setCountCant] = useState(count);
+  
   const decrementCount = () => {
-    if (countCant > 0) {
+    if (count > 0) {
       setCountCant(countCant - 1);
+
       const listCardsCart = JSON.parse(localStorage.getItem("cart"))
-      
-      const itemCardsCart = listCardsCart.filter(item => item.name === name && item.color === color && item.size === size);
+    
       const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
-      /* console.log(listCardsCart) */
-      /* listCardsCart = {...listCardsCart,count: 0}; */
-      console.log(itemCardsCart,indexCardsCart);  
-      itemCardsCart.count = countCant;
-        
+      const itemCardsCart = listCardsCart.splice(indexCardsCart,1);
+
+      itemCardsCart[0].count = countCant - 1;
+      itemCardsCart[0].totalPrice = itemCardsCart[0].count * price;
+
+      const currentListCardsCart = [...listCardsCart,...itemCardsCart];
+      
+      localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
     }
   };
 
   const incrementCount = () => {
-    if (countCant < stock) {
+    if (count < stock) {
       setCountCant(countCant + 1);
+      
+      const listCardsCart = JSON.parse(localStorage.getItem("cart"))
+    
+      const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
+      const itemCardsCart = listCardsCart.splice(indexCardsCart,1);
+
+      itemCardsCart[0].count = countCant + 1;
+
+      const currentListCardsCart = [...listCardsCart,...itemCardsCart];
+      
+      localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
     }
   };
 

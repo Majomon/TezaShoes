@@ -1,8 +1,8 @@
 export const iconFacebook = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
   >
     <g fill="none">
@@ -15,11 +15,12 @@ export const iconFacebook = (
   </svg>
 );
 
+
 export const iconInstagram = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
   >
     <g fill="none" stroke="#ffffff">
@@ -32,8 +33,8 @@ export const iconInstagram = (
 export const iconWhatApp = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
   >
     <g fill="none" stroke="#ffffff">
@@ -46,8 +47,8 @@ export const iconWhatApp = (
 export const iconEmail = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
   >
     <g fill="none" stroke="#ffffff">
@@ -60,8 +61,8 @@ export const iconEmail = (
 export const iconLocation = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
   >
     <g fill="none" stroke="#ffffff">

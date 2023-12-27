@@ -19,6 +19,50 @@ const usersSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  document: {
+    type: Number,
+  },
+  birthdate: {
+    day: {
+      type: Number,
+    },
+    month: {
+      type: Number,
+    },
+    year: {
+      type: Number,
+    },
+  },
+  address: {
+    //Calle
+    street: {
+      type: String,
+    },
+    //Altura
+    number: {
+      type: Number,
+    },
+    //Piso
+    floor: {
+      type: String,
+    },
+    //Departamento
+    department: {
+      type: String,
+    },
+    //Ciudad
+    city: {
+      type: String,
+    },
+    //Código postal
+    postalCode: {
+      type: String,
+    },
+    //Provincia
+    province: {
+      type: String,
+    },
+  },
   isAdmin: {
     type: Boolean,
     default: false,

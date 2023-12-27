@@ -10,8 +10,6 @@ function ItemsCart() {
     setListCartArray(JSON.parse(listCart))
   },[listCart])
 
-  /* console.log(listCartArray) */
-
   const handleClickAllDelete = () => {
     setListCartArray([]);
     localStorage.removeItem("cart");
@@ -20,10 +18,10 @@ function ItemsCart() {
   return (
     <div className="w-full max-h-[750px] py-6 px-2 overflow-auto">
       {!listCartArray? (
-        <div>Carrito vacio :C</div>
+        <p className=" text-center">Carrito vacio :C</p>
       ) : (
         <div>
-          <button className="flex items-center justify-center  bg-red-600 text-colorWhite-100 text-sm w-fit px-2 h-[35px] rounded-md" onClick={handleClickAllDelete}>
+          <button className="flex items-center justify-center bg-red-600 text-colorWhite-100 text-sm w-fit px-2 h-[35px] rounded-md" onClick={handleClickAllDelete}>
             Borrar Todo
           </button>
           <ul className="w-full">
@@ -42,7 +40,6 @@ function ItemsCart() {
                   size={size}
                   stock={stock}
                   setListCartArray={setListCartArray}
-                  listCartArray={listCartArray}
                 />
               );
             })}

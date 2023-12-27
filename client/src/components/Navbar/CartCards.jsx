@@ -15,7 +15,6 @@ export default function CartCards({
 }) {
 
   const [countCant, setCountCant] = useState(count);
-  const [listCard,setlistCard] = useState();
 
   useEffect(() => {
     setCountCant(count)
@@ -34,6 +33,8 @@ export default function CartCards({
       itemCardsCart[0].totalPrice = itemCardsCart[0].count * price;
 
       const currentListCardsCart = [...listCardsCart,...itemCardsCart];
+
+      /* setListCartArray(listCardsCart); */
       
       localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
     }
@@ -51,6 +52,8 @@ export default function CartCards({
       itemCardsCart[0].count = countCant + 1;
 
       const currentListCardsCart = [...listCardsCart,...itemCardsCart];
+
+      /* setListCartArray(listCardsCart); */
       
       localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
     }
@@ -58,7 +61,6 @@ export default function CartCards({
 
   const hancleClickDelete = () => {
     const listCard = JSON.parse(localStorage.getItem("cart"));
-    /* setlistCard(JSON.parse(localStorage.getItem("cart"))) */
 
     const indexListCard = listCard.findIndex(item => item.name === name && item.color === color && item.size === size);
     listCard.splice(indexListCard,1);
@@ -67,8 +69,6 @@ export default function CartCards({
         localStorage.removeItem("cart");
     }
     setListCartArray(listCard);
-
-    console.log(listCard.length);
   }
 
   return (

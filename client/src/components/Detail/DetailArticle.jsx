@@ -1,10 +1,11 @@
 "use client";
 import { useStoreProducts } from "@/zustand/store";
-import { Card, Skeleton } from "@nextui-org/react";
+import { Button, Card, Skeleton } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import InfoTopDetailArticle from "./InfoTopDetailArticle";
 import ModalContinue from "./ModalContinue";
+import Counter from "./Counter";
 
 export default function DetailArticle() {
   const [selectedColor, setSelectedColor] = useState(null);
@@ -40,6 +41,8 @@ export default function DetailArticle() {
     }
   };
 
+  /* console.log(selectedSize); */
+
   const handleSizeChange = (selectedSize) => {
     setSelectedSize(selectedSize);
     setMaxCount(selectedSize.stock);
@@ -66,7 +69,8 @@ export default function DetailArticle() {
 
   const addToCart = () => {
     if (!selectedSize) {
-      alert("Selecciona un tamaño antes de agregar al carrito");
+      toast.dismiss();
+      toast.warning("Selecciona un tamaño antes de agregar al carrito");
       return;
     }
 
@@ -79,15 +83,21 @@ export default function DetailArticle() {
     );
 
     let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
     const existingItemIndex = cartItems.findIndex(
       (item) =>
         item.product_id === detail._id &&
         item.colorId === selectedColorOption._id &&
-        item.size === selectedSizeInColor._id
+        item.sizeId === selectedSizeInColor._id
     );
 
     if (existingItemIndex !== -1) {
       const existingItem = cartItems[existingItemIndex];
+      if (count == 0) {
+        toast.dismiss();
+        toast.warning("Poner la cantidad");
+        return;
+      }
       if (existingItem.count + count > selectedSizeInColor.stock) {
         toast.dismiss(); // Limpiar la alerta existente si hay alguna
         toast.warning(
@@ -100,6 +110,12 @@ export default function DetailArticle() {
       existingItem.count += count;
       existingItem.totalPrice = existingItem.count * existingItem.price;
     } else {
+      if (count == 0) {
+        /* alert("poner cantidad"); */
+        toast.dismiss();
+        toast.warning("Poner la cantidad");
+        return;
+      }
       const selectedVariant = {
         product_id: detail._id,
         name: detail.name,
@@ -109,6 +125,7 @@ export default function DetailArticle() {
         size: selectedSizeInColor.size,
         sizeId: selectedSizeInColor._id,
         count,
+        stock: selectedSizeInColor.stock,
         price: detail.price,
         totalPrice: count * detail.price,
       };
@@ -142,7 +159,7 @@ export default function DetailArticle() {
                   key={index}
                   className={`w-8 h-8 rounded-full ${
                     selectedColor && selectedColor.color === option.color
-                      ? "border-black border-2"
+                      ? " border-colorGold-800 border-3"
                       : ""
                   }`}
                   style={{ backgroundColor: option.color }}
@@ -168,9 +185,9 @@ export default function DetailArticle() {
               size.stock > 0 ? (
                 <button
                   key={idx}
-                  className={`w-8 h-8 border-2 border-gray-950 mr-2 my-2 ${
+                  className={`w-8 h-8 border-2 border-colorGray-100 mr-2 my-2 ${
                     selectedSize && selectedSize._id === size._id
-                      ? "border-black"
+                      ? " border-colorGold-800 bg-colorGold-800 text-colorWhite-100"
                       : ""
                   }`}
                   onClick={() => handleSizeChange(size)}
@@ -180,7 +197,7 @@ export default function DetailArticle() {
               ) : (
                 <button
                   key={idx}
-                  className="w-8 h-8 border-2 bg-gray-400 border-gray-400"
+                  className="w-8 h-8 border-2 "
                   disabled
                 >
                   {size.size}
@@ -190,17 +207,17 @@ export default function DetailArticle() {
           )}
         </div>
         <div className="w-full flex justify-between items-center">
-          <div className="w-3/12 flex gap-2">
-            <button onClick={decrementCount}>-</button>
-            <div>{count}</div>
-            <button onClick={incrementCount}>+</button>
-          </div>
-          <button
-            className="w-9/12 text-white text-sm py-4 px-6 bg-gray-900"
+          <Counter
+            count={count}
+            decrementCount={decrementCount}
+            incrementCount={incrementCount}
+          />
+          <Button
+            className="w-9/12 text-white text-sm py-4 px-6 bg-colorBlack-400 rounded-none"
             onClick={addToCart}
           >
             Agregar al carrito
-          </button>
+          </Button>
         </div>
       </div>
       {/* Modal */}

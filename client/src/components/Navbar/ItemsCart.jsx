@@ -1,41 +1,48 @@
-"use client"
+"use client";
+
+import { useEffect, useState } from "react";
+import CartCards from "./CartCards";
+
 function ItemsCart() {
   const listCart = localStorage.getItem("cart");
-  const listCartArray = JSON.parse(listCart);
+  const [listCartArray,setListCartArray] = useState(JSON.parse(listCart));
+  
+  useEffect(() => {
+    setListCartArray(JSON.parse(listCart))
+  },[listCart])
 
+  const handleClickAllDelete = () => {
+    setListCartArray([]);
+    localStorage.removeItem("cart");
+  }
+  
   return (
-    <div className="w-full h-96 py-6 px-2 overflow-y-auto">
-      {/* <h2 className="text-lg  font-bold">Mi carrito</h2> */}
-      {!listCartArray ? (
+    <div className="w-full max-h-[750px] py-6 px-2 overflow-auto">
+      {!listCartArray? (
         <div>Carrito vacio :C</div>
       ) : (
         <div>
-          <div className="flex gap-2">
-            {/* <h2>Imagen</h2>
-            <h2>Nombre</h2>
-            <h2>Color</h2>
-            <h2>Precio</h2>
-            <h2>Cantidad</h2>
-            <h2>SubTotal</h2> */}
-          </div>
+          <button className="flex items-center justify-center  bg-red-600 text-colorWhite-100 text-sm w-fit px-2 h-[35px] rounded-md" onClick={handleClickAllDelete}>
+            Borrar Todo
+          </button>
           <ul className="w-full">
-            {listCartArray?.map((item, index) => (
-              <li key={index} className="w-full h-full flex items-center gap-2">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-16 h-16 mr-2"
+            {listCartArray?.map((item, index) => {
+              const { image, name, color, price, count, totalPrice, size, stock } = item;
+              
+              return (
+                <CartCards
+                  key={index}
+                  name={name}
+                  image={image}
+                  color={color}
+                  price={price}
+                  count={count}
+                  totalPrice={totalPrice}
+                  size={size}
+                  stock={stock}
                 />
-                <h2>{item.name}</h2>
-                <div
-                  className={`w-8 h-8 border-gray-900 border-2 rounded-full`}
-                  style={{ backgroundColor: item.color }}
-                ></div>
-                <p>{item.price}</p>
-                <p>{item.count}</p>
-                <p>{item.totalPrice}</p>
-              </li>
-            ))}
+              );
+            })}
           </ul>
         </div>
       )}

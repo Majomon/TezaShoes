@@ -18,12 +18,14 @@ export default function CartCards({
     if (countCant > 0) {
       setCountCant(countCant - 1);
       const listCardsCart = JSON.parse(localStorage.getItem("cart"))
-      /* console.log(listCardsCart) */
       
-      const indexCardsCart = listCardsCart.filter(item => item.name === name);
-
-      console.log(indexCardsCart);  
-
+      const itemCardsCart = listCardsCart.filter(item => item.name === name && item.color === color && item.size === size);
+      const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
+      /* console.log(listCardsCart) */
+      /* listCardsCart = {...listCardsCart,count: 0}; */
+      console.log(itemCardsCart,indexCardsCart);  
+      itemCardsCart.count = countCant;
+        
     }
   };
 

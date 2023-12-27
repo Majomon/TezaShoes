@@ -40,6 +40,8 @@ export default function DetailArticle() {
     }
   };
 
+  /* console.log(selectedSize); */
+
   const handleSizeChange = (selectedSize) => {
     setSelectedSize(selectedSize);
     setMaxCount(selectedSize.stock);
@@ -194,7 +196,7 @@ export default function DetailArticle() {
               ) : (
                 <button
                   key={idx}
-                  className="w-8 h-8 border-2 bg-gray-400 border-gray-400"
+                  className="w-8 h-8 border-2 bg-gray-400 border-red-600"
                   disabled
                 >
                   {size.size}

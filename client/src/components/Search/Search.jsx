@@ -14,6 +14,7 @@ export default function Search({ product }) {
     useStoreProducts();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isActiveShow,setIsActiveShow] = useState(false);
+  let isHeightCount = 0;
   const searchParamsCategory = useSearchParams().get("category");
   const searchParamsName = useSearchParams().get("name");
 
@@ -90,9 +91,10 @@ export default function Search({ product }) {
       )}
 
       <Suspense fallback={<p>Loading...</p>}>
-        <section className={`grid grid-cols-13Cards w-[100%] ${isActiveShow ? "h-fit": "max-h-[780px]"} overflow-${isActiveShow ? "visible" : "hidden"} gap-y-12  gap-x-5  place-items-center transition ease-in-out delay-150`}>
+        <section className={`grid grid-cols-13Cards w-[100%] transition-all ${isActiveShow ? "h-fit": `max-h-[780px]`} overflow-${isActiveShow ? "visible" : "hidden"} gap-y-12  gap-x-5  place-items-center `}>
           {productsFilter.map((item) => {
             return (
+              isHeightCount += 1,
               <Card
                 key={item._id}
                 images={item.images}
@@ -101,7 +103,7 @@ export default function Search({ product }) {
                 cantDues={item.cantDues}
                 isNew={item.newProduct}
                 id={item._id}
-              />
+              /> 
             );
           })}
         </section>
@@ -109,6 +111,7 @@ export default function Search({ product }) {
       <ButtonShow
         isActiveShow={isActiveShow} 
         setIsActiveShows={setIsActiveShow}
+        isHeightCount={isHeightCount}
       />
       {isInvalidData && (
         <div className="w-full h-full flex justify-center items-center">

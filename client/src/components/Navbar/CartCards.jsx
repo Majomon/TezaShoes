@@ -14,9 +14,8 @@ export default function CartCards({
 }) {
 
   const [countCant, setCountCant] = useState(count);
-  
   const decrementCount = () => {
-    if (count > 0) {
+    if (countCant > 1) {
       setCountCant(countCant - 1);
 
       const listCardsCart = JSON.parse(localStorage.getItem("cart"))
@@ -34,7 +33,7 @@ export default function CartCards({
   };
 
   const incrementCount = () => {
-    if (count < stock) {
+    if (countCant < stock) {
       setCountCant(countCant + 1);
       
       const listCardsCart = JSON.parse(localStorage.getItem("cart"))
@@ -69,7 +68,6 @@ export default function CartCards({
           count={countCant}
           incrementCount={incrementCount}
           decrementCount={decrementCount}
-          stock={stock}
         />
         <p className=" text-colorGray-100">${price}</p>
         <p>${totalPrice}</p>

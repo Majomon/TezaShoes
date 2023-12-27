@@ -116,7 +116,10 @@ function ModalSearch({ isOpenSearch, setIsOpenSearch }) {
                   Ver todo
                 </Link>
               )}
-              <CategoriesSearch />
+              <CategoriesSearch
+                isOpenSearch={isOpenSearch}
+                setIsOpenSearch={setIsOpenSearch}
+              />
             </div>
           </div>
           <div

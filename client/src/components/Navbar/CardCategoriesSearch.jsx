@@ -1,9 +1,19 @@
 import Link from "next/link";
 
-export default function CardCategoriesSearch({ image, category }) {
+export default function CardCategoriesSearch({
+  image,
+  category,
+  isOpenSearch,
+  setIsOpenSearch,
+}) {
+  const closeModal = () => {
+    setIsOpenSearch(!isOpenSearch);
+  };
+  
   return (
     <div className=" w-[140px] h-[140px] rounded-t-lg rounded-b-lg shadow-3xl">
       <Link
+        onClick={closeModal}
         href={`/search?category=${category}`}
         className="h-[140px] w-[100%] relative"
       >

@@ -19,7 +19,9 @@ export default function MainHome({ product }) {
       <CarruselNewProdTwo />
       <CardInfoSet />
       <VideoPlay />
-      <Categorias />
+      <div className="w-10/12 h-full mx-auto">
+        <Categorias />
+      </div>
     </div>
   );
 }

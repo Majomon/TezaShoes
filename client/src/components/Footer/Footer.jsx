@@ -44,7 +44,7 @@ const optionsContact = [
 ];
 function Footer() {
   return (
-    <footer className="w-9/12 h-full mx-auto mb-6">
+    <footer className="w-9/12 h-full mx-auto mt-16 mb-6">
       <div className="w-full flex justify-between">
         {/* Redes */}
         <div>

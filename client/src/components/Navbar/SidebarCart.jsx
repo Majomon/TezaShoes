@@ -1,8 +1,9 @@
 import { CgClose } from "react-icons/cg";
 import ItemsCart from "./ItemsCart";
 import { Button } from "@nextui-org/react";
+import TotalCart from "./TotalCart";
 
-export default function SidebarCart({ isOpenCart, setIsOpenCart }) {
+export default function SidebarCart({ isOpenCart, setIsOpenCart, setTotalCart, totalCart }) {
   return (
     <div
       className={`${
@@ -18,13 +19,7 @@ export default function SidebarCart({ isOpenCart, setIsOpenCart }) {
             </button>
           </div>
           <ItemsCart />
-          <section className="px-[20px] Py-[5px] border-t-1 border-colorBlack-400 flex flex-col gap-y-[10px]">
-            <article className="flex flex-row justify-between">
-                <h3 className=" text-lg font-light">Total</h3>
-                <p className=" text-lg font-semibold">$30.000</p>
-            </article>
-            <Button className=" bg-colorBlack-400 text-colorWhite-100 w-[100%] rounded-none">Completar Compra</Button>
-          </section>
+          
         </div>
       </div>
     </div>

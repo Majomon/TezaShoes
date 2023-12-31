@@ -83,4 +83,15 @@ const useStoreProducts = create(
   }))
 );
 
-export { useStoreUsers, useStoreProducts };
+
+const totalSidebarCart = create(
+  zukeeper((setState) => ({
+    totalCart: 0,
+    setTotalCart: () => {
+      setState((state) => ({totalCart: state.totalCart + 1}))
+    }
+  }))
+);
+
+
+export { useStoreUsers, useStoreProducts, totalSidebarCart};

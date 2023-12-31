@@ -97,7 +97,7 @@ export default function Carousel() {
             /> : index === maxItems ? <LastImageInGallery 
               index={index}
               image={image}
-              handlerSelectImg={handlerSelectImg}
+              handlerImgModal={handlerImgModal}
             />: ""
           ))}
         </div>

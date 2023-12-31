@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CarouselModal from "./CarouselModal";
 import { useStoreProducts } from "@/zustand/store";
 import { Card, Skeleton } from "@nextui-org/react";
+import LastImageInGallery from "./LastImageInGallery";
 
 export default function Carousel() {
   const [firstImage, setFirstImage] = useState(null);
@@ -86,14 +87,18 @@ export default function Carousel() {
         <div className="w-2/12 h-full flex flex-col gap-2 ">
           {detail.images?.map((image, index) => (
             contItems += 1,
-            contItems < maxItems ? 
+            contItems < maxItems && contItems !== 7? 
             <img
               key={index}
               src={image}
               alt={`Image ${index + 1}`}
               className="w-[50px] h-[50px] rounded-sm  cursor-pointer hover:shadow-md hover:shadow-gray-600 border-1 border-gray-400"
               onClick={() => handlerSelectImg(image)}
-            /> : " "
+            /> : index === maxItems ? <LastImageInGallery 
+              index={index}
+              image={image}
+              handlerSelectImg={handlerSelectImg}
+            />: ""
           ))}
         </div>
       )}

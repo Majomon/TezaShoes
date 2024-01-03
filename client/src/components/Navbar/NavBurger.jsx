@@ -13,6 +13,7 @@ export default function NavBurger({categories}) {
     setCategories(categories);
   }, [categories]);
 
+
   return (
     <div className="flex flex-1 items-center mx-10">
       {/* BURGER MENU */}

@@ -1,14 +1,35 @@
 "use client";
 import { useEffect, useState } from "react";
 import CartCards from "./CartCards";
+import TotalCart from "./TotalCart";
 
 function ItemsCart() {
   const listCart = localStorage.getItem("cart");
   const [listCartArray,setListCartArray] = useState([]);
+  const [totalCart,setTotalCart] = useState(0);
+
   
   useEffect(() => {
-    setListCartArray(JSON.parse(listCart))
+    setListCartArray(JSON.parse(listCart));
   },[listCart])
+  
+  useEffect(()=>{
+    const listCardsCart= JSON.parse(listCart);
+    /* console.log(listCardsCart); */
+    const resultTotal = listCardsCart?.reduce((acc,curr) => {
+      return acc + curr.totalPrice;
+    },0);
+
+    setTotalCart(resultTotal);
+
+    /* if(resultTotal === 0){
+      localStorage.setItem('totalCardsCart',JSON.stringify(0));
+    }else{
+      localStorage.setItem('totalCardsCart',JSON.stringify(totalCart));
+    } */
+  },[listCart])
+
+  console.log(totalCart)
 
   const handleClickAllDelete = () => {
     setListCartArray([]);
@@ -39,11 +60,15 @@ function ItemsCart() {
                   totalPrice={totalPrice}
                   size={size}
                   stock={stock}
+                  listCartArray={listCartArray}
                   setListCartArray={setListCartArray}
                 />
               );
             })}
           </ul>
+          <TotalCart 
+            totalCart={totalCart}
+          />
         </div>
       )}
       {/* RECORDATORIO - HACER UN TABLA EN LUGAR DE TODO ESTE CHOCLO */}

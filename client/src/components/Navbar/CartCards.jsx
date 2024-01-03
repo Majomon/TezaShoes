@@ -12,20 +12,33 @@ export default function CartCards({
   size,
   stock,
   setListCartArray,
+  listCartArray
 }) {
 
   const [countCant, setCountCant] = useState(count);
   const [subTotalPrice,setSubTotalPrice] = useState(totalPrice);
-
+  /* const [totalCart,setTotalCart] = useState(0); */
+  const listCardsCart = JSON.parse(localStorage.getItem("cart"));
+  
   useEffect(() => {
     setCountCant(count)
   },[count])
+  
+  /* useEffect(()=>{
+    const resultTotal = listCardsCart.reduce((acc,curr) => {
+      return acc + curr.totalPrice;
+    },0);
+    setTotalCart(resultTotal);
+    localStorage.setItem('totalCardsCart',JSON.stringify(totalCart));
+  },[listCardsCart]) */
+
+  /* console.log(totalCart) */
 
   const decrementCount = () => {
     if (countCant > 1) {
       setCountCant(countCant - 1);
 
-      const listCardsCart = JSON.parse(localStorage.getItem("cart"))
+      /* const listCardsCart = JSON.parse(localStorage.getItem("cart")) */
     
       const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
       const itemCardsCart = listCardsCart.splice(indexCardsCart,1);
@@ -46,7 +59,7 @@ export default function CartCards({
     if (countCant < stock) {
       setCountCant(countCant + 1);
       
-      const listCardsCart = JSON.parse(localStorage.getItem("cart"))
+      /* const listCardsCart = JSON.parse(localStorage.getItem("cart")) */
     
       const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
       const itemCardsCart = listCardsCart.splice(indexCardsCart,1);
@@ -63,44 +76,44 @@ export default function CartCards({
   };
 
   const hancleClickDelete = () => {
-    const listCard = JSON.parse(localStorage.getItem("cart"));
+    /* const listCard = JSON.parse(localStorage.getItem("cart")); */
 
-    const indexListCard = listCard.findIndex(item => item.name === name && item.color === color && item.size === size);
-    listCard.splice(indexListCard,1);
-    localStorage.setItem('cart',JSON.stringify(listCard));
+    const indexListCard = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
+    listCardsCart.splice(indexListCard,1);
+    localStorage.setItem('cart',JSON.stringify(listCardsCart));
 
-    if(listCard.length === 0){
+    if(listCardsCart.length === 0){
         localStorage.removeItem("cart");
     }
-    setListCartArray(listCard);
+    setListCartArray(listCardsCart);
   }
 
   return (
-    <li className="w-full h-[110px] border-b-1 flex flex-col gap-y-[5px] items-center justify-between p-[10px] relative">
-      <div className="flex gap-x-[8px] w-full h-16">
-        <img src={image} alt={name} className="w-16 h-16" />
-        <section className="flex flex-col justify-between h-full">
-          <h2 className=" text-md font-bold text-colorBlack-400">{name}</h2>
-          <div
-            className={`w-[16px] h-[16px] border-gray-900 border-1 rounded-full`}
-            style={{ backgroundColor: color }}
-          ></div>
-          <p className=" text-sm">{size}</p>
+      <li className="w-full h-[110px] border-b-1 flex flex-col gap-y-[5px] items-center justify-between p-[10px] relative">
+        <div className="flex gap-x-[8px] w-full h-16">
+          <img src={image} alt={name} className="w-16 h-16" />
+          <section className="flex flex-col justify-between h-full">
+            <h2 className=" text-md font-bold text-colorBlack-400">{name}</h2>
+            <div
+              className={`w-[16px] h-[16px] border-gray-900 border-1 rounded-full`}
+              style={{ backgroundColor: color }}
+            ></div>
+            <p className=" text-sm">{size}</p>
+          </section>
+        </div>
+        <section className="flex items-end justify-between w-full">
+          {/* <p>{count}</p> */}
+          <Counter
+            count={countCant}
+            incrementCount={incrementCount}
+            decrementCount={decrementCount}
+          />
+          <p className=" text-colorGray-100">${price}</p>
+          <p>${subTotalPrice}</p>
         </section>
-      </div>
-      <section className="flex items-end justify-between w-full">
-        {/* <p>{count}</p> */}
-        <Counter
-          count={countCant}
-          incrementCount={incrementCount}
-          decrementCount={decrementCount}
-        />
-        <p className=" text-colorGray-100">${price}</p>
-        <p>${subTotalPrice}</p>
-      </section>
-      <button className=" cursor-pointer w-[20px] absolute top-0 right-0" onClick={hancleClickDelete}>
-        <DeleteIcon />
-      </button>
-    </li>
+        <button className=" cursor-pointer w-[20px] absolute top-0 right-0" onClick={hancleClickDelete}>
+          <DeleteIcon />
+        </button>
+      </li>
   );
 }

@@ -119,9 +119,9 @@ export default function CarruselNewProdTwo() {
           slidesPerGroup: 3,
         },
         1250: {
-          slidesPerView: 4,
+          slidesPerView: 5,
           spaceBetween: 0,
-          slidesPerGroup: 4,
+          slidesPerGroup: 5,
         },
       }}
     >

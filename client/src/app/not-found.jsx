@@ -6,7 +6,7 @@ import fotoError from "../../assets/image/fotoError.png";
 function NotFound() {
   return (
     <main className="w-full min-h-screen text-black flex flex-col items-center justify-center overflow-hidden">
-      <Image src={fotoError} className="w-[150px] h-[150px]"/>
+      <Image src={fotoError} className="w-[150px] h-[150px]" />
       <p className="text-xl mt-2 mb-2 leading-tight tracking-wide ">
         Página no encontrada, le recomendamos volver a
       </p>

@@ -43,6 +43,7 @@ export default function CartCards({
     if (countCant > 1) {
       setCountCant(countCant - 1);
       const currentListCart = [...listCartArray];
+      /* const currentListCart = [...listCartArray];
 
       const findCardsCart = currentListCart.find((item) => item.name === name && item.color === color && item.size === size);
 
@@ -51,7 +52,7 @@ export default function CartCards({
       if(findCardsCart){
           let itemCardCurrent = currentListCart.map((item,index) => {
           if(item.name === findCardsCart.name && item.color === findCardsCart.color && item.size === findCardsCart.size){
-            /* console.log(countCant - 1) */
+            console.log(countCant - 1)
             indexCardsCart = index;
             return {...item,count : countCant - 1}
           }else{
@@ -60,9 +61,22 @@ export default function CartCards({
         })
         itemCardCurrent = itemCardCurrent[indexCardsCart];
         currentListCart.splice(indexCardsCart,1,itemCardCurrent);
-        
-      }
+        localStorage.setItem('cart',JSON.stringify(currentListCart));
+      } */
       /* setSubTotalPrice(currentListCart[indexCardsCart].count * price); */
+      const indexCardsCart = currentListCart.findIndex(item => item.name === name && item.color === color && item.size === size);
+      const itemCardsCart = currentListCart.splice(indexCardsCart,1);
+      const newItemCart = itemCardsCart[0];
+      console.log(currentListCart,newItemCart);
+
+      newItemCart.count = countCant - 1;
+      newItemCart.totalPrice = newItemCart.count * price;
+
+      setSubTotalPrice(newItemCart.totalPrice);
+
+      currentListCart.splice(indexCardsCart,0,newItemCart);
+      /* const currentListCardsCart = [...currentListCart,...itemCardsCart]; */
+      
       localStorage.setItem('cart',JSON.stringify(currentListCart));
     }
   };
@@ -73,26 +87,39 @@ export default function CartCards({
       
       const currentListCart = [...listCartArray];
 
-      const findCardsCart = currentListCart.find((item) => item.name === name && item.color === color && item.size === size);
+      /* const findCardsCart = currentListCart.find((item) => item.name === name && item.color === color && item.size === size); */
+      const indexCardsCart = currentListCart.findIndex(item => item.name === name && item.color === color && item.size === size);
+      const itemCardsCart = currentListCart.splice(indexCardsCart,1);
+      const newItemCart = itemCardsCart[0];
 
-      let indexCardsCart = 0;
+      newItemCart.count = countCant + 1;
+      newItemCart.totalPrice = newItemCart.count * price;
+
+      setSubTotalPrice(newItemCart.totalPrice);
+
+      currentListCart.splice(indexCardsCart,0,newItemCart);
+      
+      localStorage.setItem('cart',JSON.stringify(currentListCart));
+
+      /* let indexCardsCart = 0;
 
       if(findCardsCart){
-          let itemCardCurrent = currentListCart.map((item,index) => {
+          const itemCardCurrent = currentListCart.map((item,index) => {
           if(item.name === findCardsCart.name && item.color === findCardsCart.color && item.size === findCardsCart.size){
-            /* console.log(countCant - 1) */
+            console.log(countCant + 1)
             indexCardsCart = index;
             return {...item,count : countCant + 1}
           }else{
             return
           }
         })
-        itemCardCurrent = itemCardCurrent[indexCardsCart];
-        currentListCart.splice(indexCardsCart,1,itemCardCurrent);
+        const valueItemCart = itemCardCurrent[indexCardsCart];
+        currentListCart.splice(indexCardsCart,1,valueItemCart);
+        localStorage.setItem('cart',JSON.stringify(currentListCart));
         
-      }
+      } */
       /* setSubTotalPrice(currentListCart[indexCardsCart].count * price); */
-      localStorage.setItem('cart',JSON.stringify(currentListCart));
+  
     }
   };
 

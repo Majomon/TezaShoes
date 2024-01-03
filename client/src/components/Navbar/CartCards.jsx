@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DeleteIcon from "../../../assets/svg/deleteIcon";
 import Counter from "../Detail/Counter";
+import ItemsCart from "./ItemsCart";
 
 export default function CartCards({
   image,
@@ -12,46 +13,57 @@ export default function CartCards({
   size,
   stock,
   setListCartArray,
-  listCartArray
+  listCartArray,
+  setTotalCart
 }) {
 
-  const [countCant, setCountCant] = useState(count);
+  const [countCant, setCountCant] = useState(null);
   const [subTotalPrice,setSubTotalPrice] = useState(totalPrice);
-  /* const [totalCart,setTotalCart] = useState(0); */
-  const listCardsCart = JSON.parse(localStorage.getItem("cart"));
+
   
   useEffect(() => {
     setCountCant(count)
   },[count])
-  
-  /* useEffect(()=>{
+
+ /*  useEffect(()=>{
+    const listCardsCart = JSON.parse(localStorage.getItem("cart"))
     const resultTotal = listCardsCart.reduce((acc,curr) => {
       return acc + curr.totalPrice;
     },0);
     setTotalCart(resultTotal);
-    localStorage.setItem('totalCardsCart',JSON.stringify(totalCart));
-  },[listCardsCart]) */
-
-  /* console.log(totalCart) */
+  },[countCant]) 
+ */
+  const resultTotal = () => {
+    listCartArray?.reduce((acc,curr) => {
+      return acc + curr.totalPrice;
+    },0);
+  }
 
   const decrementCount = () => {
     if (countCant > 1) {
       setCountCant(countCant - 1);
+      const currentListCart = [...listCartArray];
 
-      /* const listCardsCart = JSON.parse(localStorage.getItem("cart")) */
-    
-      const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
-      const itemCardsCart = listCardsCart.splice(indexCardsCart,1);
+      const findCardsCart = currentListCart.find((item) => item.name === name && item.color === color && item.size === size);
 
-      itemCardsCart[0].count = countCant - 1;
-      itemCardsCart[0].totalPrice = itemCardsCart[0].count * price;
+      let indexCardsCart = 0;
 
-      setSubTotalPrice(itemCardsCart[0].count * price);
-
-      const currentListCardsCart = [...listCardsCart,...itemCardsCart];
-      
-      localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
-      /* setListCartArray(itemCardsCart) */
+      if(findCardsCart){
+          let itemCardCurrent = currentListCart.map((item,index) => {
+          if(item.name === findCardsCart.name && item.color === findCardsCart.color && item.size === findCardsCart.size){
+            /* console.log(countCant - 1) */
+            indexCardsCart = index;
+            return {...item,count : countCant - 1}
+          }else{
+            return
+          }
+        })
+        itemCardCurrent = itemCardCurrent[indexCardsCart];
+        currentListCart.splice(indexCardsCart,1,itemCardCurrent);
+        
+      }
+      /* setSubTotalPrice(currentListCart[indexCardsCart].count * price); */
+      localStorage.setItem('cart',JSON.stringify(currentListCart));
     }
   };
 
@@ -59,24 +71,33 @@ export default function CartCards({
     if (countCant < stock) {
       setCountCant(countCant + 1);
       
-      /* const listCardsCart = JSON.parse(localStorage.getItem("cart")) */
-    
-      const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
-      const itemCardsCart = listCardsCart.splice(indexCardsCart,1);
+      const currentListCart = [...listCartArray];
 
-      itemCardsCart[0].count = countCant + 1;
-      itemCardsCart[0].totalPrice = itemCardsCart[0].count * price;
+      const findCardsCart = currentListCart.find((item) => item.name === name && item.color === color && item.size === size);
 
-      setSubTotalPrice(itemCardsCart[0].count * price);
+      let indexCardsCart = 0;
 
-      const currentListCardsCart = [...listCardsCart,...itemCardsCart];
-      
-      localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
+      if(findCardsCart){
+          let itemCardCurrent = currentListCart.map((item,index) => {
+          if(item.name === findCardsCart.name && item.color === findCardsCart.color && item.size === findCardsCart.size){
+            /* console.log(countCant - 1) */
+            indexCardsCart = index;
+            return {...item,count : countCant + 1}
+          }else{
+            return
+          }
+        })
+        itemCardCurrent = itemCardCurrent[indexCardsCart];
+        currentListCart.splice(indexCardsCart,1,itemCardCurrent);
+        
+      }
+      /* setSubTotalPrice(currentListCart[indexCardsCart].count * price); */
+      localStorage.setItem('cart',JSON.stringify(currentListCart));
     }
   };
 
   const hancleClickDelete = () => {
-    /* const listCard = JSON.parse(localStorage.getItem("cart")); */
+    const listCardsCart = JSON.parse(localStorage.getItem("cart"));
 
     const indexListCard = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
     listCardsCart.splice(indexListCard,1);

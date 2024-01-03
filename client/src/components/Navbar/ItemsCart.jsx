@@ -12,24 +12,19 @@ function ItemsCart() {
   useEffect(() => {
     setListCartArray(JSON.parse(listCart));
   },[listCart])
+
+  /* console.log(listCartArray) */
   
   useEffect(()=>{
-    const listCardsCart= JSON.parse(listCart);
-    /* console.log(listCardsCart); */
-    const resultTotal = listCardsCart?.reduce((acc,curr) => {
+    const resultTotal = listCartArray?.reduce((acc,curr) => {
       return acc + curr.totalPrice;
     },0);
 
     setTotalCart(resultTotal);
 
-    /* if(resultTotal === 0){
-      localStorage.setItem('totalCardsCart',JSON.stringify(0));
-    }else{
-      localStorage.setItem('totalCardsCart',JSON.stringify(totalCart));
-    } */
-  },[listCart])
+  },[listCartArray])
 
-  console.log(totalCart)
+  /* console.log(totalCart) */
 
   const handleClickAllDelete = () => {
     setListCartArray([]);
@@ -62,6 +57,7 @@ function ItemsCart() {
                   stock={stock}
                   listCartArray={listCartArray}
                   setListCartArray={setListCartArray}
+                  setTotalCart={setTotalCart}
                 />
               );
             })}

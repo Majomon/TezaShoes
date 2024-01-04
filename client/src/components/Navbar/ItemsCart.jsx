@@ -13,18 +13,18 @@ function ItemsCart() {
     setListCartArray(JSON.parse(listCart));
   },[listCart])
 
-  /* console.log(listCartArray) */
   
   useEffect(()=>{
-    const resultTotal = listCartArray?.reduce((acc,curr) => {
-      return acc + curr.totalPrice;
-    },0);
-
-    setTotalCart(resultTotal);
-
+    resultTotal();
   },[listCartArray])
 
-  /* console.log(totalCart) */
+  const resultTotal = () => {
+    const result = listCartArray?.reduce((acc,curr) => {
+      return acc + curr.totalPrice;
+    },0);
+    setTotalCart(result)
+    /* return result; */
+  }
 
   const handleClickAllDelete = () => {
     setListCartArray([]);
@@ -57,7 +57,7 @@ function ItemsCart() {
                   stock={stock}
                   listCartArray={listCartArray}
                   setListCartArray={setListCartArray}
-                  setTotalCart={setTotalCart}
+                  resultTotal={resultTotal}
                 />
               );
             })}

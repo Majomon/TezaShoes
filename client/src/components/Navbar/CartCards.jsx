@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DeleteIcon from "../../../assets/svg/deleteIcon";
 import Counter from "../Detail/Counter";
+import ItemsCart from "./ItemsCart";
 
 export default function CartCards({
   image,
@@ -12,46 +13,51 @@ export default function CartCards({
   size,
   stock,
   setListCartArray,
-  listCartArray
+  listCartArray,
+  resultTotal
 }) {
 
-  const [countCant, setCountCant] = useState(count);
+  const [countCant, setCountCant] = useState(null);
   const [subTotalPrice,setSubTotalPrice] = useState(totalPrice);
-  /* const [totalCart,setTotalCart] = useState(0); */
-  const listCardsCart = JSON.parse(localStorage.getItem("cart"));
+
   
   useEffect(() => {
     setCountCant(count)
   },[count])
-  
-  /* useEffect(()=>{
+
+ /*  useEffect(()=>{
+    const listCardsCart = JSON.parse(localStorage.getItem("cart"))
     const resultTotal = listCardsCart.reduce((acc,curr) => {
       return acc + curr.totalPrice;
     },0);
     setTotalCart(resultTotal);
-    localStorage.setItem('totalCardsCart',JSON.stringify(totalCart));
-  },[listCardsCart]) */
-
-  /* console.log(totalCart) */
+  },[countCant]) 
+ */
+  /* const resultTotal = () => {
+    listCartArray?.reduce((acc,curr) => {
+      return acc + curr.totalPrice;
+    },0);
+  } */
 
   const decrementCount = () => {
     if (countCant > 1) {
       setCountCant(countCant - 1);
-
-      /* const listCardsCart = JSON.parse(localStorage.getItem("cart")) */
-    
-      const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
-      const itemCardsCart = listCardsCart.splice(indexCardsCart,1);
-
-      itemCardsCart[0].count = countCant - 1;
-      itemCardsCart[0].totalPrice = itemCardsCart[0].count * price;
-
-      setSubTotalPrice(itemCardsCart[0].count * price);
-
-      const currentListCardsCart = [...listCardsCart,...itemCardsCart];
+      const currentListCart = [...listCartArray];
       
-      localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
-      /* setListCartArray(itemCardsCart) */
+      const indexCardsCart = currentListCart.findIndex(item => item.name === name && item.color === color && item.size === size);
+      const itemCardsCart = currentListCart.splice(indexCardsCart,1);
+      const newItemCart = itemCardsCart[0];
+
+      newItemCart.count = countCant - 1;
+      newItemCart.totalPrice = newItemCart.count * price;
+
+      setSubTotalPrice(newItemCart.totalPrice);
+
+      currentListCart.splice(indexCardsCart,0,newItemCart);
+
+      resultTotal();
+
+      localStorage.setItem('cart',JSON.stringify(currentListCart));
     }
   };
 
@@ -59,24 +65,28 @@ export default function CartCards({
     if (countCant < stock) {
       setCountCant(countCant + 1);
       
-      /* const listCardsCart = JSON.parse(localStorage.getItem("cart")) */
-    
-      const indexCardsCart = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
-      const itemCardsCart = listCardsCart.splice(indexCardsCart,1);
+      const currentListCart = [...listCartArray];
 
-      itemCardsCart[0].count = countCant + 1;
-      itemCardsCart[0].totalPrice = itemCardsCart[0].count * price;
+      const indexCardsCart = currentListCart.findIndex(item => item.name === name && item.color === color && item.size === size);
+      const itemCardsCart = currentListCart.splice(indexCardsCart,1);
+      const newItemCart = itemCardsCart[0];
 
-      setSubTotalPrice(itemCardsCart[0].count * price);
+      newItemCart.count = countCant + 1;
+      newItemCart.totalPrice = newItemCart.count * price;
 
-      const currentListCardsCart = [...listCardsCart,...itemCardsCart];
+      setSubTotalPrice(newItemCart.totalPrice);
+
+      currentListCart.splice(indexCardsCart,0,newItemCart);
+
+      resultTotal();
       
-      localStorage.setItem('cart',JSON.stringify(currentListCardsCart));
+      localStorage.setItem('cart',JSON.stringify(currentListCart));
+  
     }
   };
 
   const hancleClickDelete = () => {
-    /* const listCard = JSON.parse(localStorage.getItem("cart")); */
+    const listCardsCart = JSON.parse(localStorage.getItem("cart"));
 
     const indexListCard = listCardsCart.findIndex(item => item.name === name && item.color === color && item.size === size);
     listCardsCart.splice(indexListCard,1);
